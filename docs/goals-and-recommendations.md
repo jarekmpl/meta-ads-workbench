@@ -92,3 +92,7 @@ Przypisanie celu i dodanie rekomendacji wymagają wcześniejszego snapshotu, aby
 Kopia przestrzeni klienta powinna obejmować `data/decisions.sqlite3` razem ze snapshotami, kontekstem i raportami. Wykonuj ją po zakończeniu zapisów. Baza jest lokalna; nie jest wspólną usługą do równoczesnej pracy wielu komputerów. Dwa procesy na jednym komputerze mają kontrolę wersji i transakcje, które zapobiegają nadpisaniu cudzej decyzji.
 
 Nowy rejestr powstaje przy pierwszym użyciu i nie zmienia starych snapshotów. Instalator 0.3 nadal tworzy nowe przestrzenie. Aktualizację istniejącej przestrzeni wykonaj według procesu wydania, po kopii zapasowej.
+
+## Ustalenia klienta wykorzystane w rekomendacji
+
+Od wersji 0.5 rekomendacja może zawierać `context_basis`: reguły, cytaty, wersje dokumentów, projekt, datę zastosowania i opis wykorzystania. Agent przygotowuje je komendą `workbench.py context basis`, a zapis rekomendacji sprawdza ich aktualność. [Proces kontekstu](client-context.md) opisuje wymagania i rozstrzyganie konfliktów. Stare rekomendacje pozostają czytelne i zachowują swoją pierwotną podstawę.

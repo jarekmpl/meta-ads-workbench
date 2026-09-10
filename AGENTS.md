@@ -27,6 +27,7 @@ Pełny proces i wymagania dla przyszłego wykonawcy opisują [zasady zmian na ko
 - Raport, lista wyników, zestawienie kampanii za okres: przeczytaj [meta-ads-report](skills/meta-ads-report/SKILL.md).
 - Analiza grafik, tekstów, karuzel, filmów i wyników kreacji: przeczytaj [meta-ads-creatives](skills/meta-ads-creatives/SKILL.md). Pobierz materiał, zapisz ocenę treści, połącz ją z wynikami i przygotuj lokalny raport z galerią.
 - Audyt, diagnoza, rekomendacje dla jednego lub kilku kont: przeczytaj [meta-ads-audit](skills/meta-ads-audit/SKILL.md).
+- Dokumenty klienta, zasady komunikacji, zmiany między spotkaniami i podstawa rekomendacji: użyj [meta-ads-context](skills/meta-ads-context/SKILL.md). Wyszukaj potrzebne fragmenty, sprawdź zakres i konflikty. Przy rekomendacji korzystającej z tych ustaleń zapisz `context_basis`; nie omijaj błędu kontroli przez usunięcie tego pola.
 - Cele, definicje wyników, decyzje operatora i ocena testów: przeczytaj [meta-ads-decisions](skills/meta-ads-decisions/SKILL.md). Przed kolejną analizą odczytaj zapisane cele i historię rekomendacji.
 - Prośba o przygotowanie nowej kampanii: użyj [meta-ads-campaign-wizard](skills/meta-ads-campaign-wizard/SKILL.md). Nie rejestruj zgody bez rzeczywistej akceptacji dokładnego planu przez użytkownika. Edycja i aktywacja istniejących obiektów pozostają nieobsługiwane.
 

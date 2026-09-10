@@ -5,6 +5,7 @@ from typing import Annotated, Literal
 
 from pydantic import Field, model_validator
 
+from meta_ads_manager.context_models import ContextBasis
 from meta_ads_manager.models import (
     Contract,
     Currency,
@@ -124,12 +125,15 @@ class Recommendation(Scope):
     rationale: Nonempty
     priority: Literal["high", "medium", "low"]
     evidence_refs: list[Nonempty] = Field(min_length=1)
+    context_basis: ContextBasis | None = None
     test_plan: TestPlan
     followup_of: Identifier | None = None
     followup_reason: Nonempty | None = None
 
     @model_validator(mode="after")
     def unique_campaigns(self):
+        if self.context_basis and self.context_basis.client_id != self.client_id:
+            raise ValueError("Context belongs to another client")
         if len(set(self.campaign_ids)) != len(self.campaign_ids):
             raise ValueError("Repeated campaign")
         if (self.followup_of is None) != (self.followup_reason is None):

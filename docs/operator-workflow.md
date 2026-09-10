@@ -32,7 +32,7 @@ Nie dodawaj katalogu `clients/` jako jednego projektu agenta. Nie zapisuj ustale
 
 Materiały mogą obejmować strategię, cele, sezonowość, notatki, ton komunikacji, brandbook, kalendarz promocji, ograniczenia oferty, badania odbiorców lub dowolny inny temat. Pole `type` przyjmuje własną nazwę. Jedyny wymagany materiał wejściowy to plik i jego tytuł; resztę można uzupełniać w miarę pracy.
 
-Indeks `context/index.json` przechowuje klienta oraz dla każdego materiału: ID, tytuł, typ, projekt, tagi, status, datę dodania, opcjonalną datę ważności, ścieżkę i SHA-256. Treść pozostaje w oryginalnym pliku. System nie wykonuje automatycznego OCR, ekstrakcji Worda ani analizy brandbooka w Pythonie. Agent korzysta z możliwości swojego środowiska i zapisuje zakres rzeczywiście przeczytanej treści.
+Indeks `context/index.json` przechowuje klienta oraz ID, tytuł, typ, projekt, tagi, status, datę dodania, opcjonalne daty dokumentu i ważności, poprzednią wersję, ścieżkę oraz SHA-256 materiału. Od wersji 0.5 Python odczytuje PDF, DOCX, TXT i Markdown, wyszukuje fragmenty oraz porównuje notatki. Reguły w `context/rules.json` zachowują wykorzystane cytaty i historię decyzji. [Proces kontekstu](client-context.md) opisuje komendy, konflikty i podstawę rekomendacji. OCR nie jest częścią obecnej wersji.
 
 Statusy:
 
@@ -45,7 +45,7 @@ Agent może korzystać z roboczego materiału jako tła z odpowiednim oznaczenie
 Przykład importu dla agenta:
 
 ```bash
-python3 workbench.py context add --file context/inbox/spotkanie.md --title "Ustalenia przed promocją" --type spotkanie --project jesien --tag oferta --valid-until 2026-11-30
+python3 workbench.py context add --file context/inbox/spotkanie.md --title "Ustalenia przed promocją" --type meeting --document-date 2026-09-08 --project jesien --tag oferta --valid-until 2026-11-30
 python3 workbench.py context list
 python3 workbench.py context status --id ID_Z_IMPORTU --status confirmed --reason "Operator potwierdził zakres ustaleń w rozmowie"
 ```
@@ -54,7 +54,7 @@ Nie wpisuj dosłownie `ID_Z_IMPORTU`: użyj identyfikatora zwróconego przez imp
 
 Plik zewnętrzny można importować przez jawną ścieżkę `--file`; jest to celowy wyjątek od ograniczenia odczytu do katalogu klienta. Import kopiuje materiał, nie zmienia źródła. Operator wskazuje, że należy on do tego klienta. Rejestr nie potrafi sam rozpoznać właściciela dokumentu.
 
-Nową wersję importujemy jako nowy materiał. Nie nadpisujemy poprzedniej. Zmiana oryginału w `context/materials/` powoduje błąd kontroli integralności i blokuje potwierdzenie. Agent oznacza poprzednią wersję jako zastąpioną dopiero po ustaleniu, co nowy materiał zastępuje. Data ważności jest sygnałem do sprawdzenia, nie poleceniem automatycznego kasowania.
+Nową wersję importujemy jako nowy materiał z opcjonalnym `--version-of ID_POPRZEDNIEJ_WERSJI`. Nie nadpisujemy poprzedniej. Zmiana oryginału w `context/materials/` powoduje błąd kontroli integralności i blokuje potwierdzenie. Agent oznacza poprzednią wersję jako zastąpioną dopiero po ustaleniu, co nowy materiał zastępuje. Data ważności jest sygnałem do sprawdzenia, nie poleceniem automatycznego kasowania.
 
 ## Początek dnia lub nowej rozmowy
 
@@ -92,3 +92,7 @@ Aktualizacja kodu jest oddzielnym działaniem. Przed nią zatrzymaj pracę i wyk
 ## Kreator kampanii 0.4
 
 [Instrukcja kreatora](campaign-wizard.md) opisuje przygotowanie nowej kampanii w rozmowie, zapis stanu i kontrolowane tworzenie nowych obiektów PAUSED. Skorzystaj ze skilla meta-ads-campaign-wizard. Zgody, briefy i dziennik w data/campaign-wizard.sqlite3 należą do danych klienta i powinny być objęte kopią zapasową. Pierwsza instalacja zachowuje tryb read_only.
+
+## Dokumenty i ustalenia od wersji 0.5
+
+Do pytań o komunikację, porównań spotkań i doboru podstaw rekomendacji używaj skilla meta-ads-context. Po imporcie notatki agent odczytuje treść, zestawia ją z dotychczasowymi zasadami i proponuje konkretne aktualizacje. Zatwierdzone ustalenia można dołączyć do rekomendacji przez `context basis`. Kopią zapasową obejmuj cały `context/`, także oryginały materiałów i rejestr reguł.

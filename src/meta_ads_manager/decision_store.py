@@ -3,6 +3,7 @@
 import hashlib
 import json
 import sqlite3
+from contextlib import nullcontext
 from datetime import UTC, date, datetime, timedelta
 from pathlib import Path
 
@@ -145,8 +146,11 @@ class Decisions:
             )
 
     def add_recommendation(self, recommendation: Recommendation):
+        from meta_ads_manager.workspace import context_lock
+
         self.scope(recommendation)
-        with self.db:
+        lock = context_lock(Path.cwd()) if recommendation.context_basis else nullcontext()
+        with self.db, lock:
             self.db.execute("BEGIN IMMEDIATE")
             goal = self.get("goal", recommendation.goal_id, recommendation.goal_revision)
             if recommendation.test_plan.metric == "roas" and not goal["data"]["value_action_type"]:
@@ -167,12 +171,20 @@ class Decisions:
             latest = self.recommendations()
             for entry in latest:
                 if entry["id"] == raw["recommendation_id"]:
-                    if entry["data"]["definition"] != raw:
+                    previous = Recommendation.model_validate_json(
+                        canonical(entry["data"]["definition"])
+                    ).model_dump(mode="json")
+                    if previous != raw:
                         fail("ID_CONFLICT", "Identyfikator rekomendacji ma inną treść.")
                     return entry
             for entry in latest:
                 if entry["data"]["fingerprint"] == fingerprint:
                     return {**entry, "duplicate_of": entry["id"]}
+            if recommendation.context_basis:
+                from meta_ads_manager.context_engine import verify_basis
+
+                verify_basis(Path.cwd(), recommendation.context_basis, self.client,
+                             goal["data"]["project_id"])
             return self._append(
                 "recommendation",
                 raw["recommendation_id"],

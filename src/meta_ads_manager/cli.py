@@ -15,6 +15,7 @@ from meta_ads_manager import __version__
 from meta_ads_manager.account_policy import account_change_policy
 from meta_ads_manager.analytics import weekly_review
 from meta_ads_manager.campaign_models import CAMPAIGN_CONTRACTS
+from meta_ads_manager.context_models import ContextRule
 from meta_ads_manager.decision_models import DECISION_CONTRACTS
 from meta_ads_manager.errors import AppError
 from meta_ads_manager.live_cli import dispatch_live
@@ -38,6 +39,7 @@ SUPPORTED_CONTRACTS = {
     **CAMPAIGN_CONTRACTS,
     "pdf_document": PdfDocument,
     "pdf_notes": PdfNotes,
+    "context_rule": ContextRule,
 }
 
 
@@ -254,6 +256,12 @@ def dispatch(args) -> tuple[dict, list[dict]]:
             "meta_connection_setup": True,
             "operator_workspaces": True,
             "client_context_registry": True,
+            "client_context_readers": ["pdf_text", "docx_body_tables", "txt_utf8", "md_utf8"],
+            "client_context_search": "local_lexical",
+            "client_context_conflicts": "grounded_same_key_operator_resolution",
+            "client_context_compare": True,
+            "recommendation_context_basis": True,
+            "client_context_ocr": False,
             "meta_reporting": True,
             "meta_goal_mapping": True,
             "meta_weekly_review": True,

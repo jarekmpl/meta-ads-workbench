@@ -44,3 +44,7 @@ Przy przerwaniu lub błędzie odczytaj `wizard status`, a następnie `wizard rec
 W podsumowaniu oddziel wykonany kod, sprawdzenie odczytów i rzeczywisty zapis w Meta. Test z symulowanym API nie potwierdza akceptacji kombinacji ustawień przez rzeczywiste konto. Nie obiecuj funkcji, których capabilities nie udostępnia.
 
 Każda decyzja akceptacji ma własne `approval_id` oraz `expected_revision` z ostatniego odczytu `wizard status` (0, gdy nie ma decyzji). Ponowienie starej zgody nie przywraca jej po cofnięciu. Nowa decyzja wymaga nowego ID i aktualnej wersji.
+
+## Kontekst przygotowywanej kampanii
+
+Przed doborem komunikacji i oferty zastosuj [meta-ads-context](../meta-ads-context/SKILL.md). Odczytaj ustalenia projektu i marki, wyszukaj odpowiednie fragmenty oraz rozstrzygnij istotne konflikty. W evidence_ref odpowiedzi kreatora odwołaj się do materiału i jego wersji; szczegółową podstawę zapisz przez context basis w notatce obok briefu. Kontekst klienta nie upoważnia do utworzenia ani aktywacji kampanii.

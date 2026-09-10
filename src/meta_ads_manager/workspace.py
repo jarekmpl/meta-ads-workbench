@@ -133,9 +133,20 @@ def add_context(root: Path, args) -> dict:
     if source.stat().st_size > 50 * 1024 * 1024:
         raise AppError("CONTEXT_FILE", "Limit jednego materiału wynosi 50 MB.", 2)
     if args.valid_until:
-        date.fromisoformat(args.valid_until)
+        args.valid_until = date.fromisoformat(args.valid_until).isoformat()
+    valid_from = getattr(args, "valid_from", None)
+    document_date = getattr(args, "document_date", None)
+    version_of = getattr(args, "version_of", None)
+    valid_from = date.fromisoformat(valid_from).isoformat() if valid_from else None
+    document_date = date.fromisoformat(document_date).isoformat() if document_date else None
+    if valid_from and args.valid_until and valid_from > args.valid_until:
+        raise AppError("CONTEXT_DATES", "Początek ważności jest późniejszy od końca.", 2)
     with context_lock(root):
         index = context_index(root)
+        if version_of:
+            previous = next((x for x in index["items"] if x["id"] == version_of), None)
+            if previous is None or previous.get("project") != args.project:
+                raise AppError("SCOPE_MISMATCH", "Brak poprzedniej wersji w tym projekcie.", 3)
         material_id = "ctx_" + uuid4().hex
         suffix = source.suffix.lower()
         allowed = ".abcdefghijklmnopqrstuvwxyz0123456789"
@@ -156,6 +167,9 @@ def add_context(root: Path, args) -> dict:
             "tags": args.tag,
             "status": "draft",
             "valid_until": args.valid_until,
+            "valid_from": valid_from,
+            "document_date": document_date,
+            "version_of": version_of,
             "added_at": datetime.now(UTC).isoformat(),
             "file": relative.as_posix(),
             "sha256": hashlib.sha256(payload).hexdigest(),
@@ -253,6 +267,8 @@ def onboard(root: Path) -> dict:
 
 
 def parser() -> argparse.ArgumentParser:
+    from meta_ads_manager.context_cli import add_commands
+
     root = argparse.ArgumentParser(description="Przestrzeń operatora jednego klienta")
     sub = root.add_subparsers(dest="command", required=True)
     for command in ("doctor", "status", "onboard"):
@@ -268,10 +284,14 @@ def parser() -> argparse.ArgumentParser:
     add.add_argument("--project")
     add.add_argument("--tag", action="append", default=[])
     add.add_argument("--valid-until")
+    add.add_argument("--valid-from")
+    add.add_argument("--document-date", help="Data dokumentu lub spotkania, YYYY-MM-DD")
+    add.add_argument("--version-of", help="ID poprzedniej wersji; bez zmiany jej statusu")
     state = context.add_parser("status")
     state.add_argument("--id", required=True)
     state.add_argument("--status", choices=("draft", "confirmed", "superseded"), required=True)
     state.add_argument("--reason", required=True)
+    add_commands(context)
     return root
 
 
@@ -288,6 +308,14 @@ def run(argv: list[str] | None = None) -> int:
         if args.command == "meta":
             return meta_run(args.args)
         guard_cli(argparse.Namespace(demo=False, data_dir=root / "data"), root)
+        output = getattr(args, "output", None)
+        if output:
+            output = confined(root, output, output=True)
+            # Derived exports must not overwrite source materials or either registry.
+            if output.is_relative_to((root / "context").resolve()):
+                raise AppError("CONTEXT_OUTPUT", "Eksport zapisz w output/ lub reports/.", 2)
+            if output.exists():
+                raise AppError("CONTEXT_OUTPUT", "Wybierz nową nazwę pliku eksportu.", 2)
         if args.command == "doctor":
             result = doctor(root)
         elif args.command == "status":
@@ -298,8 +326,14 @@ def run(argv: list[str] | None = None) -> int:
             result = add_context(root, args)
         elif args.action == "status":
             result = set_context_status(root, args)
-        else:
+        elif args.action == "list":
             result = context_items(root)
+        else:
+            from meta_ads_manager.context_cli import dispatch
+
+            result = dispatch(root, args)
+        if output:
+            save_private(output, result)
         print(json.dumps({"ok": True, "data": result}, ensure_ascii=False))
         return 1 if args.command == "doctor" and not result["ready_local"] else 0
     except AppError as exc:

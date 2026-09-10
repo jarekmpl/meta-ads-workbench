@@ -1,5 +1,228 @@
 {
   "$defs": {
+    "ContextBasis": {
+      "additionalProperties": false,
+      "properties": {
+        "client_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+          "title": "Client Id",
+          "type": "string"
+        },
+        "project": {
+          "anyOf": [
+            {
+              "maxLength": 2000,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Project"
+        },
+        "as_of": {
+          "format": "date",
+          "title": "As Of",
+          "type": "string"
+        },
+        "rule_ids": {
+          "items": {
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+            "type": "string"
+          },
+          "maxItems": 50,
+          "minItems": 1,
+          "title": "Rule Ids",
+          "type": "array"
+        },
+        "rules": {
+          "items": {
+            "$ref": "#/$defs/ContextRule"
+          },
+          "maxItems": 50,
+          "minItems": 1,
+          "title": "Rules",
+          "type": "array"
+        },
+        "sources": {
+          "items": {
+            "$ref": "#/$defs/ContextReference"
+          },
+          "maxItems": 100,
+          "minItems": 1,
+          "title": "Sources",
+          "type": "array"
+        },
+        "used_for": {
+          "maxLength": 2000,
+          "minLength": 1,
+          "title": "Used For",
+          "type": "string"
+        }
+      },
+      "required": [
+        "client_id",
+        "as_of",
+        "rule_ids",
+        "rules",
+        "sources",
+        "used_for"
+      ],
+      "title": "ContextBasis",
+      "type": "object"
+    },
+    "ContextReference": {
+      "additionalProperties": false,
+      "properties": {
+        "client_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+          "title": "Client Id",
+          "type": "string"
+        },
+        "material_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+          "title": "Material Id",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        },
+        "chunk_id": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Chunk Id",
+          "type": "string"
+        },
+        "locator": {
+          "maxLength": 2000,
+          "minLength": 1,
+          "title": "Locator",
+          "type": "string"
+        },
+        "title": {
+          "maxLength": 2000,
+          "minLength": 1,
+          "title": "Title",
+          "type": "string"
+        },
+        "quote": {
+          "maxLength": 2400,
+          "minLength": 1,
+          "title": "Quote",
+          "type": "string"
+        }
+      },
+      "required": [
+        "client_id",
+        "material_id",
+        "sha256",
+        "chunk_id",
+        "locator",
+        "title",
+        "quote"
+      ],
+      "title": "ContextReference",
+      "type": "object"
+    },
+    "ContextRule": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "kind": {
+          "const": "context_rule",
+          "title": "Kind",
+          "type": "string"
+        },
+        "client_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+          "title": "Client Id",
+          "type": "string"
+        },
+        "rule_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+          "title": "Rule Id",
+          "type": "string"
+        },
+        "key": {
+          "pattern": "^[a-z][a-z0-9_.-]{0,127}$",
+          "title": "Key",
+          "type": "string"
+        },
+        "value": {
+          "maxLength": 2000,
+          "minLength": 1,
+          "title": "Value",
+          "type": "string"
+        },
+        "project": {
+          "anyOf": [
+            {
+              "maxLength": 2000,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Project"
+        },
+        "valid_from": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Valid From"
+        },
+        "valid_until": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Valid Until"
+        },
+        "sources": {
+          "items": {
+            "$ref": "#/$defs/ContextReference"
+          },
+          "maxItems": 20,
+          "minItems": 1,
+          "title": "Sources",
+          "type": "array"
+        }
+      },
+      "required": [
+        "schema_version",
+        "kind",
+        "client_id",
+        "rule_id",
+        "key",
+        "value",
+        "sources"
+      ],
+      "title": "ContextRule",
+      "type": "object"
+    },
     "TestPlan": {
       "additionalProperties": false,
       "properties": {
@@ -197,6 +420,17 @@
       "minItems": 1,
       "title": "Evidence Refs",
       "type": "array"
+    },
+    "context_basis": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ContextBasis"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
     },
     "test_plan": {
       "$ref": "#/$defs/TestPlan"

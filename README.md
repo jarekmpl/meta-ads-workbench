@@ -13,7 +13,7 @@ Wymagany jest Python 3.11+ oraz macOS, Linux lub WSL. Instalator tworzy odrębne
 ## Co działa
 
 - Instalacja przestrzeni jednego klienta, diagnostyka lokalna i kreator konfiguracji Meta.
-- Rejestr dowolnych materiałów kontekstowych z zakresem projektu, statusami, datą ważności i kontrolą integralności.
+- Rejestr materiałów klienta z odczytem PDF, DOCX i tekstu, wyszukiwaniem fragmentów, porównaniem spotkań, kontrolą sprzecznych ustaleń i zapisem podstawy rekomendacji.
 - Odczyt skonfigurowanego konta, kampanii i dziennych wyników; raporty ze snapshotów, częściowy audyt i pilotaż analizy kreacji.
 - Wersjonowane cele kampanii, dokładne definicje wyników, docelowy koszt i ROAS oraz porównania okresów.
 - Historia rekomendacji, decyzji i testów z oceną na podstawie zapisanych wyników.
@@ -44,6 +44,10 @@ Przykładowe polecenia w rozmowie:
 
 > Dodaj te ustalenia ze spotkania do kontekstu jesiennej promocji.
 
+> Które zasady komunikacji obowiązują w jesiennej promocji?
+
+> Co zmieniło się od poprzedniego spotkania?
+
 > Zapisz całą analizę w PDF.
 
 > Przygotuj nową kampanię leadową. Sprawdź ofertę na stronie i przeprowadź mnie przez potrzebne ustalenia.
@@ -54,6 +58,7 @@ Przykładowe polecenia w rozmowie:
 | --- | --- |
 | [Start operatora](START-HERE.md) | Instalacja, wybór agenta, połączenie i pierwszy wynik |
 | [Codzienna praca](docs/operator-workflow.md) | Separacja klientów i otwarty rejestr kontekstu |
+| [Dokumenty i ustalenia klienta](docs/client-context.md) | Odczyt, wyszukiwanie, porównanie spotkań, konflikty i podstawa rekomendacji |
 | [Cele i historia decyzji](docs/goals-and-recommendations.md) | Definicje wyników, progi, rekomendacje i ocena testów |
 | [Konfiguracja Meta](docs/meta-setup.md) | Aplikacja, lokalne poświadczenia i test odczytu |
 | [Instrukcje agenta](AGENTS.md) | Wybór skilli, zasady danych i redakcja |

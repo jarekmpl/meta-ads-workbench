@@ -17,7 +17,7 @@ Przeczytaj [proces i kontrakty](../../docs/goals-and-recommendations.md). Pracuj
 
 ## Po analizie i przy decyzji
 
-Zapisuj uzasadnione, konkretne propozycje przez `recommendations add`. Przed zapisem porównaj je z historią, także semantycznie. Plan oceny powinien wskazywać hipotezę, kampanie, równy okres bazowy i obserwacji, wskaźnik, próg sukcesu lub poprawę względem bazy, ewentualne minimum wyników i warunek przerwania. Parametry zaproponowane przez agenta przedstaw jako propozycję. Brak danych koniecznych do kompletnego planu uzupełnij pytaniem; nie twórz pozornego testu z losowymi datami.
+Zapisuj uzasadnione, konkretne propozycje przez `recommendations add`. Jeżeli korzystasz z ustaleń klienta, zastosuj [meta-ads-context](../meta-ads-context/SKILL.md) i dołącz wynik `context basis` w polu `context_basis`. Zachowaj identyczny projekt jak `project_id` celu; sprawdź aktualność i konflikty przed zapisem. Przed zapisem porównaj je z historią, także semantycznie. Plan oceny powinien wskazywać hipotezę, kampanie, równy okres bazowy i obserwacji, wskaźnik, próg sukcesu lub poprawę względem bazy, ewentualne minimum wyników i warunek przerwania. Parametry zaproponowane przez agenta przedstaw jako propozycję. Brak danych koniecznych do kompletnego planu uzupełnij pytaniem; nie twórz pozornego testu z losowymi datami.
 
 Zapisz decyzję przez `recommendations event`, korzystając z aktualnej wersji. Autor i evidence_refs muszą wskazywać rzeczywiste ustalenie. Ogólne „działaj” nie rozstrzyga kilku różnych propozycji. Przy niejasności ustal konkretny zakres. Rejestracja akceptacji pomysłu nie oznacza akceptacji planu zmian na Meta. `start` zapisuj po potwierdzeniu rzeczywistej daty wdrożenia. Agent nie może sam zadeklarować, że operator wdrożył zmianę.
 

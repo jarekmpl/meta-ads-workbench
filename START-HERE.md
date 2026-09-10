@@ -95,3 +95,7 @@ Uruchom `python3 workbench.py doctor`. Wynik sprawdza lokalne zależności i sta
 ## Kreator kampanii 0.4
 
 [Instrukcja kreatora](docs/campaign-wizard.md) opisuje przygotowanie nowej kampanii w rozmowie, zapis stanu i kontrolowane tworzenie nowych obiektów PAUSED. Skorzystaj ze skilla meta-ads-campaign-wizard. Zgody, briefy i dziennik w data/campaign-wizard.sqlite3 należą do danych klienta i powinny być objęte kopią zapasową. Pierwsza instalacja zachowuje tryb read_only.
+
+## Praca z dokumentami
+
+Po dodaniu materiałów możesz poprosić: „Które zasady komunikacji obowiązują w tej promocji?” albo „Porównaj dwa ostatnie spotkania”. Agent odczyta dokumenty i pokaże konkretne ustalenia oraz ewentualne sprzeczności. Korzysta ze skilla meta-ads-context; [opis procesu](docs/client-context.md) wyjaśnia zakres odczytu i zapis podstaw rekomendacji.
