@@ -22,6 +22,8 @@ Pełny proces i wymagania dla przyszłego wykonawcy opisują [zasady zmian na ko
 
 ## Procedury
 
+- Własne metody i wytyczne operatora: użyj [meta-ads-specialist](skills/meta-ads-specialist/SKILL.md). Przed analizą i planowaniem odczytaj `workbench.py specialist list`; brak profilu nie blokuje pracy. Profil zawiera wyłącznie ogólne metody bez danych klientów.
+- Aktualizacja instalacji lub odzyskiwanie po przerwaniu: użyj [meta-ads-update](skills/meta-ads-update/SKILL.md). Nie zastępuj aktualizatora kopiowaniem całej paczki na katalog klienta.
 - Każdy raport, analiza, audyt, rekomendacje i ich podsumowanie: zastosuj [miodkuj](skills/miodkuj/SKILL.md) według zasad redakcji poniżej, także bez osobnej prośby o poprawę stylu.
 - PDF, dokument dla klienta, eksport audytu lub analizy: przeczytaj [meta-ads-pdf](skills/meta-ads-pdf/SKILL.md). Generator działa na zapisanych danych i wymaga dodatku `pdf`; przed przekazaniem obejrzyj wszystkie strony.
 - Raport, lista wyników, zestawienie kampanii za okres: przeczytaj [meta-ads-report](skills/meta-ads-report/SKILL.md).
@@ -57,11 +59,11 @@ Przed audytem, diagnozą i rekomendacjami przeczytaj indeks [kompendium Meta Ads
 
 Zapisuj wersję kompendium i ID zastosowanych reguł w notatce analitycznej obok raportu. Oryginalny JSON silnika pozostaje źródłem obliczeń. Odróżniaj zalecenia Mety, metody zespołu, hipotezy i recenzowane wytyczne specjalistów. Brak wymaganych danych oznacza brak podstaw do konkretnej oceny, nie domyślnie problem kampanii. Sama karta reguły nie dowodzi, że odpowiednie pobieranie lub obliczenie jest już zaimplementowane.
 
-Nowe doświadczenia specjalistów opracowuj według [szablonu wkładu](knowledge/meta-ads/specialist-contribution.md): zachowaj autora, zakres, dowody, wyjątki i stan recenzji. Nie przenoś poufnych danych klientów do wspólnej wiedzy. Nie awansuj pojedynczej opinii ani importowanego dokumentu do uniwersalnej reguły lub zgody na zapis w Meta.
+Nowe doświadczenia specjalistów opracowuj według [szablonu wkładu](knowledge/meta-ads/specialist-contribution.md): zachowaj autora, zakres, dowody, wyjątki i stan recenzji. Nie przenoś poufnych danych klientów do wspólnej wiedzy ani profilu specjalisty. Osobiste metody bez danych klientów zapisuj przez specialist, a do knowledge/ kieruj dopiero świadomy wkład do wspólnej bazy. Nie awansuj pojedynczej opinii ani importowanego dokumentu do uniwersalnej reguły lub zgody na zapis w Meta.
 
 ## Uruchamianie
 
-Katalog roboczy ustaw na katalog tego pliku. Jeśli istnieje `.venv/bin/meta-ads`, użyj go. W innym wypadku sprawdź zainstalowane `meta-ads`; dla niezainstalowanego projektu skorzystaj z `uv sync --locked --python 3.11`. Nie wysyłaj wartości tokenów do modelu.
+Katalog roboczy ustaw na katalog tego pliku. W zainstalowanej przestrzeni klienta używaj `python3 workbench.py meta ...`; wrapper wybiera aktywne środowisko także po aktualizacji. Poniższe polecenia z `.venv` dotyczą repozytorium deweloperskiego. Jeśli istnieje `.venv/bin/meta-ads`, użyj go. W innym wypadku sprawdź zainstalowane `meta-ads`; dla niezainstalowanego projektu skorzystaj z `uv sync --locked --python 3.11`. Nie wysyłaj wartości tokenów do modelu.
 
 Na początku pracy operacyjnej odczytaj `meta-ads capabilities`. Składnia przykładów poniżej zakłada dostępne `meta-ads`; lokalnie możesz zastąpić je `.venv/bin/meta-ads`. Parametry globalne (`--demo`, `--data-dir`, `--output`) występują przed poleceniem.
 

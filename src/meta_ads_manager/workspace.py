@@ -18,6 +18,7 @@ from meta_ads_manager.meta_connection import (
     save_private,
     validate_client_id,
 )
+from meta_ads_manager.workspace_lock import session
 
 MANIFEST = "workspace.json"
 DATA_ROOTS = {"data", "reports", "output", "artifacts", "tmp", "context", "projects"}
@@ -271,6 +272,9 @@ def parser() -> argparse.ArgumentParser:
 
     root = argparse.ArgumentParser(description="Przestrzeń operatora jednego klienta")
     sub = root.add_subparsers(dest="command", required=True)
+    from meta_ads_manager.specialist import add_commands as specialist_commands
+
+    specialist_commands(sub)
     for command in ("doctor", "status", "onboard"):
         sub.add_parser(command)
     meta = sub.add_parser("meta", help="Przekaż pozostałe argumenty do meta-ads")
@@ -295,6 +299,7 @@ def parser() -> argparse.ArgumentParser:
     return root
 
 
+@session
 def run(argv: list[str] | None = None) -> int:
     from meta_ads_manager.cli import run as meta_run
 
@@ -322,6 +327,10 @@ def run(argv: list[str] | None = None) -> int:
             result = workspace_info(root)
         elif args.command == "onboard":
             result = onboard(root)
+        elif args.command == "specialist":
+            from meta_ads_manager.specialist import dispatch as specialist_dispatch
+
+            result = specialist_dispatch(root, args)
         elif args.action == "add":
             result = add_context(root, args)
         elif args.action == "status":

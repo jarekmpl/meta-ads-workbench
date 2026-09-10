@@ -13,4 +13,4 @@ Skrypt odrzuca katalogi prywatne i typowe wzorce sekretów. Taki skan nie zastę
 
 Przed publikacją wykonaj testy z README, instalację do nowego pustego katalogu i `workbench.py doctor`. Sprawdź, że konto nie jest skonfigurowane i żaden materiał klienta nie został skopiowany. Przetestuj import przykładowego kontekstu i blokadę polecenia innego klienta. Testy nie mogą wykonywać zmian na rzeczywistych kontach Meta.
 
-Instalator nie aktualizuje istniejącego klienta. Poprawki wydajemy jako nową wersję, sprawdzamy na czystej instalacji, a migrację istniejącej przestrzeni wykonujemy jawnie po kopii zapasowej. Zaktualizuj numer w pyproject.toml, __init__.py, uv.lock, install.py i package_release.py.
+Instalator tworzy nowe przestrzenie. Istniejące aktualizuje update.py według docs/updating.md. Przed wydaniem sprawdź zarówno czystą instalację, jak i aktualizację poprzedniej wersji z przykładowym kontekstem, konfiguracją i osobistym profilem. Zweryfikuj konflikty lokalnych zmian oraz odtworzenie po błędzie. Zaktualizuj numer w pyproject.toml, __init__.py, uv.lock, install.py i package_release.py.

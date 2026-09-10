@@ -3,6 +3,7 @@
 
 import argparse
 import hashlib
+import importlib.util
 import json
 import os
 import re
@@ -55,6 +56,8 @@ def create_workspace(source, destination, client, name, agent):
         target = destination / file
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(source / file, target)
+    if (source / "RELEASE-MANIFEST.json").is_file():
+        shutil.copy2(source / "RELEASE-MANIFEST.json", destination / "RELEASE-MANIFEST.json")
     for directory in (
         "context/materials",
         "context/inbox",
@@ -66,6 +69,7 @@ def create_workspace(source, destination, client, name, agent):
         "config/local",
         "secrets",
         "tmp",
+        "specialist",
     ):
         (destination / directory).mkdir(parents=True, exist_ok=True, mode=0o700)
     info = {
@@ -75,7 +79,7 @@ def create_workspace(source, destination, client, name, agent):
         "client_id": client,
         "name": name,
         "preferred_agent": agent,
-        "release_version": "0.5.0",
+        "release_version": "0.6.0",
         "access_mode": "read_only",
     }
     path = destination / "workspace.json"
@@ -94,6 +98,12 @@ def create_workspace(source, destination, client, name, agent):
         "workbench.py context add. Indeks index.json zawiera wersje i statusy. "
         "Przeczytaj docs/operator-workflow.md.\n",
         encoding="utf-8",
+    )
+    spec = importlib.util.spec_from_file_location("workbench_update", SOURCE / "update.py")
+    updater = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(updater)
+    updater.save(
+        destination / ".workbench/installed.json", updater.installed_state(destination, source)
     )
     return destination
 

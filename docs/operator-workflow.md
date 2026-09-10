@@ -83,7 +83,7 @@ Kopię katalogu klienta przechowuj w zatwierdzonym firmowym miejscu z dostępem 
 
 Nie udostępniaj jednocześnie aktywnej bazy SQLite przez dysk synchronizowany między operatorami. Wyznacz właściciela danej sesji pracy; przekazuj zamknięte kopie i zatwierdzone dokumenty. Rejestr kontekstu blokuje równoległy lokalny zapis, ale nie jest systemem współpracy wielu komputerów.
 
-Aktualizacja kodu jest oddzielnym działaniem. Przed nią zatrzymaj pracę i wykonaj kopię klienta. Obecny instalator odmawia nadpisania istniejącej przestrzeni. Nową wersję najpierw sprawdzamy na pustej instalacji, a migrację danych i konfiguracji wykonujemy jawnie, z weryfikacją klienta i konta. Nie używamy `git pull` w przestrzeni klienta ani `--resume` jako aktualizacji kodu.
+Aktualizacja kodu jest oddzielnym działaniem. Przed nią zatrzymaj pracę i zadbaj o kopię klienta. Od wersji 0.6 używaj update.py według [instrukcji aktualizacji](updating.md). Skrypt chroni pliki użytkownika i wykrywa lokalne poprawki w plikach narzędzia. Starszą instalację rozpoznaje przez oryginalną paczkę bazową. Nie używamy `git pull`, nadpisywania całego katalogu ani `--resume` jako aktualizacji kodu.
 
 ## Cele i historia decyzji od wersji 0.3
 
@@ -96,3 +96,7 @@ Aktualizacja kodu jest oddzielnym działaniem. Przed nią zatrzymaj pracę i wyk
 ## Dokumenty i ustalenia od wersji 0.5
 
 Do pytań o komunikację, porównań spotkań i doboru podstaw rekomendacji używaj skilla meta-ads-context. Po imporcie notatki agent odczytuje treść, zestawia ją z dotychczasowymi zasadami i proponuje konkretne aktualizacje. Zatwierdzone ustalenia można dołączyć do rekomendacji przez `context basis`. Kopią zapasową obejmuj cały `context/`, także oryginały materiałów i rejestr reguł.
+
+## Własne metody specjalisty
+
+Przed analizą agent odczytuje aktywne wytyczne z [profilu specjalisty](specialist-guidance.md). Profil może być wspólny dla kilku klientów, ale zawiera wyłącznie ogólne metody. Ograniczenia marki, cele i materiały konkretnego klienta pozostają w jego kontekście. Aktualizacje narzędzia nie zmieniają żadnej z tych dwóch warstw.

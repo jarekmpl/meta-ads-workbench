@@ -26,6 +26,9 @@ FORBIDDEN = {
     "__pycache__",
     "dist",
     "reviews",
+    "specialist",
+    "specialists",
+    ".workbench",
 }
 PATTERNS = [
     rb"EAA[A-Za-z0-9]{40,}",
@@ -41,6 +44,9 @@ def check_files(root, files):
     findings = []
     for name in files:
         path = Path(name)
+        if path.name in ("specialist.json", "profile.json", "workspace.json"):
+            findings.append(f"Prywatny plik: {name}")
+            continue
         if any(part in FORBIDDEN for part in path.parts) or path.name == "language-review.json":
             findings.append(f"Niedozwolony plik: {name}")
             continue
@@ -66,7 +72,7 @@ def build(source, destination):
         shutil.copy2(source / name, target)
         hashes[name] = hashlib.sha256(target.read_bytes()).hexdigest()
     (destination / "RELEASE-MANIFEST.json").write_text(
-        json.dumps({"version": "0.5.0", "sha256": hashes}, indent=2) + "\n"
+        json.dumps({"version": "0.6.0", "sha256": hashes}, indent=2) + "\n"
     )
     archive = destination.parent / (destination.name + ".zip")
     with zipfile.ZipFile(archive, "x", compression=zipfile.ZIP_DEFLATED) as out:

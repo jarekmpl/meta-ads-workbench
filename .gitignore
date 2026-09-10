@@ -42,3 +42,9 @@ htmlcov/
 dist/
 build/
 .DS_Store
+
+# Warstwa specjalisty i stan aktualizacji
+specialist/
+specialists/
+specialist.json
+.workbench/

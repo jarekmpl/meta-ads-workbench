@@ -22,3 +22,5 @@ Przy dodawaniu lub odczycie kontekstu zastosuj [meta-ads-context](../meta-ads-co
 Import daje status `draft`. Jeżeli użytkownik potwierdził ustalenia, zapisz `confirmed` wraz z uzasadnieniem przez `context status`. Nie uznawaj własnego streszczenia za decyzję operatora. Nie pytaj drugi raz o potwierdzenie już udzielone. Przy zmianie importuj nową wersję i zachowaj poprzednią; konflikt rozstrzygaj z operatorem zamiast wybierać wyłącznie po dacie.
 
 Zakończ wynikiem: gotowość lokalna, stan połączenia, dodany kontekst i jeden najbliższy krok. Nie nazywaj instalacji uruchomieniem kampanii. Zachowaj zasady kont i redakcję miodkuj z AGENTS.md.
+
+Jeżeli operator chce stosować własne metody u kilku klientów, użyj [meta-ads-specialist](../meta-ads-specialist/SKILL.md). Nie wymagaj profilu do pierwszego raportu. Przy aktualizacji istniejącej przestrzeni przejdź do [meta-ads-update](../meta-ads-update/SKILL.md), zamiast ponawiać instalację.

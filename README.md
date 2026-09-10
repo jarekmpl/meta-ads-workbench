@@ -13,6 +13,8 @@ Wymagany jest Python 3.11+ oraz macOS, Linux lub WSL. Instalator tworzy odrębne
 ## Co działa
 
 - Instalacja przestrzeni jednego klienta, diagnostyka lokalna i kreator konfiguracji Meta.
+- Aktualizacja z wydania GitHub lub lokalnej paczki z ochroną danych, wykrywaniem lokalnych zmian i odtworzeniem po błędzie.
+- Osobisty profil wytycznych specjalisty, który można podłączyć do kilku klientów.
 - Rejestr materiałów klienta z odczytem PDF, DOCX i tekstu, wyszukiwaniem fragmentów, porównaniem spotkań, kontrolą sprzecznych ustaleń i zapisem podstawy rekomendacji.
 - Odczyt skonfigurowanego konta, kampanii i dziennych wyników; raporty ze snapshotów, częściowy audyt i pilotaż analizy kreacji.
 - Wersjonowane cele kampanii, dokładne definicje wyników, docelowy koszt i ROAS oraz porównania okresów.
@@ -58,6 +60,8 @@ Przykładowe polecenia w rozmowie:
 | --- | --- |
 | [Start operatora](START-HERE.md) | Instalacja, wybór agenta, połączenie i pierwszy wynik |
 | [Codzienna praca](docs/operator-workflow.md) | Separacja klientów i otwarty rejestr kontekstu |
+| [Własne wytyczne specjalisty](docs/specialist-guidance.md) | Osobny profil, wersje i stosowanie metod |
+| [Aktualizacja](docs/updating.md) | GitHub, lokalne paczki, ochrona danych i odtworzenie |
 | [Dokumenty i ustalenia klienta](docs/client-context.md) | Odczyt, wyszukiwanie, porównanie spotkań, konflikty i podstawa rekomendacji |
 | [Cele i historia decyzji](docs/goals-and-recommendations.md) | Definicje wyników, progi, rekomendacje i ocena testów |
 | [Konfiguracja Meta](docs/meta-setup.md) | Aplikacja, lokalne poświadczenia i test odczytu |
@@ -77,7 +81,7 @@ W katalogu kodu, poza klientami:
 ```bash
 uv sync --locked --python 3.11 --extra pdf
 uv run --locked pytest -q
-uv run --locked ruff check src tests install.py workbench.py package_release.py
+uv run --locked ruff check src tests install.py workbench.py package_release.py update.py
 python3 package_release.py --check
 ```
 

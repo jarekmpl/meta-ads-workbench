@@ -32,6 +32,7 @@ from meta_ads_manager.pdf_models import PdfDocument, PdfNotes
 from meta_ads_manager.provider import DemoProvider
 from meta_ads_manager.reporting import account_audit, account_report
 from meta_ads_manager.storage import Store
+from meta_ads_manager.workspace_lock import session
 
 SUPPORTED_CONTRACTS = {
     **CONTRACTS,
@@ -256,6 +257,8 @@ def dispatch(args) -> tuple[dict, list[dict]]:
             "meta_connection_setup": True,
             "operator_workspaces": True,
             "client_context_registry": True,
+            "specialist_profiles": True,
+            "managed_workspace_updates": True,
             "client_context_readers": ["pdf_text", "docx_body_tables", "txt_utf8", "md_utf8"],
             "client_context_search": "local_lexical",
             "client_context_conflicts": "grounded_same_key_operator_resolution",
@@ -487,6 +490,7 @@ def render_text(envelope: dict) -> str:
     return "\n".join(lines)
 
 
+@session
 def run(argv: list[str] | None = None) -> int:
     envelope = {
         "schema_version": "1.0",

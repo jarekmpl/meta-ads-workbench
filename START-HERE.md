@@ -99,3 +99,9 @@ Uruchom `python3 workbench.py doctor`. Wynik sprawdza lokalne zależności i sta
 ## Praca z dokumentami
 
 Po dodaniu materiałów możesz poprosić: „Które zasady komunikacji obowiązują w tej promocji?” albo „Porównaj dwa ostatnie spotkania”. Agent odczyta dokumenty i pokaże konkretne ustalenia oraz ewentualne sprzeczności. Korzysta ze skilla meta-ads-context; [opis procesu](docs/client-context.md) wyjaśnia zakres odczytu i zapis podstaw rekomendacji.
+
+## Własne wytyczne i kolejne wersje
+
+Powiedz agentowi: „Utwórz mój profil specjalisty” i dodawaj do niego własne metody bez danych klientów. Ten sam profil można podłączyć do kilku przestrzeni. [Proces profilu](docs/specialist-guidance.md) opisuje wersje i aktywację wytycznych.
+
+Do aktualizacji korzystaj z update.py, a nie ponownej instalacji na istniejący katalog. [Instrukcja aktualizacji](docs/updating.md) obejmuje także starsze instalacje, zachowanie danych i odzyskanie po przerwaniu procesu.
