@@ -80,3 +80,7 @@ Zakres: wydatki, wyświetlenia, kliknięcia linku, CPM, CTR linku, CPC linku, ce
 Zaimplementowano wyłącznie GET do stałego hosta Graph API. Paginacja używa kursorów, nie adresów `next` zawierających tokeny. Limit to 366 pełnych dni oraz 1000 stron; błędy limitów i sieci kończą synchronizację bez kompletnego snapshotu. Raporty asynchroniczne i automatyczne wznawianie nie są dostępne.
 
 Parametry odczytu zweryfikowano z [oficjalnym SDK Meta: AdAccount](https://github.com/facebook/facebook-python-business-sdk/blob/main/facebook_business/adobjects/adaccount.py), [Campaign](https://github.com/facebook/facebook-python-business-sdk/blob/main/facebook_business/adobjects/campaign.py) i [AdsInsights](https://github.com/facebook/facebook-python-business-sdk/blob/main/facebook_business/adobjects/adsinsights.py).
+
+## Kreator kampanii 0.4
+
+[Instrukcja kreatora](campaign-wizard.md) opisuje przygotowanie nowej kampanii w rozmowie, zapis stanu i kontrolowane tworzenie nowych obiektów PAUSED. Skorzystaj ze skilla meta-ads-campaign-wizard. Zgody, briefy i dziennik w data/campaign-wizard.sqlite3 należą do danych klienta i powinny być objęte kopią zapasową. Pierwsza instalacja zachowuje tryb read_only.

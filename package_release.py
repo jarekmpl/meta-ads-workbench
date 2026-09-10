@@ -66,7 +66,7 @@ def build(source, destination):
         shutil.copy2(source / name, target)
         hashes[name] = hashlib.sha256(target.read_bytes()).hexdigest()
     (destination / "RELEASE-MANIFEST.json").write_text(
-        json.dumps({"version": "0.3.0", "sha256": hashes}, indent=2) + "\n"
+        json.dumps({"version": "0.4.0", "sha256": hashes}, indent=2) + "\n"
     )
     archive = destination.parent / (destination.name + ".zip")
     with zipfile.ZipFile(archive, "x", compression=zipfile.ZIP_DEFLATED) as out:

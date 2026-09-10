@@ -191,4 +191,5 @@ def test_config_content_cannot_change_client(client, capsys):
 def test_wrapper_supports_global_meta_options(client, capsys):
     assert run(["meta", "--output", "output/capabilities.json", "capabilities"]) == 0
     assert (client / "output/capabilities.json").is_file()
-    assert json.loads(capsys.readouterr().out)["data"]["writes"] is False
+    data = json.loads(capsys.readouterr().out)["data"]
+    assert data["campaign_wizard_default_access"] == "read_only"

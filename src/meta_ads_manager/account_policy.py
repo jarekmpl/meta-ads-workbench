@@ -1,4 +1,4 @@
-"""Project-wide account rules; writes remain unavailable in this release."""
+"""Project-wide account rules; only approved creation through the wizard is supported."""
 
 from meta_ads_manager.errors import AppError
 
@@ -10,7 +10,8 @@ def account_change_policy() -> dict:
         "user_approval_required_for_every_change": True,
         "approval_scope": "exact_plan",
         "autonomous_writes_allowed": False,
-        "write_executor_implemented": False,
+        "write_executor_implemented": True,
+        "write_scope": "create_paused_only",
     }
 
 

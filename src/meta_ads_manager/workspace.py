@@ -72,10 +72,10 @@ def guard_cli(args, root: Path) -> None:
     for path in local_config.glob("meta-*.json"):
         if path.name != f"meta-{info['client_id']}.json" or path.is_symlink():
             raise AppError("SCOPE_MISMATCH", "Obca konfiguracja w przestrzeni klienta.", 3)
-    for attr in ("file", "input", "notes", "assessment", "directory", "pdf", "output"):
+    for attr in ("file", "input", "notes", "assessment", "directory", "pdf", "output", "preview"):
         value = getattr(args, attr, None)
         if value is not None:
-            confined(root, value, output=attr in ("output", "directory", "pdf"))
+            confined(root, value, output=attr in ("output", "directory", "pdf", "preview"))
     if args.data_dir.resolve() != (root / "data").resolve():
         raise AppError("SCOPE_MISMATCH", "Baza klienta musi znajdować się w jego data/.", 3)
     for db in (root / "data").glob("*.sqlite*"):
@@ -225,7 +225,7 @@ def doctor(root: Path) -> dict:
         "checks": checks,
         "connection": status,
         "ready_local": all(checks.values()),
-        "writes": False,
+        "writes": status.get("configuration", {}).get("access_mode") == "approved_create_paused",
     }
 
 

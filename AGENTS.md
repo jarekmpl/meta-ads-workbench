@@ -18,7 +18,7 @@ Obowiązują dla wszystkich kont i klientów oraz każdej drogi dostępu: API, C
 2. **Każda zmiana na koncie wymaga wcześniejszej, wyraźnej akceptacji użytkownika dla konkretnego planu.** Dotyczy również tworzenia obiektów wstrzymanych, publikacji, budżetów, statusów, archiwizacji, harmonogramów, odbiorców, kreacji, pomiaru i dostępu. Najpierw przygotuj plan z kontem, obiektami i wartościami przed/po; dopiero po akceptacji można wysłać objęte nim zmiany. Zmiana planu lub istotnego stanu konta wymaga ponownej akceptacji. Nie pytaj ponownie o ten sam, nadal ważny i niezmieniony plan.
 3. Agent nie zatwierdza własnego planu. Prośba o optymalizację, ogólna zgoda na automatyzację, harmonogram ani brak odpowiedzi nie zastępują akceptacji konkretnych zmian. Automatyzować można odczyty, analizy i lokalne propozycje; samodzielny zapis na koncie jest zabroniony.
 
-Pełny proces i wymagania dla przyszłego wykonawcy opisują [zasady zmian na kontach](docs/account-change-policy.md). Obecny silnik nadal nie obsługuje zapisu; sama zgoda użytkownika nie dodaje tej funkcji. Zasady dotyczą kont Meta, nie zwykłych lokalnych prac nad kodem i raportami.
+Pełny proces i wymagania dla przyszłego wykonawcy opisują [zasady zmian na kontach](docs/account-change-policy.md). Od wersji 0.4 kontrolowane tworzenie nowych obiektów PAUSED obsługuje wyłącznie kreator kampanii. Konfiguracje domyślnie pozostają read_only. Inne zapisy nie są dostępne. Zasady dotyczą kont Meta, nie zwykłych lokalnych prac nad kodem i raportami.
 
 ## Procedury
 
@@ -28,7 +28,7 @@ Pełny proces i wymagania dla przyszłego wykonawcy opisują [zasady zmian na ko
 - Analiza grafik, tekstów, karuzel, filmów i wyników kreacji: przeczytaj [meta-ads-creatives](skills/meta-ads-creatives/SKILL.md). Pobierz materiał, zapisz ocenę treści, połącz ją z wynikami i przygotuj lokalny raport z galerią.
 - Audyt, diagnoza, rekomendacje dla jednego lub kilku kont: przeczytaj [meta-ads-audit](skills/meta-ads-audit/SKILL.md).
 - Cele, definicje wyników, decyzje operatora i ocena testów: przeczytaj [meta-ads-decisions](skills/meta-ads-decisions/SKILL.md). Przed kolejną analizą odczytaj zapisane cele i historię rekomendacji.
-- Prośba o uruchomienie lub zmianę kampanii: sprawdź możliwości silnika. Dopóki zapis nie jest zaimplementowany, opisz ograniczenie; nie symuluj wykonania.
+- Prośba o przygotowanie nowej kampanii: użyj [meta-ads-campaign-wizard](skills/meta-ads-campaign-wizard/SKILL.md). Nie rejestruj zgody bez rzeczywistej akceptacji dokładnego planu przez użytkownika. Edycja i aktywacja istniejących obiektów pozostają nieobsługiwane.
 
 ## Cel i standard analiz
 
@@ -83,7 +83,7 @@ Moduł `creatives collect`, `creatives media` i `creatives report` obsługuje od
 
 [Instrukcja połączenia](docs/meta-setup.md) opisuje konfigurację i test. Poświadczenia użytkownik wpisuje lokalnie; nie czytaj plików `secrets/` do kontekstu modelu. Przy `AUTH_REQUIRED` poproś o odnowienie poświadczeń, nie zamieniaj źródła na demo.
 
-Raport Meta zawiera wydatki, wyświetlenia, kliknięcia linku i typy zdarzeń z API. `reported_actions` mogą się nakładać: nie sumuj różnych typów jako leadów/zakupów. Cel reklamowy `objective` nie zastępuje uzgodnionego celu biznesowego ani mapowania konwersji. Od wersji 0.3 `goals` zapisuje jawne definicje i datowane przypisania. `goal_measurements` zawiera koszt wyniku i ROAS dla odpowiednio zmapowanych zdarzeń. `analyze` porównuje realizację celu w dwóch okresach, a `recommendations` zapisuje decyzje i oceny testów. [Proces](docs/goals-and-recommendations.md) opisuje wymagania i ograniczenia. Pełny audyt, tworzenie reklam i zmiany kampanii nie są dostępne.
+Raport Meta zawiera wydatki, wyświetlenia, kliknięcia linku i typy zdarzeń z API. `reported_actions` mogą się nakładać: nie sumuj różnych typów jako leadów/zakupów. Cel reklamowy `objective` nie zastępuje uzgodnionego celu biznesowego ani mapowania konwersji. Od wersji 0.3 `goals` zapisuje jawne definicje i datowane przypisania. `goal_measurements` zawiera koszt wyniku i ROAS dla odpowiednio zmapowanych zdarzeń. `analyze` porównuje realizację celu w dwóch okresach, a `recommendations` zapisuje decyzje i oceny testów. [Proces](docs/goals-and-recommendations.md) opisuje wymagania i ograniczenia. Pełny audyt i edycja istniejących kampanii pozostają nieobsługiwane. Kreator 0.4 tworzy nowe kampanie, zestawy, kreacje i reklamy graficzne w opisanym zakresie po akceptacji planu; nie uruchamia emisji.
 
 Dla Meta daty względne liczone są do wczoraj w strefie konta także przy odczycie zapisanych danych. Do odtworzenia historycznego raportu użyj `report show` albo jawnych `--since`, `--until` i `--snapshot`.
 

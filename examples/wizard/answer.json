@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0",
+  "kind": "wizard_answer",
+  "client_id": "client-a",
+  "account_id": "act_123",
+  "draft_id": "draft-example",
+  "expected_revision": 1,
+  "fields": {
+    "goal_kind": {
+      "value": "leads",
+      "state": "confirmed",
+      "source": "operator",
+      "evidence_ref": "synthetic-message"
+    },
+    "landing_url": {
+      "value": "https://example.com/offer",
+      "state": "confirmed",
+      "source": "operator",
+      "evidence_ref": "synthetic-message"
+    },
+    "offer": {
+      "value": "Przykładowa konsultacja",
+      "state": "confirmed",
+      "source": "operator",
+      "evidence_ref": "synthetic-message"
+    }
+  }
+}

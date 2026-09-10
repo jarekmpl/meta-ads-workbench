@@ -48,7 +48,7 @@ Przykładowa rozmowa:
 
 Rejestr obsługuje propozycję, akceptację pomysłu, odrzucenie, odłożenie z terminem, rozpoczęcie obserwacji, zakończenie bez oceny i ocenę wyniku. Każda decyzja ma autora, uzasadnienie i odwołanie do rzeczywistego ustalenia. `start` zapisuje potwierdzoną datę wykonanego wdrożenia; nie może wskazywać przyszłości ani nachodzić na okres bazowy. `note` dopisuje ustalenie bez zmiany statusu.
 
-Akceptacja pomysłu w tym rejestrze nie daje uprawnień do zapisu w Meta. Konto nadal obsługujemy wyłącznie przez odczyt. Również warunek przerwania jest instrukcją dla operatora; system sam nie wstrzymuje kampanii.
+Akceptacja pomysłu w tym rejestrze nie daje uprawnień do zapisu w Meta. Sam rejestr nie zmienia konta. Osobny kreator 0.4 wymaga akceptacji własnego, dokładnego planu tworzenia. Również warunek przerwania jest instrukcją dla operatora; system sam nie wstrzymuje kampanii.
 
 Odrzucony pomysł pozostaje w historii. Powtórzenie tego samego działania, celu w tej samej wersji i zestawu kampanii zwraca istniejący wpis. Ta kontrola porównuje znormalizowany tekst działania, nie jego znaczenie; agent dodatkowo sprawdza podobne pomysły. Świadomy powrót do tematu wymaga nowego ID, `followup_of` oraz `followup_reason`. Wcześniejsza decyzja pozostaje bez zmian.
 

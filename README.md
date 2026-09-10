@@ -17,19 +17,20 @@ Wymagany jest Python 3.11+ oraz macOS, Linux lub WSL. Instalator tworzy odrębne
 - Odczyt skonfigurowanego konta, kampanii i dziennych wyników; raporty ze snapshotów, częściowy audyt i pilotaż analizy kreacji.
 - Wersjonowane cele kampanii, dokładne definicje wyników, docelowy koszt i ROAS oraz porównania okresów.
 - Historia rekomendacji, decyzji i testów z oceną na podstawie zapisanych wyników.
+- Kreator nowej kampanii z pamięcią rozmowy, odczytem oferty i zasobów, generatorem planu oraz tworzeniem obiektów PAUSED po akceptacji.
 - Procedury agenta do interpretacji danych, rekomendacji, przeglądania materiałów i redakcji po polsku z miodkuj.
 - Eksport raportów, audytów i własnych opracowań do PDF Bluerank oraz renderowanie do kontroli stron.
 - Osobne bazy, konfiguracje, poświadczenia i raporty klientów. CLI wykrywa niezgodny zakres i ścieżki w zainstalowanych przestrzeniach.
 
 ## Co wymaga dalszego wdrożenia
 
-Silnik obsługuje **wyłącznie odczyt Meta**. Nie tworzy kampanii ani nie zmienia budżetów i statusów. Proces nowej kampanii i nazewnictwo są opisane jako projekt, nie działający generator. Mapowanie konwersji wymaga jawnych ustaleń i przypisania kampanii. System liczy koszt wyniku i ROAS z tych definicji; nie dobiera ich automatycznie. Rejestr terminów nie uruchamia cyklicznych analiz w tle.
+Domyślne konfiguracje obsługują **odczyt Meta**. Kreator może tworzyć nowe kampanie, zestawy, kreacje i reklamy PAUSED po włączeniu tego trybu przez operatora oraz akceptacji konkretnego planu. Nie aktywuje ani nie edytuje istniejących obiektów. Pierwszy zakres obejmuje pojedyncze obrazy już dostępne na koncie, aktualności Facebooka, szerokich odbiorców i budżety zestawów. [Instrukcja kreatora](docs/campaign-wizard.md) opisuje obsługiwane cele i ograniczenia. Mapowanie konwersji wymaga jawnych ustaleń i przypisania kampanii. System liczy koszt wyniku i ROAS z tych definicji; nie dobiera ich automatycznie. Rejestr terminów nie uruchamia cyklicznych analiz w tle.
 
 Analiza obrazu i interpretacja należą do agenta, nie do samego Pythona. Dostęp do formularzy, postów, filmów i pomiaru zależy od udostępnionych zasobów. `capabilities` oraz zakres danych w wyniku określają faktycznie dostępne funkcje.
 
 ## Zasady kont
 
-Nigdy niczego nie kasujemy z konta. Każda przyszła zmiana, także utworzenie wstrzymanej kampanii, wymaga wyraźnej akceptacji konkretnego planu. Analiza, zgoda na instalację ani potwierdzenie kontekstu nie są zgodą na zapis. [Polityka zmian](docs/account-change-policy.md).
+Nigdy niczego nie kasujemy z konta. Każda zmiana, także utworzenie wstrzymanej kampanii, wymaga wyraźnej akceptacji konkretnego planu. Analiza, zgoda na instalację ani potwierdzenie kontekstu nie są zgodą na zapis. [Polityka zmian](docs/account-change-policy.md).
 
 ## Praca specjalisty
 
@@ -45,6 +46,8 @@ Przykładowe polecenia w rozmowie:
 
 > Zapisz całą analizę w PDF.
 
+> Przygotuj nową kampanię leadową. Sprawdź ofertę na stronie i przeprowadź mnie przez potrzebne ustalenia.
+
 ## Dokumentacja
 
 | Dokument | Do czego służy |
@@ -57,7 +60,8 @@ Przykładowe polecenia w rozmowie:
 | [Kompendium](knowledge/meta-ads/README.md) | Zasady analiz i planowania testów |
 | [PDF](docs/pdf-export.md) | Skład dokumentów i kontrola stron |
 | [Kreacje](docs/creative-analysis.md) | Materiały, ocena agenta i raport |
-| [Proces nowej kampanii](docs/campaign-planning-process.md) | Specyfikacja przyszłego procesu |
+| [Kreator kampanii](docs/campaign-wizard.md) | Działające komendy, zakres tworzenia, zgody i wznowienie |
+| [Proces nowej kampanii](docs/campaign-planning-process.md) | Założenia rozmowy i kierunek dalszego rozwoju |
 | [Nazwy kampanii](docs/campaign-naming-standard.md) | Proponowany standard struktury i nazw |
 | [Wydawanie paczki](docs/releasing.md) | Jawny wykaz plików, kontrola i publikacja |
 

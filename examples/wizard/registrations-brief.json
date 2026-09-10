@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0",
+  "client_id": "client-a",
+  "account_id": "act_123",
+  "kind": "creation_brief",
+  "project_id": "main",
+  "client_code": "DEMO",
+  "project_code": "OFERTA",
+  "goal_id": "registrations",
+  "goal_revision": 1,
+  "goal_kind": "registrations",
+  "offer": "Konsultacja testowa",
+  "result_definition": "Rejestracja w witrynie",
+  "measurement": "registration",
+  "language": "pl",
+  "role": "TEST",
+  "currency": "PLN",
+  "timezone": "Europe/Warsaw",
+  "budget_period": "daily",
+  "start_time": "2026-09-13T14:11:39+02:00",
+  "end_time": "2026-09-20T14:11:39+02:00",
+  "landing_url": "https://example.com/offer",
+  "page_id": "201",
+  "lead_form_id": null,
+  "special_ad_categories": [],
+  "dsa_beneficiary": "Firma testowa",
+  "dsa_payor": "Firma testowa",
+  "placements": "facebook_feed",
+  "followup_process": "Operator kontaktuje się z leadem.",
+  "test_hypothesis": "Sprawdzamy argument oferty.",
+  "test_success": "Ocena kosztu uzgodnionego wyniku względem potwierdzonego progu.",
+  "test_review": "Po siedmiu pełnych dniach.",
+  "stop_condition": "Wyczerpanie budżetu testu.",
+  "rights_confirmed": true,
+  "measurement_confirmed": true,
+  "adsets": [
+    {
+      "audience_code": "BROAD",
+      "countries": [
+        "PL"
+      ],
+      "age_min": 25,
+      "age_max": 65,
+      "budget": "50.25",
+      "ads": [
+        {
+          "concept": "Korzyść",
+          "image_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "message": "Poznaj ofertę konsultacji.",
+          "headline": "Umów konsultację",
+          "cta": "SIGN_UP"
+        }
+      ]
+    }
+  ],
+  "pixel_id": "401"
+}

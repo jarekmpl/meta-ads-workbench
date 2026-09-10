@@ -31,7 +31,7 @@ class Connection(Model):
     business_id: MetaId | None = None
     account_id: Annotated[str, Field(pattern=r"^act_[0-9]+$")] | None = None
     api_version: Annotated[str, Field(pattern=r"^v[0-9]+\.[0-9]+$")] | None = None
-    access_mode: Literal["read_only"] = "read_only"
+    access_mode: Literal["read_only", "approved_create_paused"] = "read_only"
 
 
 class Credentials(Model):
@@ -295,5 +295,6 @@ def check_connection(root: Path, client: str) -> dict:
         "token_expiry_checked": False,
         "app_identity_verified": False,
         "reporting_implemented": True,
-        "writes": False,
+        "writes": connection.access_mode == "approved_create_paused",
+        "write_access_verified": False,
     }

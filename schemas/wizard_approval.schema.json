@@ -1,0 +1,81 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "kind": {
+      "const": "wizard_approval",
+      "title": "Kind",
+      "type": "string"
+    },
+    "client_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+      "title": "Client Id",
+      "type": "string"
+    },
+    "account_id": {
+      "pattern": "^act_[0-9]+$",
+      "title": "Account Id",
+      "type": "string"
+    },
+    "plan_hash": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Plan Hash",
+      "type": "string"
+    },
+    "approval_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+      "title": "Approval Id",
+      "type": "string"
+    },
+    "expected_revision": {
+      "minimum": 0,
+      "title": "Expected Revision",
+      "type": "integer"
+    },
+    "decision": {
+      "enum": [
+        "approve",
+        "revoke"
+      ],
+      "title": "Decision",
+      "type": "string"
+    },
+    "operator_name": {
+      "maxLength": 2000,
+      "minLength": 1,
+      "title": "Operator Name",
+      "type": "string"
+    },
+    "operator_message": {
+      "maxLength": 4000,
+      "minLength": 10,
+      "title": "Operator Message",
+      "type": "string"
+    },
+    "evidence_ref": {
+      "maxLength": 2000,
+      "minLength": 1,
+      "title": "Evidence Ref",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "kind",
+    "client_id",
+    "account_id",
+    "plan_hash",
+    "approval_id",
+    "expected_revision",
+    "decision",
+    "operator_name",
+    "operator_message",
+    "evidence_ref"
+  ],
+  "title": "WizardApproval",
+  "type": "object"
+}

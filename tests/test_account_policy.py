@@ -37,9 +37,10 @@ def test_capabilities_discloses_account_rules(capsys):
 
     assert run(["capabilities"]) == 0
     data = json.loads(capsys.readouterr().out)["data"]
-    assert data["writes"] is False
+    assert data["writes"] is True
+    assert data["campaign_wizard_default_access"] == "read_only"
     policy = data["account_change_policy"]
     assert policy["deletion_allowed"] is False
     assert policy["user_approval_required_for_every_change"] is True
     assert policy["autonomous_writes_allowed"] is False
-    assert policy["write_executor_implemented"] is False
+    assert policy["write_executor_implemented"] is True

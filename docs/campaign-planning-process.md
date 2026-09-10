@@ -1,6 +1,6 @@
 # Projekt procesu przygotowania kampanii
 
-Wersja propozycji: **1.0, 2026-09-10**. To specyfikacja do wdrożenia. Rozmowa z zapisem stanu, automatyczne badanie witryny i generator planów nie są jeszcze funkcjami silnika. Obecny model `CampaignBrief` stanowi punkt wyjścia; zapis do Meta pozostaje niedostępny.
+Założenia procesu: **1.0, 2026-09-10**. Od wersji narzędzia 0.4 działa pierwszy zakres rozmowy, odczytu witryny i zasobów, generowania planów oraz kontrolowanego tworzenia obiektów PAUSED. Dokładny zakres opisuje [instrukcja kreatora](campaign-wizard.md). Poniższa specyfikacja obejmuje również funkcje planowane; nie wszystkie warianty są obsługiwane. Nowy kontrakt wykonawczy to CreationBrief; stary CampaignBrief zachowano dla zgodności.
 
 ## Wynik procesu
 
@@ -102,9 +102,11 @@ Przyszły walidator sprawdza zgodność klienta i konta, kompletność parametr�
 
 Po walidacji powstaje wersjonowany plan z dokładnymi operacjami i hashem. Operator widzi konto, wszystkie obiekty, treści, zasoby, kwoty i statusy. Akceptacja briefu ani odpowiedzi na pytania nie oznaczają akceptacji zapisu. Zgoda dotyczy konkretnego planu; zmiana planu lub istotnej konfiguracji konta wymaga nowej zgody.
 
-Wykonawca, gdy zostanie wdrożony, przed zapisem ponownie sprawdza zgodę i stan konta. Po utworzeniu obiektów wstrzymanych odczytuje je i porównuje z planem. Wynik częściowy zachowuje wraz z ID; nie kasuje obiektów po błędzie. Przy nieznanym wyniku uzgadnia stan przed ponowieniem operacji. Aktywacja jest osobnym, zatwierdzonym planem.
+Wykonawca kreatora przed zapisem ponownie sprawdza zgodę i stan konta. Po utworzeniu obiektów wstrzymanych odczytuje je i porównuje z planem. Wynik częściowy zachowuje wraz z ID; nie kasuje obiektów po błędzie. Przy nieznanym wyniku uzgadnia stan przed ponowieniem operacji. Aktywacja jest osobnym, zatwierdzonym planem.
 
-## Kolejność wdrożenia
+## Pierwotna kolejność wdrożenia
+
+Punkty 1–3 oraz kontrolowane tworzenie mają pierwszą implementację w wersji 0.4. Walidacja kodu korzysta z symulowanego API; pilot z zapisem do Meta wymaga osobnego planu i zgody. Szersze formaty, automatyzacje i zasoby nadal wymagają rozwoju.
 
 1. **Rozmowa i lokalny brief.** Dodać wersjonowany zapis stanu oraz katalog pytań z warunkami, zależnościami i rozróżnieniem danych znalezionych oraz potwierdzonych. Nowy kontrakt powinien objąć rejestracje i cele pomocnicze; obecny model 1.0 wymaga jawnej migracji.
 2. **Odczyt oferty i zasobów.** Dodać zbieranie faktów z witryny oraz inwentaryzację potrzebnych zasobów w dostępnym zakresie API. Nie oznaczać funkcji jako dostępnej przed jej wdrożeniem.

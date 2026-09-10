@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "client_id": "client-a",
+  "account_id": "act_123",
+  "kind": "wizard_approval",
+  "plan_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+  "approval_id": "approval-example-1",
+  "expected_revision": 0,
+  "decision": "approve",
+  "operator_name": "Operator przykładowy",
+  "operator_message": "Przykład zgody. Zastąp rzeczywistą decyzją operatora dla pokazanego planu.",
+  "evidence_ref": "synthetic-example"
+}

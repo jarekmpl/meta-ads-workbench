@@ -14,6 +14,7 @@ from pydantic import ValidationError
 from meta_ads_manager import __version__
 from meta_ads_manager.account_policy import account_change_policy
 from meta_ads_manager.analytics import weekly_review
+from meta_ads_manager.campaign_models import CAMPAIGN_CONTRACTS
 from meta_ads_manager.decision_models import DECISION_CONTRACTS
 from meta_ads_manager.errors import AppError
 from meta_ads_manager.live_cli import dispatch_live
@@ -34,6 +35,7 @@ from meta_ads_manager.storage import Store
 SUPPORTED_CONTRACTS = {
     **CONTRACTS,
     **DECISION_CONTRACTS,
+    **CAMPAIGN_CONTRACTS,
     "pdf_document": PdfDocument,
     "pdf_notes": PdfNotes,
 }
@@ -85,6 +87,9 @@ def parser() -> Parser:
     from meta_ads_manager.decision_cli import add_commands
 
     add_commands(commands, scoped, period)
+    from meta_ads_manager.campaign_cli import add_commands as add_wizard
+
+    add_wizard(commands, scoped)
     commands.add_parser("capabilities", help="Dostępne funkcje i źródła danych dla agenta.")
     auth = commands.add_parser("auth", help="Konfiguracja i test połączenia z prawdziwym kontem.")
     auth_commands = auth.add_subparsers(dest="action", required=True)
@@ -183,6 +188,10 @@ def no_duplicate_keys(pairs):
 
 
 def dispatch(args) -> tuple[dict, list[dict]]:
+    if args.command == "wizard":
+        from meta_ads_manager.campaign_cli import dispatch_wizard
+
+        return dispatch_wizard(args)
     if args.command in ("goals", "recommendations"):
         from meta_ads_manager.decision_cli import dispatch_decisions
 
@@ -235,7 +244,12 @@ def dispatch(args) -> tuple[dict, list[dict]]:
         return {
             "version": __version__,
             "sources": {"demo": True, "meta": True},
-            "writes": False,
+            "writes": True,
+            "write_scope": "approved_new_campaigns_adsets_creatives_ads_paused",
+            "campaign_wizard": True,
+            "campaign_wizard_default_access": "read_only",
+            "campaign_wizard_formats": ["existing_account_image"],
+            "campaign_wizard_placements": ["facebook_feed"],
             "account_change_policy": account_change_policy(),
             "meta_connection_setup": True,
             "operator_workspaces": True,
@@ -255,6 +269,18 @@ def dispatch(args) -> tuple[dict, list[dict]]:
             "pdf_dependency_extra": "pdf",
             "pdf_visual_review_required": True,
             "commands": [
+                "wizard start",
+                "wizard answer",
+                "wizard show",
+                "wizard list",
+                "wizard website",
+                "wizard discover",
+                "wizard plan",
+                "wizard plan-show",
+                "wizard approve",
+                "wizard execute",
+                "wizard reconcile",
+                "wizard status",
                 "goals set",
                 "goals assign",
                 "goals list",

@@ -91,3 +91,7 @@ Dalsza praca: [codzienny proces specjalisty](docs/operator-workflow.md). Możliw
 Uruchom `python3 workbench.py doctor`. Wynik sprawdza lokalne zależności i stan konfiguracji, nie wykonuje testu API. Podaj agentowi komunikat błędu bez tokena. Brak `ffmpeg` ogranicza przygotowanie kadrów wideo; nie blokuje raportów ani PDF. Instalator nie dodaje tego narzędzia systemowego.
 
 Źródła instrukcji integracji: [Codex — AGENTS.md](https://learn.chatgpt.com/docs/agent-configuration/agents-md), [Claude Code — pamięć projektu](https://code.claude.com/docs/en/memory), [Antigravity — reguły przestrzeni](https://antigravity.google/docs/rules-workflows), [uv — instalacja](https://docs.astral.sh/uv/getting-started/installation/). Wspólne skille są czytane z plików projektu; nie zakładamy jednakowej obsługi instalacji pluginów w tych narzędziach.
+
+## Kreator kampanii 0.4
+
+[Instrukcja kreatora](docs/campaign-wizard.md) opisuje przygotowanie nowej kampanii w rozmowie, zapis stanu i kontrolowane tworzenie nowych obiektów PAUSED. Skorzystaj ze skilla meta-ads-campaign-wizard. Zgody, briefy i dziennik w data/campaign-wizard.sqlite3 należą do danych klienta i powinny być objęte kopią zapasową. Pierwsza instalacja zachowuje tryb read_only.

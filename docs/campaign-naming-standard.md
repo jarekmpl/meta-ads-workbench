@@ -1,6 +1,6 @@
 # Proponowany standard nazw kampanii, zestawów i reklam
 
-Wersja **1.0, 2026-09-10**, do wdrożenia w generatorze planów. Standard dotyczy nowych obiektów. Nie zmienia nazw istniejących kampanii i nie upoważnia do zapisów w Meta.
+Wersja **1.1, 2026-09-10**. Kreator 0.4 wdraża wzorce i atomowe liczniki dla swojego zakresu. Dodatkowy kod IMG oznacza pojedynczy obraz bez deklaracji proporcji w nazwie; wymiary są w odczycie zasobów. Limit lokalnego generatora wynosi 200 znaków; nie jest deklaracją maksymalnego limitu Meta. Pozostałe warianty poniżej opisują szerszy standard. Standard dotyczy nowych obiektów. Nie zmienia nazw istniejących kampanii i nie upoważnia do zapisów w Meta.
 
 ## Co zapisujemy w nazwie
 

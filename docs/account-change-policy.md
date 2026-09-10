@@ -18,8 +18,8 @@ Dotyczy to także tworzenia obiektów wstrzymanych, publikacji, aktywacji, pauzo
 
 ## Stan wdrożenia
 
-Obecny silnik obsługuje wyłącznie odczyt Meta. Oba klienty API wysyłają GET, ograniczają ścieżki i blokują parametry zmiany metody oraz operacji zbiorczych. `capabilities` udostępnia te zasady agentom. Obsługa planów, dowodów akceptacji i wykonawcy zapisu pozostaje do wdrożenia; do tego czasu także zaakceptowane zmiany nie są wykonywane przez silnik.
+Od wersji 0.4 działa [kreator kampanii](campaign-wizard.md) z lokalnym rejestrem planów, akceptacji i wyników operacji. Osobny wykonawca tworzy wyłącznie nowe obiekty opisane w zaakceptowanym planie; kampanie, zestawy i reklamy mają status PAUSED. Wymaga trybu approved_create_paused, domyślnie wyłączonego. Klienty analityczne nadal wysyłają tylko GET. Aktywacja, edycja i kasowanie pozostają niedostępne.
 
-Przyszły wykonawca musi odrzucać usuwanie bezwarunkowo, a pozostałe zapisy bez ważnej zgody na dokładny plan — przed wysłaniem żądania. Testy muszą sprawdzać brak wywołania sieci dla usuwania, brakującej zgody, obcego konta, zmienionego planu, wygaśnięcia, cofnięcia zgody i konfliktu stanu. Nie może istnieć opcja omijająca te kontrole. Mocniejsza izolacja wymaga osobnego wykonawcy z poświadczeniami zapisu; instrukcje i lokalny kod nie ograniczają technicznie innych programów mających dostęp do tokena.
+Wykonawca musi odrzucać usuwanie bezwarunkowo, a pozostałe zapisy bez ważnej zgody na dokładny plan — przed wysłaniem żądania. Testy muszą sprawdzać brak wywołania sieci dla usuwania, brakującej zgody, obcego konta, zmienionego planu, wygaśnięcia, cofnięcia zgody i konfliktu stanu. Nie może istnieć opcja omijająca te kontrole. Mocniejsza izolacja wymaga osobnego wykonawcy z poświadczeniami zapisu; instrukcje i lokalny kod nie ograniczają technicznie innych programów mających dostęp do tokena.
 
 Odczyty, analizy, raporty i lokalne propozycje mogą działać automatycznie. Zasady nie zakazują zwykłych lokalnych prac nad projektem.

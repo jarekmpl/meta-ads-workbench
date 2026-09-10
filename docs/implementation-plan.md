@@ -6,7 +6,7 @@ Gotowe: konfiguracja Meta, lokalne wprowadzanie poświadczeń i potwierdzony tes
 
 Gotowy fundament demo: Python/CLI, modele JSON Schema, dwóch klientów, SQLite ze snapshotami, analizy tygodniowe, raporty i częściowy audyt. Skille raportowania i audytu obsługują też źródło Meta.
 
-Etap 1 pozostaje otwarty w zakresie raportów asynchronicznych, wznawiania, porównania okresu z emisją z Ads Managerem i drugiego konta pilotażowego. Od wersji 0.3 działa jawne, wersjonowane mapowanie celów na kampanie Meta, porównanie okresów oraz lokalny rejestr decyzji i ocen testów. Pozostały zakres etapu 2 nadal wymaga wdrożenia. Pełny audyt i operacje zapisu pozostają do wdrożenia.
+Etap 1 pozostaje otwarty w zakresie raportów asynchronicznych, wznawiania, porównania okresu z emisją z Ads Managerem i drugiego konta pilotażowego. Od wersji 0.3 działa jawne, wersjonowane mapowanie celów na kampanie Meta, porównanie okresów oraz lokalny rejestr decyzji i ocen testów. Pozostały zakres etapu 2 nadal wymaga wdrożenia. Kreator 0.4 dodaje kontrolowane tworzenie nowych obiektów PAUSED. Pełny audyt, edycja istniejących obiektów i aktywacja nadal wymagają wdrożenia.
 
 ## Etap 1: fundament i odczyt
 
@@ -41,7 +41,7 @@ Odbiór:
 
 ## Etap 3: tworzenie i kontrolowane zmiany
 
-Projekt procesu obejmuje [rozmowę, pozyskiwanie informacji i przygotowanie planu](campaign-planning-process.md) oraz [standard nazw](campaign-naming-standard.md). To specyfikacje do wdrożenia, nie dostępne komendy. Planowanie ma objąć także rejestracje i sprzedaż z pomiarem pomocniczym; pierwszy zakres wykonawcy pozostaje opisany poniżej.
+Projekt procesu obejmuje [rozmowę, pozyskiwanie informacji i przygotowanie planu](campaign-planning-process.md) oraz [standard nazw](campaign-naming-standard.md). Pierwszy działający zakres wdrożono w kreatorze 0.4; [instrukcja](campaign-wizard.md) oddziela go od planowanych rozszerzeń. Planowanie ma objąć także rejestracje i sprzedaż z pomiarem pomocniczym; pierwszy zakres wykonawcy pozostaje opisany poniżej.
 
 Zakres: planowanie kampanii, walidacja zasobów, dziennik operacji, polityki, upoważnienia, utworzenie obiektów wstrzymanych, zmiany statusów i budżetów, odczyt kontrolny.
 

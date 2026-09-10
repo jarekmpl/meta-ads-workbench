@@ -1,6 +1,6 @@
 # Kontrakt CLI v0.1
 
-Opisuje docelowy interfejs. **Działający podzbiór v0.1** i dokładną składnię opisuje [instrukcja demo](demo-guide.md). Dostępne są `capabilities`, `clients list`, `accounts list`, `sync`, `sync status`, `analyze`, `report campaigns`, `report show`, `audit`, `validate` i `schema export`. Bez `--demo` działa odczyt skonfigurowanych kont Meta (szczegóły w [instrukcji Meta](meta-setup.md)); `--demo` wybiera dane syntetyczne. Od wersji 0.3 `analyze` działa także dla Meta po jawnym przypisaniu celu. Dostępne są również `goals` i `recommendations`; dokładną składnię i nowe kontrakty opisuje [proces celów i decyzji](goals-and-recommendations.md). `--output` i `--format` także występują przed nazwą polecenia. Pozostałe komendy poniżej są planowane.
+Opisuje docelowy interfejs. **Działający podzbiór v0.1** i dokładną składnię opisuje [instrukcja demo](demo-guide.md). Dostępne są `capabilities`, `clients list`, `accounts list`, `sync`, `sync status`, `analyze`, `report campaigns`, `report show`, `audit`, `validate` i `schema export`. Bez `--demo` działa odczyt skonfigurowanych kont Meta (szczegóły w [instrukcji Meta](meta-setup.md)); `--demo` wybiera dane syntetyczne. Od wersji 0.3 `analyze` działa także dla Meta po jawnym przypisaniu celu. Dostępne są również `goals` i `recommendations`; dokładną składnię i nowe kontrakty opisuje [proces celów i decyzji](goals-and-recommendations.md). `--output` i `--format` także występują przed nazwą polecenia. Od wersji 0.4 działa także rodzina `wizard`; składnię i granice opisuje [kreator kampanii](campaign-wizard.md). Pozostałe komendy poniżej są planowane.
 
 ## Konwencje
 
@@ -61,7 +61,7 @@ meta-ads changes reconcile --client demo --account act_DEMO --execution exec_exa
 
 ## Propozycja i wykonywalny plan
 
-[Przykład propozycji](../examples/change-proposal.json) zawiera operację domenową, nie dowolny endpoint HTTP. MVP wspiera zamknięty katalog operacji: tworzenie obsługiwanych kampanii/zestawów/reklam/kreacji, zmianę budżetu i zmianę statusu. Nie ma polecenia dowolnego zapisu do Graph API. Usuwanie obiektów, także przez status `DELETED`, jest bezwarunkowo zabronione, również w przyszłych wersjach wykonawcy.
+[Przykład propozycji](../examples/change-proposal.json) zawiera operację domenową, nie dowolny endpoint HTTP. Docelowy MVP ma wspierać zamknięty katalog operacji: tworzenie obsługiwanych kampanii/zestawów/reklam/kreacji, zmianę budżetu i zmianę statusu. Nie ma polecenia dowolnego zapisu do Graph API. Usuwanie obiektów, także przez status `DELETED`, jest bezwarunkowo zabronione, również w przyszłych wersjach wykonawcy.
 
 Propozycja zawiera `schema_version`, `kind`, zakres, cel, operacje, uzasadnienie i dowody. Każda operacja ma własny identyfikator, typ, obiekt i jawne wartości. Odwołania do nowo tworzonych obiektów używają identyfikatorów operacji, które walidator sprawdza jako graf bez cykli.
 

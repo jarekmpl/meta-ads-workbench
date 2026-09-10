@@ -1,0 +1,99 @@
+{
+  "$defs": {
+    "FieldAnswer": {
+      "additionalProperties": false,
+      "properties": {
+        "value": {
+          "title": "Value"
+        },
+        "state": {
+          "enum": [
+            "discovered",
+            "confirmed",
+            "conflict",
+            "unavailable"
+          ],
+          "title": "State",
+          "type": "string"
+        },
+        "source": {
+          "enum": [
+            "operator",
+            "website",
+            "context",
+            "api",
+            "agent"
+          ],
+          "title": "Source",
+          "type": "string"
+        },
+        "evidence_ref": {
+          "maxLength": 2000,
+          "minLength": 1,
+          "title": "Evidence Ref",
+          "type": "string"
+        }
+      },
+      "required": [
+        "value",
+        "state",
+        "source",
+        "evidence_ref"
+      ],
+      "title": "FieldAnswer",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "kind": {
+      "const": "wizard_answer",
+      "title": "Kind",
+      "type": "string"
+    },
+    "client_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+      "title": "Client Id",
+      "type": "string"
+    },
+    "account_id": {
+      "pattern": "^act_[0-9]+$",
+      "title": "Account Id",
+      "type": "string"
+    },
+    "draft_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+      "title": "Draft Id",
+      "type": "string"
+    },
+    "expected_revision": {
+      "minimum": 1,
+      "title": "Expected Revision",
+      "type": "integer"
+    },
+    "fields": {
+      "additionalProperties": {
+        "$ref": "#/$defs/FieldAnswer"
+      },
+      "minProperties": 1,
+      "title": "Fields",
+      "type": "object"
+    }
+  },
+  "required": [
+    "schema_version",
+    "kind",
+    "client_id",
+    "account_id",
+    "draft_id",
+    "expected_revision",
+    "fields"
+  ],
+  "title": "WizardAnswer",
+  "type": "object"
+}

@@ -1,0 +1,412 @@
+{
+  "$defs": {
+    "AdInput": {
+      "additionalProperties": false,
+      "properties": {
+        "concept": {
+          "maxLength": 32,
+          "minLength": 1,
+          "title": "Concept",
+          "type": "string"
+        },
+        "image_hash": {
+          "pattern": "^[a-fA-F0-9]{32}$",
+          "title": "Image Hash",
+          "type": "string"
+        },
+        "message": {
+          "maxLength": 2000,
+          "minLength": 1,
+          "title": "Message",
+          "type": "string"
+        },
+        "headline": {
+          "maxLength": 100,
+          "minLength": 1,
+          "title": "Headline",
+          "type": "string"
+        },
+        "description": {
+          "default": "",
+          "maxLength": 200,
+          "title": "Description",
+          "type": "string"
+        },
+        "cta": {
+          "enum": [
+            "LEARN_MORE",
+            "SIGN_UP",
+            "SHOP_NOW",
+            "GET_QUOTE",
+            "BOOK_TRAVEL"
+          ],
+          "title": "Cta",
+          "type": "string"
+        },
+        "version": {
+          "default": 1,
+          "maximum": 999,
+          "minimum": 1,
+          "title": "Version",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "concept",
+        "image_hash",
+        "message",
+        "headline",
+        "cta"
+      ],
+      "title": "AdInput",
+      "type": "object"
+    },
+    "AdSetInput": {
+      "additionalProperties": false,
+      "properties": {
+        "audience_code": {
+          "const": "BROAD",
+          "title": "Audience Code",
+          "type": "string"
+        },
+        "countries": {
+          "items": {
+            "pattern": "^[A-Z]{2}$",
+            "type": "string"
+          },
+          "maxItems": 10,
+          "minItems": 1,
+          "title": "Countries",
+          "type": "array"
+        },
+        "age_min": {
+          "maximum": 65,
+          "minimum": 18,
+          "title": "Age Min",
+          "type": "integer"
+        },
+        "age_max": {
+          "maximum": 65,
+          "minimum": 18,
+          "title": "Age Max",
+          "type": "integer"
+        },
+        "budget": {
+          "decimal_places": 6,
+          "ge": 0,
+          "gt": 0,
+          "max_digits": 20,
+          "title": "Budget",
+          "type": "string"
+        },
+        "ads": {
+          "items": {
+            "$ref": "#/$defs/AdInput"
+          },
+          "maxItems": 10,
+          "minItems": 1,
+          "title": "Ads",
+          "type": "array"
+        }
+      },
+      "required": [
+        "audience_code",
+        "countries",
+        "age_min",
+        "age_max",
+        "budget",
+        "ads"
+      ],
+      "title": "AdSetInput",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "kind": {
+      "const": "creation_brief",
+      "title": "Kind",
+      "type": "string"
+    },
+    "client_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+      "title": "Client Id",
+      "type": "string"
+    },
+    "account_id": {
+      "pattern": "^act_[0-9]+$",
+      "title": "Account Id",
+      "type": "string"
+    },
+    "project_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+      "title": "Project Id",
+      "type": "string"
+    },
+    "client_code": {
+      "maxLength": 32,
+      "minLength": 1,
+      "title": "Client Code",
+      "type": "string"
+    },
+    "project_code": {
+      "maxLength": 32,
+      "minLength": 1,
+      "title": "Project Code",
+      "type": "string"
+    },
+    "goal_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+      "title": "Goal Id",
+      "type": "string"
+    },
+    "goal_revision": {
+      "minimum": 1,
+      "title": "Goal Revision",
+      "type": "integer"
+    },
+    "goal_kind": {
+      "enum": [
+        "leads",
+        "sales",
+        "registrations",
+        "tickets"
+      ],
+      "title": "Goal Kind",
+      "type": "string"
+    },
+    "offer": {
+      "maxLength": 2000,
+      "minLength": 1,
+      "title": "Offer",
+      "type": "string"
+    },
+    "result_definition": {
+      "maxLength": 2000,
+      "minLength": 1,
+      "title": "Result Definition",
+      "type": "string"
+    },
+    "measurement": {
+      "enum": [
+        "lead_form",
+        "web_lead",
+        "purchase",
+        "registration",
+        "custom_proxy"
+      ],
+      "title": "Measurement",
+      "type": "string"
+    },
+    "language": {
+      "pattern": "^[a-z]{2}$",
+      "title": "Language",
+      "type": "string"
+    },
+    "role": {
+      "enum": [
+        "MAIN",
+        "TEST"
+      ],
+      "title": "Role",
+      "type": "string"
+    },
+    "currency": {
+      "enum": [
+        "PLN",
+        "EUR",
+        "USD",
+        "GBP"
+      ],
+      "title": "Currency",
+      "type": "string"
+    },
+    "timezone": {
+      "title": "Timezone",
+      "type": "string"
+    },
+    "budget_period": {
+      "enum": [
+        "daily",
+        "lifetime"
+      ],
+      "title": "Budget Period",
+      "type": "string"
+    },
+    "start_time": {
+      "format": "date-time",
+      "title": "Start Time",
+      "type": "string"
+    },
+    "end_time": {
+      "format": "date-time",
+      "title": "End Time",
+      "type": "string"
+    },
+    "landing_url": {
+      "title": "Landing Url",
+      "type": "string"
+    },
+    "page_id": {
+      "pattern": "^[0-9]+$",
+      "title": "Page Id",
+      "type": "string"
+    },
+    "lead_form_id": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9]+$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Lead Form Id"
+    },
+    "pixel_id": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9]+$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Pixel Id"
+    },
+    "custom_conversion_id": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9]+$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Custom Conversion Id"
+    },
+    "special_ad_categories": {
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 0,
+      "title": "Special Ad Categories",
+      "type": "array"
+    },
+    "dsa_beneficiary": {
+      "maxLength": 2000,
+      "minLength": 1,
+      "title": "Dsa Beneficiary",
+      "type": "string"
+    },
+    "dsa_payor": {
+      "maxLength": 2000,
+      "minLength": 1,
+      "title": "Dsa Payor",
+      "type": "string"
+    },
+    "placements": {
+      "const": "facebook_feed",
+      "title": "Placements",
+      "type": "string"
+    },
+    "adsets": {
+      "items": {
+        "$ref": "#/$defs/AdSetInput"
+      },
+      "maxItems": 5,
+      "minItems": 1,
+      "title": "Adsets",
+      "type": "array"
+    },
+    "followup_process": {
+      "maxLength": 2000,
+      "minLength": 1,
+      "title": "Followup Process",
+      "type": "string"
+    },
+    "test_hypothesis": {
+      "maxLength": 2000,
+      "minLength": 1,
+      "title": "Test Hypothesis",
+      "type": "string"
+    },
+    "test_success": {
+      "maxLength": 2000,
+      "minLength": 1,
+      "title": "Test Success",
+      "type": "string"
+    },
+    "test_review": {
+      "maxLength": 2000,
+      "minLength": 1,
+      "title": "Test Review",
+      "type": "string"
+    },
+    "stop_condition": {
+      "maxLength": 2000,
+      "minLength": 1,
+      "title": "Stop Condition",
+      "type": "string"
+    },
+    "rights_confirmed": {
+      "const": true,
+      "title": "Rights Confirmed",
+      "type": "boolean"
+    },
+    "measurement_confirmed": {
+      "const": true,
+      "title": "Measurement Confirmed",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "schema_version",
+    "kind",
+    "client_id",
+    "account_id",
+    "project_id",
+    "client_code",
+    "project_code",
+    "goal_id",
+    "goal_revision",
+    "goal_kind",
+    "offer",
+    "result_definition",
+    "measurement",
+    "language",
+    "role",
+    "currency",
+    "timezone",
+    "budget_period",
+    "start_time",
+    "end_time",
+    "landing_url",
+    "page_id",
+    "special_ad_categories",
+    "dsa_beneficiary",
+    "dsa_payor",
+    "placements",
+    "adsets",
+    "followup_process",
+    "test_hypothesis",
+    "test_success",
+    "test_review",
+    "stop_condition",
+    "rights_confirmed",
+    "measurement_confirmed"
+  ],
+  "title": "CreationBrief",
+  "type": "object"
+}
