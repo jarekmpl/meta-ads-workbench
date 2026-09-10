@@ -58,3 +58,5 @@ Każdy raport i jego podsumowanie poddaj redakcji [miodkuj](../miodkuj/SKILL.md)
 ## Eksport do PDF
 
 Jeżeli użytkownik chce dokument, wykonaj [meta-ads-pdf](../meta-ads-pdf/SKILL.md) na zapisanym raporcie. Komentarz agenta można dołączyć jako osobny `pdf_notes`; nie zmieniaj źródłowych obliczeń.
+
+Przy raporcie HTML stosuj układ z AGENTS.md: w katalogu raportu tylko `raport.html` i `materialy/`. Wszystkie pliki pomocnicze, w tym JSON, grafiki, notatki i kontrola językowa, trafiają do `materialy/`. Jeśli PDF towarzyszy temu HTML, także zapisz go w `materialy/` i podaj bezpośredni link do PDF. Sprawdź względne odnośniki po wygenerowaniu.

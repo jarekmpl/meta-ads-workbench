@@ -74,13 +74,15 @@ def report_args(tmp_path):
 
 def test_report_escapes_ad_text_and_preserves_unreported_leads(report_args):
     result = render_report(report_args)
-    body = report_args.directory.joinpath('report.html').read_text()
+    body = report_args.directory.joinpath('raport.html').read_text()
     assert result['cards'] == 1
     assert '<script>alert' not in body and '&lt;script&gt;' in body
     assert '<img src=x' not in body and '&lt;img src=x' in body
     assert '100,00' in body
     assert '<dd>—</dd>' in body
-    metrics_file = json.loads(report_args.directory.joinpath('report-metrics.json').read_text())
+    metrics_file = json.loads(
+        report_args.directory.joinpath('materialy/report-metrics.json').read_text()
+    )
     assert metrics_file['groups']['LEAD_GENERATION']['ads_with_reported_native_leads'] == 0
     assert metrics_file['groups']['LEAD_GENERATION']['reported_native_leads'] is None
 
@@ -103,7 +105,7 @@ def test_report_rejects_foreign_or_unfinished_assessment(report_args, change):
     report_args.assessment.write_text(json.dumps(doc))
     with pytest.raises(AppError):
         render_report(report_args)
-    assert not (report_args.directory / 'report.html').exists()
+    assert not (report_args.directory / 'raport.html').exists()
 
 
 def test_video_frame_preparation_on_synthetic_clip(tmp_path):
@@ -125,3 +127,44 @@ def test_video_frame_preparation_on_synthetic_clip(tmp_path):
     assert result['frames'] and all((tmp_path / f['file']).is_file() for f in result['frames'])
     assert not result['audio_present']
     assert result['audio_review'] == 'not_reviewed' and result['transcript'] is None
+
+
+def test_report_bundle_has_only_entrypoint_and_materials_and_rerenders(report_args):
+    from pathlib import Path
+
+    from meta_ads_manager.report_layout import materials_directory
+
+    root = report_args.directory
+    image_bytes = b'synthetic-image-bytes'
+    sha = hashlib.sha256(image_bytes).hexdigest()
+    filename = sha + '.png'
+    (root / 'media').mkdir()
+    (root / 'media' / filename).write_bytes(image_bytes)
+    media = json.loads((root / 'media.json').read_text())
+    media['cards'][0]['assets'] = [{'status': 'available', 'mime': 'image/png',
+                                   'role': 'image', 'sha256': sha, 'file': filename}]
+    (root / 'media.json').write_text(json.dumps(media))
+    original = (root / 'ad-10.json').read_bytes()
+    result = render_report(report_args)
+    assert {p.name for p in root.iterdir()} == {'raport.html', 'materialy'}
+    assert (root / 'materialy/ad-10.json').read_bytes() == original
+    assert materials_directory(root) == root / 'materialy'
+    body = Path(result['html']).read_text()
+    assert f'src="materialy/media/{filename}"' in body
+    assert f'(media/{filename})' in Path(result['markdown']).read_text()
+    assert (root / f'materialy/media/{filename}').read_bytes() == image_bytes
+    # Old assessment paths still resolve when repeating the command.
+    assert render_report(report_args)['html'] == result['html']
+    assert {p.name for p in root.iterdir()} == {'raport.html', 'materialy'}
+
+
+def test_bundle_collision_does_not_move_existing_evidence(report_args):
+    root = report_args.directory
+    (root / 'materialy').mkdir()
+    (root / 'materialy/ad-10.json').write_text('Existing material')
+    before = (root / 'ad-10.json').read_bytes()
+    with pytest.raises(AppError, match='Kolizja'):
+        render_report(report_args)
+    assert (root / 'ad-10.json').read_bytes() == before
+    assert (root / 'materialy/ad-10.json').read_text() == 'Existing material'
+    assert not (root / 'raport.html').exists()

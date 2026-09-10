@@ -67,7 +67,7 @@ Wskazana w rozmowie decyzja ma pierwszeństwo w bieżącym zadaniu w granicach u
 
 ## Analiza i decyzje
 
-Każda analiza otrzymuje osobny katalog `reports/RRRR-MM-DD-temat/`. Tam zapisujemy dane, obliczenia, źródła dowodów, wykorzystane ID kontekstu i jego wersje, notatkę analityczną oraz kontrolę języka. Gotowy PDF trafia do `output/`. W rozmowie operator dostaje konkretne rekomendacje, a istotny brak danych jest opisany razem z następnym krokiem.
+Każda analiza otrzymuje osobny katalog `reports/RRRR-MM-DD-temat/`. Dla HTML w tym katalogu znajdują się tylko `raport.html` i `materialy/`. Dane, obliczenia, źródła dowodów, wykorzystane ID kontekstu i jego wersje, notatkę analityczną oraz kontrolę języka zapisujemy w `materialy/`. Gotowy PDF trafia do `output/`. W rozmowie operator dostaje konkretne rekomendacje, a istotny brak danych jest opisany razem z następnym krokiem.
 
 Dla dłuższego projektu używaj `projects/KOD/`: brief, lista decyzji, plan testów i stan następnych działań. Szablony w `templates/client-context/` są opcjonalne. Nie trzeba zakładać każdego pliku przed pierwszą analizą.
 

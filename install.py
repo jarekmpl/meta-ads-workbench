@@ -79,7 +79,7 @@ def create_workspace(source, destination, client, name, agent):
         "client_id": client,
         "name": name,
         "preferred_agent": agent,
-        "release_version": "0.6.0",
+        "release_version": "0.6.1",
         "access_mode": "read_only",
     }
     path = destination / "workspace.json"

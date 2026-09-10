@@ -12,6 +12,7 @@ from urllib.parse import urlparse
 from meta_ads_manager.creative_media import walk
 from meta_ads_manager.creative_review import number, ratio
 from meta_ads_manager.errors import AppError
+from meta_ads_manager.report_layout import bundle, input_path, materials_directory
 
 
 def read_json(path):
@@ -41,14 +42,14 @@ def fmt(value, places=2):
 
 
 def render_report(args):
-    p = args.directory
+    p = materials_directory(args.directory)
     c, media, assessment, review = [
         read_json(f)
         for f in (
             p / "collection.json",
             p / "media.json",
-            args.assessment,
-            args.notes,
+            input_path(args.directory, args.assessment),
+            input_path(args.directory, args.notes),
         )
     ]
     if (c["client_id"], c["account_id"]) != (args.client, args.account):
@@ -180,12 +181,12 @@ def render_report(args):
             if not re.fullmatch(r"[a-f0-9]{64}\.(jpg|png|webp)", asset["file"]):
                 raise AppError("VALIDATION_ERROR", "Niepoprawna nazwa materiału.", 2)
             checked_file(p, "media/" + asset["file"], asset["sha256"])
-            relative = "media/" + asset["file"]
+            relative = "materialy/media/" + asset["file"]
             gallery.append(
                 f'<a href="{relative}"><img loading="lazy" alt="Materiał reklamy {i}" '
                 f'src="{relative}"></a>'
             )
-            md.append(f"[Materiał {len(seen)}]({relative})")
+            md.append(f"[Materiał {len(seen)}](media/{asset['file']})")
         parts.append('<div class="gallery">' + "".join(gallery) + "</div>")
         values = [
             ("Wydatki (" + c["account"]["currency"] + ")", fmt(m["spend"])),
@@ -343,16 +344,10 @@ details,nav{display:none}
         + "".join(parts)
         + "</main></html>"
     )
-    for name, body in [
-        ("report.html", output),
-        ("report.md", "\n\n".join(md) + "\n"),
-        ("report-metrics.json", json.dumps(stats, ensure_ascii=False, indent=2)),
-    ]:
-        (p / name).write_text(body)
-        (p / name).chmod(0o600)
+    paths = bundle(args.directory, output, "\n\n".join(md) + "\n",
+                   json.dumps(stats, ensure_ascii=False, indent=2))
     return {
-        "html": str((p / "report.html").resolve()),
-        "markdown": str((p / "report.md").resolve()),
+        **paths,
         "cards": len(ids),
         "language_review": "required_after_render",
     }

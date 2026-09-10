@@ -4,6 +4,7 @@ import hashlib
 import hmac
 import json
 import re
+from copy import copy
 from datetime import UTC, datetime, timedelta
 from decimal import Decimal
 from pathlib import Path
@@ -15,6 +16,7 @@ from meta_ads_manager.account_policy import validate_read_params
 from meta_ads_manager.errors import AppError
 from meta_ads_manager.meta_connection import NoRedirect, api_error, load_credentials, save_private
 from meta_ads_manager.meta_provider import MetaProvider, report_period, validate_scope
+from meta_ads_manager.report_layout import materials_directory
 
 NATIVE_LEAD = "onsite_conversion.lead_grouped"
 WEB_LEAD = "offsite_conversion.fb_pixel_lead"
@@ -233,6 +235,9 @@ def validate_rows(rows, account, currency, since, until, level="ad", daily=False
 
 
 def collect(args):
+    report_root = args.directory
+    args = copy(args)
+    args.directory = materials_directory(report_root, create=True)
     if not 1 <= args.sample_size <= 50:
         raise AppError("VALIDATION_ERROR", "Próba powinna obejmować 1-50 reklam.", 2)
     root = Path.cwd()
@@ -347,6 +352,7 @@ def collect(args):
         ],
     }
     save_private(args.directory / "collection.json", result)
-    return {"directory": str(args.directory.resolve()), "selected_ads": len(selected),
+    return {"directory": str(report_root.resolve()), "materials": str(args.directory.resolve()),
+            "selected_ads": len(selected),
             "all_ads_current": len(datasets["current"]), "errors": evidence.errors,
             "reconciliation_differences": checks, "coverage": "partial"}

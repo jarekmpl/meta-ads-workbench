@@ -42,6 +42,8 @@ Dla rekomendacji zapisz obserwację, hipotezę, alternatywne wyjaśnienia, propo
 
 Przygotuj raport z galerią, kartami materiałów, wynikami, ograniczeniami, pokryciem próby i briefami testów. Zachowaj źródłowe JSON oraz osobny plik ocen agenta i wersję kompendium. Przykłady klienta przechowuj w `reports/`, nie we wspólnej wiedzy. Poprawki specjalisty zapisuj osobno z autorem i datą; dopiero po recenzji proponuj zmianę zasad.
 
-`creatives report --client CLIENT --account ACCOUNT --directory reports/RUN --assessment reports/RUN/content-assessment.json --notes reports/RUN/interpretation.json` tworzy HTML i Markdown po zapisaniu oceny. Format plików i ograniczenia renderera opisuje [dokumentacja procesu](../../docs/creative-analysis.md). Sprawdź wygenerowane liczby, linki do materiałów i wygląd galerii.
+`creatives report --client CLIENT --account ACCOUNT --directory reports/RUN --assessment reports/RUN/materialy/content-assessment.json --notes reports/RUN/materialy/interpretation.json` tworzy HTML i Markdown po zapisaniu oceny. Format plików i ograniczenia renderera opisuje [dokumentacja procesu](../../docs/creative-analysis.md). Sprawdź wygenerowane liczby, linki do materiałów i wygląd galerii.
 
 Zastosuj [miodkuj](../miodkuj/SKILL.md) i zapisz kontrolę językową zgodnie z AGENTS.md. Lokalny HTML z galerią jest artefaktem raportowym, nie opublikowaną stroną. PDF wykonuj na żądanie według [meta-ads-pdf](../meta-ads-pdf/SKILL.md); obecny standardowy generator PDF nie obsługuje galerii. Nie deklaruj gotowego PDF bez jego wykonania i kontroli stron.
+
+Przy raporcie HTML stosuj układ z AGENTS.md: w katalogu raportu tylko `raport.html` i `materialy/`. Wszystkie pliki pomocnicze, w tym JSON, grafiki, notatki i kontrola językowa, trafiają do `materialy/`. Jeśli PDF towarzyszy temu HTML, także zapisz go w `materialy/` i podaj bezpośredni link do PDF. Sprawdź względne odnośniki po wygenerowaniu.

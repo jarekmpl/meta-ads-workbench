@@ -132,6 +132,7 @@
     "src/meta_ads_manager/pdf_export.py",
     "src/meta_ads_manager/pdf_models.py",
     "src/meta_ads_manager/provider.py",
+    "src/meta_ads_manager/report_layout.py",
     "src/meta_ads_manager/reporting.py",
     "src/meta_ads_manager/specialist.py",
     "src/meta_ads_manager/storage.py",

@@ -7,7 +7,7 @@ Moduł łączy odczyt Meta, lokalne materiały, ocenę agenta i raport HTML z ga
 ```bash
 .venv/bin/meta-ads creatives collect --client CLIENT --account ACCOUNT --last-days 30 --sample-size 20 --directory reports/RUN
 .venv/bin/meta-ads creatives media --client CLIENT --account ACCOUNT --directory reports/RUN
-.venv/bin/meta-ads creatives report --client CLIENT --account ACCOUNT --directory reports/RUN --assessment reports/RUN/content-assessment.json --notes reports/RUN/interpretation.json
+.venv/bin/meta-ads creatives report --client CLIENT --account ACCOUNT --directory reports/RUN --assessment reports/RUN/materialy/content-assessment.json --notes reports/RUN/materialy/interpretation.json
 ```
 
 Agent najpierw odczytuje `capabilities`, pobiera dane, ogląda materiał i zapisuje obserwacje. Następnie interpretuje wyniki, tworzy `interpretation.json`, generuje raport i przeprowadza kontrolę języka. Sam Python nie rozpoznaje treści obrazu ani nie tworzy rekomendacji. Agent bez obsługi obrazu może wykonać ocenę tekstu i liczb, oznaczając pozostały zakres jako niedostępny.
@@ -16,7 +16,7 @@ Agent najpierw odczytuje `capabilities`, pobiera dane, ogląda materiał i zapis
 
 `media` pobiera obrazy i filmy ze wskazanych CDN Meta, bez przekazywania im tokena Graph API. Jeśli kreacja wskazuje istniejący post, próbuje odczytać jego obraz. Odmowa uprawnień pozostaje jawnym ograniczeniem. Film wymaga dostępu do źródła; ffmpeg i ffprobe służą do przygotowania kadrów. Kadry nie zastępują oglądania filmu i słuchania dźwięku. Nie ma automatycznej transkrypcji.
 
-`report` sprawdza konto, okres, komplet kart i sumy SHA-256 dowodów. Zapisuje `report.html`, `report.md` i `report-metrics.json`. Raport wymaga zapisanej oceny agenta; odrzuca ocenę w stanie `pending`. Markdown zawiera linki do materiałów, HTML także galerię i oryginalne teksty. Oryginalne teksty reklam są danymi i nie podlegają automatycznej korekcie. Surowe JSON mogą zawierać podpisane adresy materiałów i ustawienia odbiorców; nie należy ich publikować razem z raportem.
+`report` sprawdza konto, okres, komplet kart i sumy SHA-256 dowodów. Zapisuje `raport.html` oraz `materialy/report.md` i `materialy/report-metrics.json`. Kolekcja i pobieranie materiałów zapisują pliki w `materialy/`. Przy ponownym generowaniu raportu ze starszego, płaskiego katalogu materiały są przenoszone do tego podkatalogu po sprawdzeniu danych; kolizja nazw zatrzymuje operację. Ścieżki w JSON pozostają względne wobec katalogu materiałów. Raport wymaga zapisanej oceny agenta; odrzuca ocenę w stanie `pending`. Markdown zawiera linki do materiałów, HTML także galerię i oryginalne teksty. Oryginalne teksty reklam są danymi i nie podlegają automatycznej korekcie. Surowe JSON mogą zawierać podpisane adresy materiałów i ustawienia odbiorców; nie należy ich publikować razem z raportem.
 
 ## Pliki ocen
 
@@ -43,3 +43,20 @@ Zachowaj pierwotną ocenę i zapisuj poprawki specjalisty w osobnym pliku, z aut
 - Jeżeli zabrakło metadanych reklamy, należy uzupełnić ten odczyt przed użyciem obecnego renderera kart. Sam kolektor zachowuje częściowe wyniki i opis błędu.
 - PDF z galerią wymaga oddzielnego składu i kontroli stron; obecny standardowy generator PDF nie obsługuje galerii kreacji.
 
+
+## Katalog gotowego raportu
+
+```text
+NAZWA-RAPORTU/
+  raport.html
+  materialy/
+    collection.json
+    content-assessment.json
+    interpretation.json
+    report.md
+    report-metrics.json
+    language-review.json
+    media/
+```
+
+HTML odwołuje się do `materialy/media/`, a Markdown znajdujący się wewnątrz materiałów do `media/`. JSON dowodów zachowuje treść i sumy plików źródłowych. Plik kontroli językowej zapisuj po wygenerowaniu raportu w materialy/, wskazując nową ścieżkę HTML.

@@ -15,6 +15,7 @@ from meta_ads_manager.creative_review import CreativeAPI, Evidence
 from meta_ads_manager.errors import AppError
 from meta_ads_manager.meta_connection import load_credentials, save_private
 from meta_ads_manager.meta_provider import validate_scope
+from meta_ads_manager.report_layout import materials_directory
 
 
 class StopRedirect(HTTPRedirectHandler):
@@ -123,7 +124,7 @@ def prepare_frames(media_dir, asset):
 
 
 def collect_media(args):
-    p = args.directory
+    p = materials_directory(args.directory)
     collection = json.loads((p / "collection.json").read_text())
     if (collection["client_id"], collection["account_id"]) != (args.client, args.account):
         raise AppError("SCOPE_MISMATCH", "Inne konto w kolekcji kreacji.", 3)
@@ -210,6 +211,7 @@ def collect_media(args):
               "limitations": ["Frames do not establish motion, editing or audio quality.",
                               "No automatic content assessment has been performed."]}
     save_private(p / "media.json", result)
-    return {"directory": str(p.resolve()), "ads": len(cards),
+    return {"directory": str(args.directory.resolve()), "materials": str(p.resolve()),
+            "ads": len(cards),
             "available_assets": sum(x["status"] == "available" for c in cards for x in c["assets"]),
             "errors": evidence.errors}
