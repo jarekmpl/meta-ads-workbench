@@ -6,7 +6,7 @@ Gotowe: konfiguracja Meta, lokalne wprowadzanie poświadczeń i potwierdzony tes
 
 Gotowy fundament demo: Python/CLI, modele JSON Schema, dwóch klientów, SQLite ze snapshotami, analizy tygodniowe, raporty i częściowy audyt. Skille raportowania i audytu obsługują też źródło Meta.
 
-Etap 1 pozostaje otwarty w zakresie raportów asynchronicznych, wznawiania, porównania okresu z emisją z Ads Managerem i drugiego konta pilotażowego. Etap 2 wymaga mapowania celów/konwersji na rzeczywistych kontach. Pełny audyt i operacje zapisu pozostają do wdrożenia.
+Etap 1 pozostaje otwarty w zakresie raportów asynchronicznych, wznawiania, porównania okresu z emisją z Ads Managerem i drugiego konta pilotażowego. Od wersji 0.3 działa jawne, wersjonowane mapowanie celów na kampanie Meta, porównanie okresów oraz lokalny rejestr decyzji i ocen testów. Pozostały zakres etapu 2 nadal wymaga wdrożenia. Pełny audyt i operacje zapisu pozostają do wdrożenia.
 
 ## Etap 1: fundament i odczyt
 

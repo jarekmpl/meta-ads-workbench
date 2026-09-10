@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0",
+  "client_id": "client-a",
+  "account_id": "act_123",
+  "kind": "business_goal",
+  "goal_id": "leads-form",
+  "expected_revision": 0,
+  "project_id": "main",
+  "name": "Leady formularzowe",
+  "business_outcome": "Pozyskanie leada",
+  "result_label": "Lead z formularza",
+  "result_type": "lead",
+  "measurement_role": "primary",
+  "conversion_location": "meta_instant_form",
+  "action_type": "onsite_conversion.lead_grouped",
+  "value_action_type": null,
+  "currency": "PLN",
+  "attribution": "7d_click_1d_view",
+  "action_report_time": "impression",
+  "missing_action_policy": "unknown",
+  "targets": {
+    "cost_per_result": "50",
+    "roas": null
+  },
+  "confirmed_by": "Operator",
+  "confirmation_ref": "Przykładowe ustalenie"
+}

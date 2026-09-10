@@ -65,3 +65,7 @@ Manifest `.pdf.json` zapisuje wersję szablonu, zakres, źródło, liczbę stron
 | `PDF_VALIDATION` | Zbadaj dokument; nie przekazuj go jako gotowego |
 
 Podgląd obsługuje 1-200 stron i 72-200 DPI. Zwykle wystarcza 110 DPI. Dokumenty większe podziel według logicznego zakresu. Aktualny proces nie wysyła dokumentów e-mailem, nie publikuje ich i nie wykonuje zmian w Meta.
+
+## Cele i historia decyzji od wersji 0.3
+
+[Proces celów i rekomendacji](goals-and-recommendations.md) opisuje trwałe definicje wyników, przypisania kampanii, terminy oraz ocenę testów. Przed kolejną analizą agent odczytuje te ustalenia przez skill meta-ads-decisions. Raporty Meta dołączają obliczenia i historię z chwili tworzenia; eksport PDF uwzględnia oba elementy. Rejestr pozostaje w przestrzeni klienta i wymaga kopii razem z danymi.

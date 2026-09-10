@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "client_id": "client-a",
+  "account_id": "act_123",
+  "kind": "recommendation",
+  "recommendation_id": "rec-1",
+  "goal_id": "leads-form",
+  "goal_revision": 1,
+  "campaign_ids": [
+    "101"
+  ],
+  "title": "Test komunikatu",
+  "action": "Sprawdź inny argument oferty.",
+  "rationale": "Wnioski z przykładowej analizy.",
+  "priority": "medium",
+  "evidence_refs": [
+    "synthetic-baseline"
+  ],
+  "test_plan": {
+    "hypothesis": "Inny argument obniży koszt leada.",
+    "method": "before_after",
+    "baseline": {
+      "since": "2026-08-26",
+      "until": "2026-09-01"
+    },
+    "evaluation_days": 7,
+    "metric": "cost_per_result",
+    "direction": "decrease",
+    "success_threshold": "40",
+    "minimum_results": "10",
+    "stop_condition": "Operator przerwie test po wyczerpaniu jego budżetu."
+  },
+  "followup_of": null,
+  "followup_reason": null
+}

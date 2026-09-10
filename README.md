@@ -15,13 +15,15 @@ Wymagany jest Python 3.11+ oraz macOS, Linux lub WSL. Instalator tworzy odrębne
 - Instalacja przestrzeni jednego klienta, diagnostyka lokalna i kreator konfiguracji Meta.
 - Rejestr dowolnych materiałów kontekstowych z zakresem projektu, statusami, datą ważności i kontrolą integralności.
 - Odczyt skonfigurowanego konta, kampanii i dziennych wyników; raporty ze snapshotów, częściowy audyt i pilotaż analizy kreacji.
+- Wersjonowane cele kampanii, dokładne definicje wyników, docelowy koszt i ROAS oraz porównania okresów.
+- Historia rekomendacji, decyzji i testów z oceną na podstawie zapisanych wyników.
 - Procedury agenta do interpretacji danych, rekomendacji, przeglądania materiałów i redakcji po polsku z miodkuj.
 - Eksport raportów, audytów i własnych opracowań do PDF Bluerank oraz renderowanie do kontroli stron.
 - Osobne bazy, konfiguracje, poświadczenia i raporty klientów. CLI wykrywa niezgodny zakres i ścieżki w zainstalowanych przestrzeniach.
 
 ## Co wymaga dalszego wdrożenia
 
-Silnik obsługuje **wyłącznie odczyt Meta**. Nie tworzy kampanii ani nie zmienia budżetów i statusów. Proces nowej kampanii i nazewnictwo są opisane jako projekt, nie działający generator. Automatyczne mapowanie konwersji oraz analiza CPL/CPA/ROAS na rzeczywistych kontach wymagają dalszej implementacji; agent może pracować na jawnie ustalonych definicjach i sprawdzonych obliczeniach.
+Silnik obsługuje **wyłącznie odczyt Meta**. Nie tworzy kampanii ani nie zmienia budżetów i statusów. Proces nowej kampanii i nazewnictwo są opisane jako projekt, nie działający generator. Mapowanie konwersji wymaga jawnych ustaleń i przypisania kampanii. System liczy koszt wyniku i ROAS z tych definicji; nie dobiera ich automatycznie. Rejestr terminów nie uruchamia cyklicznych analiz w tle.
 
 Analiza obrazu i interpretacja należą do agenta, nie do samego Pythona. Dostęp do formularzy, postów, filmów i pomiaru zależy od udostępnionych zasobów. `capabilities` oraz zakres danych w wyniku określają faktycznie dostępne funkcje.
 
@@ -49,6 +51,7 @@ Przykładowe polecenia w rozmowie:
 | --- | --- |
 | [Start operatora](START-HERE.md) | Instalacja, wybór agenta, połączenie i pierwszy wynik |
 | [Codzienna praca](docs/operator-workflow.md) | Separacja klientów i otwarty rejestr kontekstu |
+| [Cele i historia decyzji](docs/goals-and-recommendations.md) | Definicje wyników, progi, rekomendacje i ocena testów |
 | [Konfiguracja Meta](docs/meta-setup.md) | Aplikacja, lokalne poświadczenia i test odczytu |
 | [Instrukcje agenta](AGENTS.md) | Wybór skilli, zasady danych i redakcja |
 | [Kompendium](knowledge/meta-ads/README.md) | Zasady analiz i planowania testów |

@@ -23,7 +23,7 @@ W osobnej notatce analitycznej zapisz wersję kompendium, ID/wersje reguł, źr�
 2. Gdy nie wskazano okresu, przyjmij ostatnie 30 pełnych dni i podaj to założenie. W demo użyj 30 dni kończących się na końcu dostępnego zestawu i oznacz daty jako demonstracyjne.
 3. Wykonaj `sync` dla wymaganego okresu, sprawdź wynik, a następnie `audit` z tym samym okresem i `--snapshot` zwróconym przez synchronizację.
 4. Przeczytaj `coverage`, wyniki kampanii i grup celów, `recommendations` oraz `limitations`. `status: PARTIAL` oznacza audyt częściowy, nawet jeśli komenda zakończyła się poprawnie. Obszar `unavailable` nie przeszedł kontroli.
-5. Przedstaw priorytety zmian i testów, następnie dane uzasadniające każdą rekomendację oraz sposób oceny rezultatu. Rekomendacje silnika są materiałem do interpretacji. Pomysły agenta oprzyj na konkretnych danych lub pasujących wytycznych i przedstaw jako propozycje testów. Wskaż tylko te braki, które wpływają na decyzję.
+5. Uwzględnij odrzucenia, odłożone pomysły i trwające testy z `recommendation_history`. Nowe kompletne propozycje zapisuj według meta-ads-decisions. Przedstaw priorytety zmian i testów, następnie dane uzasadniające każdą rekomendację oraz sposób oceny rezultatu. Rekomendacje silnika są materiałem do interpretacji. Pomysły agenta oprzyj na konkretnych danych lub pasujących wytycznych i przedstaw jako propozycje testów. Wskaż tylko te braki, które wpływają na decyzję.
 
 Przykład operacyjny:
 
@@ -47,7 +47,7 @@ Na końcu wskaż najbliższe działania w kolejności. Nie pytaj o zgodę na ka�
 
 ## Podłączone konto Meta
 
-Wykonuj komendy bez `--demo`. `audit` działa na zapisanym snapshotcie i nie pobiera dodatkowych ustawień konta. Dla Meta nie ma jeszcze mapowania konwersji na uzgodnione cele biznesowe; `objective` i typy `reported_actions` są danymi pomocniczymi. Nie sumuj nakładających się zdarzeń i nie obliczaj z nich arbitralnie CPL/CPA/ROAS. Brak celu w lokalnym profilu nie oznacza złej konfiguracji kampanii Meta.
+Wykonuj komendy bez `--demo`. `audit` działa na zapisanym snapshotcie i nie pobiera dodatkowych ustawień konta. Przed analizą odczytaj cele i historię rekomendacji przez [meta-ads-decisions](../meta-ads-decisions/SKILL.md). Wersjonowane mapowanie i obliczenia są w `goal_measurements`, a `business_goal_status` opisuje kompletność przypisania. `objective` i typy `reported_actions` są danymi pomocniczymi. Nie sumuj nakładających się zdarzeń i nie obliczaj z nich arbitralnie CPL/CPA/ROAS. Brak celu w lokalnym profilu nie oznacza złej konfiguracji kampanii Meta.
 
 Jeśli okres nie zawiera wydatków, wskaż brak podstaw do oceny skuteczności. Możesz zaproponować okres z emisją. Brak emisji przy kampaniach wstrzymanych nie jest sam w sobie awarią.
 

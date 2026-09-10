@@ -86,13 +86,17 @@ def document_from_report(report: dict) -> PdfDocument:
     kind = report.get("kind")
     if kind == "pdf_document":
         return PdfDocument.model_validate_json(json.dumps(report))
-    if kind not in ("campaign_report", "account_audit", "analysis_report"):
+    if kind not in ("campaign_report", "account_audit", "analysis_report", "goal_review"):
         raise AppError("PDF_INPUT", "Nieobsługiwany rodzaj raportu PDF.", 2)
     if report.get("schema_version") != "1.0":
         raise AppError("PDF_INPUT", "Nieobsługiwana wersja raportu.", 2)
     if report.get("status") not in ("SUCCEEDED", "PARTIAL"):
         raise AppError("PDF_INPUT", "Raport nie jest gotowy do eksportu.", 2)
     try:
+        if kind == "goal_review":
+            from meta_ads_manager.decision_pdf import review_document
+
+            return review_document(report)
         weekly = kind == "analysis_report"
         period = report["periods"]["current"] if weekly else report["period"]
         currency = report["report_spec"]["currency"]
@@ -150,6 +154,9 @@ def document_from_report(report: dict) -> PdfDocument:
             _weekly_sections(report, doc, currency)
         else:
             _account_sections(report, doc, currency)
+        from meta_ads_manager.decision_pdf import sections
+
+        doc["sections"][0:0] = sections(report)
         if report.get("recommendations"):
             recommendations = [
                 {

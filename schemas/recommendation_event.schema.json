@@ -1,0 +1,115 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "client_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+      "title": "Client Id",
+      "type": "string"
+    },
+    "account_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+      "title": "Account Id",
+      "type": "string"
+    },
+    "kind": {
+      "const": "recommendation_event",
+      "title": "Kind",
+      "type": "string"
+    },
+    "event_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+      "title": "Event Id",
+      "type": "string"
+    },
+    "recommendation_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+      "title": "Recommendation Id",
+      "type": "string"
+    },
+    "expected_revision": {
+      "minimum": 1,
+      "title": "Expected Revision",
+      "type": "integer"
+    },
+    "event": {
+      "enum": [
+        "accept",
+        "reject",
+        "defer",
+        "start",
+        "cancel",
+        "note"
+      ],
+      "title": "Event",
+      "type": "string"
+    },
+    "actor": {
+      "maxLength": 2000,
+      "minLength": 1,
+      "title": "Actor",
+      "type": "string"
+    },
+    "reason": {
+      "maxLength": 2000,
+      "minLength": 1,
+      "title": "Reason",
+      "type": "string"
+    },
+    "evidence_refs": {
+      "items": {
+        "maxLength": 2000,
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Evidence Refs",
+      "type": "array"
+    },
+    "effective_on": {
+      "anyOf": [
+        {
+          "format": "date",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Effective On"
+    },
+    "review_on": {
+      "anyOf": [
+        {
+          "format": "date",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Review On"
+    }
+  },
+  "required": [
+    "schema_version",
+    "client_id",
+    "account_id",
+    "kind",
+    "event_id",
+    "recommendation_id",
+    "expected_revision",
+    "event",
+    "actor",
+    "reason",
+    "evidence_refs"
+  ],
+  "title": "RecommendationEvent",
+  "type": "object"
+}

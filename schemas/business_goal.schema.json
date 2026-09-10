@@ -1,0 +1,209 @@
+{
+  "$defs": {
+    "ResultTargets": {
+      "additionalProperties": false,
+      "properties": {
+        "cost_per_result": {
+          "anyOf": [
+            {
+              "decimal_places": 6,
+              "ge": 0,
+              "gt": 0,
+              "max_digits": 20,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Cost Per Result"
+        },
+        "roas": {
+          "anyOf": [
+            {
+              "decimal_places": 6,
+              "ge": 0,
+              "gt": 0,
+              "max_digits": 20,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Roas"
+        }
+      },
+      "title": "ResultTargets",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "client_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+      "title": "Client Id",
+      "type": "string"
+    },
+    "account_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+      "title": "Account Id",
+      "type": "string"
+    },
+    "kind": {
+      "const": "business_goal",
+      "title": "Kind",
+      "type": "string"
+    },
+    "goal_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+      "title": "Goal Id",
+      "type": "string"
+    },
+    "expected_revision": {
+      "minimum": 0,
+      "title": "Expected Revision",
+      "type": "integer"
+    },
+    "project_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+      "title": "Project Id",
+      "type": "string"
+    },
+    "name": {
+      "maxLength": 2000,
+      "minLength": 1,
+      "title": "Name",
+      "type": "string"
+    },
+    "business_outcome": {
+      "maxLength": 2000,
+      "minLength": 1,
+      "title": "Business Outcome",
+      "type": "string"
+    },
+    "result_label": {
+      "maxLength": 2000,
+      "minLength": 1,
+      "title": "Result Label",
+      "type": "string"
+    },
+    "result_type": {
+      "enum": [
+        "lead",
+        "purchase",
+        "registration",
+        "outbound_click",
+        "custom"
+      ],
+      "title": "Result Type",
+      "type": "string"
+    },
+    "measurement_role": {
+      "enum": [
+        "primary",
+        "proxy",
+        "diagnostic"
+      ],
+      "title": "Measurement Role",
+      "type": "string"
+    },
+    "conversion_location": {
+      "enum": [
+        "meta_instant_form",
+        "website",
+        "other"
+      ],
+      "title": "Conversion Location",
+      "type": "string"
+    },
+    "action_type": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+      "title": "Action Type",
+      "type": "string"
+    },
+    "value_action_type": {
+      "anyOf": [
+        {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Value Action Type"
+    },
+    "currency": {
+      "pattern": "^[A-Z]{3}$",
+      "title": "Currency",
+      "type": "string"
+    },
+    "attribution": {
+      "const": "7d_click_1d_view",
+      "default": "7d_click_1d_view",
+      "title": "Attribution",
+      "type": "string"
+    },
+    "action_report_time": {
+      "const": "impression",
+      "default": "impression",
+      "title": "Action Report Time",
+      "type": "string"
+    },
+    "missing_action_policy": {
+      "default": "unknown",
+      "enum": [
+        "unknown",
+        "zero_when_omitted"
+      ],
+      "title": "Missing Action Policy",
+      "type": "string"
+    },
+    "targets": {
+      "$ref": "#/$defs/ResultTargets"
+    },
+    "confirmed_by": {
+      "maxLength": 2000,
+      "minLength": 1,
+      "title": "Confirmed By",
+      "type": "string"
+    },
+    "confirmation_ref": {
+      "maxLength": 2000,
+      "minLength": 1,
+      "title": "Confirmation Ref",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "client_id",
+    "account_id",
+    "kind",
+    "goal_id",
+    "expected_revision",
+    "project_id",
+    "name",
+    "business_outcome",
+    "result_label",
+    "result_type",
+    "measurement_role",
+    "conversion_location",
+    "action_type",
+    "currency",
+    "targets",
+    "confirmed_by",
+    "confirmation_ref"
+  ],
+  "title": "BusinessGoal",
+  "type": "object"
+}

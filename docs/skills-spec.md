@@ -62,3 +62,7 @@ Każda procedura otrzymuje scenariusz ze znanym wynikiem i przypadek z brakując
 Skill pochodzi z [bartekpucek/miodkuj](https://github.com/bartekpucek/miodkuj), z katalogu `plugins/miodkuj/skills/miodkuj`, commit `e6300cbe3c910c1677bbc44d64bca1670b7800e6`. Zachowano oryginalne instrukcje, materiały pomocnicze i [licencję MIT](../skills/miodkuj/LICENSE). [UPSTREAM.json](../skills/miodkuj/UPSTREAM.json) zapisuje pochodzenie i sumy kontrolne plików. Zasady stosowania w raportach są w AGENTS.md oraz skillach Meta Ads.
 
 Aktualizacja jest jawna: pobierz wybraną wersję do katalogu tymczasowego, porównaj instrukcje i odsyłacze, a następnie zastąp lokalną kopię wraz z licencją i metadanymi wersji. Nie pobieraj nowej wersji przy każdym raporcie. Instrukcje podróżują z repozytorium; sam pakiet Python nie instaluje skilla w innych aplikacjach.
+
+## Cele i historia decyzji od wersji 0.3
+
+[Proces celów i rekomendacji](goals-and-recommendations.md) opisuje trwałe definicje wyników, przypisania kampanii, terminy oraz ocenę testów. Przed kolejną analizą agent odczytuje te ustalenia przez skill meta-ads-decisions. Raporty Meta dołączają obliczenia i historię z chwili tworzenia; eksport PDF uwzględnia oba elementy. Rejestr pozostaje w przestrzeni klienta i wymaga kopii razem z danymi.

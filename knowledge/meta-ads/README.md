@@ -74,7 +74,8 @@ Priorytet wynika z możliwego wpływu biznesowego, wiarygodności dowodów i pil
 | --- | --- |
 | Dostępne dane Meta | Kampanie i ich statusy/cel Meta; dzienne wydatki, wyświetlenia, kliknięcia linku; osobne typy zdarzeń; specyfikacja i kontrola sum snapshotu |
 | Możliwe obecnie | Kontrola zakresu, raport emisji, identyfikacja braku wydatków, część porównań kosztu ruchu po obliczeniu ich w Pythonie |
-| Wymaga mapowania i obliczeń | CPL/CPA/ROAS, wybór zdarzeń, dojrzałość konwersji, porównania okresów Meta, reguły oceny progów |
+| Działa po jawnym przypisaniu | Koszt wyniku i ROAS, dokładny klucz zdarzenia, porównania okresów Meta, ocena progów i historia testów; [proces](../../docs/goals-and-recommendations.md) |
+| Wymaga dalszego wdrożenia | Ocena dojrzałości konwersji, eksperymenty A/B i harmonogram cyklicznych ocen |
 | Wymaga dodatkowych odczytów | Zestawy, reklamy, kreacje, ustawienia odbiorców/umiejscowień, budżety, uczenie, historia zmian, reach/frequency za cały okres, diagnostyka pomiaru |
 | Wymaga danych biznesowych lub eksperymentu | Kwalifikacja i sprzedaż CRM, marża/zwroty, nowi klienci, zdolność obsługi, przyrost wyniku wywołany reklamą |
 

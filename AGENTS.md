@@ -27,6 +27,7 @@ Pełny proces i wymagania dla przyszłego wykonawcy opisują [zasady zmian na ko
 - Raport, lista wyników, zestawienie kampanii za okres: przeczytaj [meta-ads-report](skills/meta-ads-report/SKILL.md).
 - Analiza grafik, tekstów, karuzel, filmów i wyników kreacji: przeczytaj [meta-ads-creatives](skills/meta-ads-creatives/SKILL.md). Pobierz materiał, zapisz ocenę treści, połącz ją z wynikami i przygotuj lokalny raport z galerią.
 - Audyt, diagnoza, rekomendacje dla jednego lub kilku kont: przeczytaj [meta-ads-audit](skills/meta-ads-audit/SKILL.md).
+- Cele, definicje wyników, decyzje operatora i ocena testów: przeczytaj [meta-ads-decisions](skills/meta-ads-decisions/SKILL.md). Przed kolejną analizą odczytaj zapisane cele i historię rekomendacji.
 - Prośba o uruchomienie lub zmianę kampanii: sprawdź możliwości silnika. Dopóki zapis nie jest zaimplementowany, opisz ograniczenie; nie symuluj wykonania.
 
 ## Cel i standard analiz
@@ -82,7 +83,7 @@ Moduł `creatives collect`, `creatives media` i `creatives report` obsługuje od
 
 [Instrukcja połączenia](docs/meta-setup.md) opisuje konfigurację i test. Poświadczenia użytkownik wpisuje lokalnie; nie czytaj plików `secrets/` do kontekstu modelu. Przy `AUTH_REQUIRED` poproś o odnowienie poświadczeń, nie zamieniaj źródła na demo.
 
-Raport Meta zawiera wydatki, wyświetlenia, kliknięcia linku i typy zdarzeń z API. `reported_actions` mogą się nakładać: nie sumuj różnych typów jako leadów/zakupów. Cel reklamowy `objective` nie zastępuje uzgodnionego celu biznesowego ani mapowania konwersji. CPL/CPA/ROAS i `analyze` dla Meta wymagają dalszego wdrożenia. Pełny audyt, tworzenie reklam i zmiany kampanii nie są dostępne.
+Raport Meta zawiera wydatki, wyświetlenia, kliknięcia linku i typy zdarzeń z API. `reported_actions` mogą się nakładać: nie sumuj różnych typów jako leadów/zakupów. Cel reklamowy `objective` nie zastępuje uzgodnionego celu biznesowego ani mapowania konwersji. Od wersji 0.3 `goals` zapisuje jawne definicje i datowane przypisania. `goal_measurements` zawiera koszt wyniku i ROAS dla odpowiednio zmapowanych zdarzeń. `analyze` porównuje realizację celu w dwóch okresach, a `recommendations` zapisuje decyzje i oceny testów. [Proces](docs/goals-and-recommendations.md) opisuje wymagania i ograniczenia. Pełny audyt, tworzenie reklam i zmiany kampanii nie są dostępne.
 
 Dla Meta daty względne liczone są do wczoraj w strefie konta także przy odczycie zapisanych danych. Do odtworzenia historycznego raportu użyj `report show` albo jawnych `--since`, `--until` i `--snapshot`.
 

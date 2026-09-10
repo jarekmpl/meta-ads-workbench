@@ -1,0 +1,91 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "client_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+      "title": "Client Id",
+      "type": "string"
+    },
+    "account_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+      "title": "Account Id",
+      "type": "string"
+    },
+    "kind": {
+      "const": "campaign_goal_assignment",
+      "title": "Kind",
+      "type": "string"
+    },
+    "campaign_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+      "title": "Campaign Id",
+      "type": "string"
+    },
+    "goal_id": {
+      "anyOf": [
+        {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Goal Id"
+    },
+    "goal_revision": {
+      "anyOf": [
+        {
+          "minimum": 1,
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Goal Revision"
+    },
+    "effective_from": {
+      "format": "date",
+      "title": "Effective From",
+      "type": "string"
+    },
+    "expected_revision": {
+      "minimum": 0,
+      "title": "Expected Revision",
+      "type": "integer"
+    },
+    "confirmed_by": {
+      "maxLength": 2000,
+      "minLength": 1,
+      "title": "Confirmed By",
+      "type": "string"
+    },
+    "confirmation_ref": {
+      "maxLength": 2000,
+      "minLength": 1,
+      "title": "Confirmation Ref",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "client_id",
+    "account_id",
+    "kind",
+    "campaign_id",
+    "goal_id",
+    "goal_revision",
+    "effective_from",
+    "expected_revision",
+    "confirmed_by",
+    "confirmation_ref"
+  ],
+  "title": "CampaignGoalAssignment",
+  "type": "object"
+}

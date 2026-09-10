@@ -75,7 +75,7 @@ Synchronizacja pobiera wszystkie strony dostępnej listy kampanii (w tym wstrzym
 
 Dane i raporty zapisują się w `data/meta.sqlite3`, oddzielnie od `data/demo.sqlite3`. Raporty i audyty korzystają z lokalnego snapshotu bez kolejnego połączenia API. `report show` odtwarza wcześniejszy raport. Daty względne w Meta kończą się wczoraj w strefie konta; do historycznej reprodukcji podaj dokładne daty.
 
-Zakres: wydatki, wyświetlenia, kliknięcia linku, CPM, CTR linku, CPC linku, cel reklamowy i osobne typy zdarzeń. Ustawienia atrybucji są jawne: `7d_click`, `1d_view`, `action_report_time=impression`. Reach i częstotliwość nie są sumowane z dni. Aliasy zdarzeń mogą się nakładać; mapowanie leadów/zakupów i obliczenia CPL/CPA/ROAS na Meta pozostają do wdrożenia.
+Zakres: wydatki, wyświetlenia, kliknięcia linku, CPM, CTR linku, CPC linku, cel reklamowy i osobne typy zdarzeń. Ustawienia atrybucji są jawne: `7d_click`, `1d_view`, `action_report_time=impression`. Reach i częstotliwość nie są sumowane z dni. Aliasy zdarzeń mogą się nakładać; mapowanie wyników i obliczenia kosztu oraz ROAS wymagają jawnej definicji w [rejestrze celów](goals-and-recommendations.md).
 
 Zaimplementowano wyłącznie GET do stałego hosta Graph API. Paginacja używa kursorów, nie adresów `next` zawierających tokeny. Limit to 366 pełnych dni oraz 1000 stron; błędy limitów i sieci kończą synchronizację bez kompletnego snapshotu. Raporty asynchroniczne i automatyczne wznawianie nie są dostępne.
 

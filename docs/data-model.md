@@ -70,3 +70,7 @@ Każda rekomendacja ma identyfikatory dowodów, zakres dat, opis niepewności i 
 Porównanie przed/po jest opisowe. Nie dowodzi przyczynowości. Test kontrolowany wymaga osobnego projektu eksperymentu. Domyślnie nie zapisujemy w MVP danych osobowych leadów; przyszła integracja CRM zaczyna od agregatów i jawnej definicji łączenia danych.
 
 Historia operacji jest dopisywana, a nie nadpisywana przez kolejną próbę. Retencja danych i plików źródłowych będzie konfigurowalna; lokalna baza i raporty nie trafiają do repozytorium.
+
+## Cele i historia decyzji od wersji 0.3
+
+[Proces celów i rekomendacji](goals-and-recommendations.md) opisuje trwałe definicje wyników, przypisania kampanii, terminy oraz ocenę testów. Przed kolejną analizą agent odczytuje te ustalenia przez skill meta-ads-decisions. Raporty Meta dołączają obliczenia i historię z chwili tworzenia; eksport PDF uwzględnia oba elementy. Rejestr pozostaje w przestrzeni klienta i wymaga kopii razem z danymi.

@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "client_id": "client-a",
+  "account_id": "act_123",
+  "kind": "recommendation_event",
+  "event_id": "event-accept",
+  "recommendation_id": "rec-1",
+  "expected_revision": 1,
+  "event": "accept",
+  "actor": "Operator",
+  "reason": "Decyzja testowa",
+  "evidence_refs": [
+    "synthetic-operator-message"
+  ],
+  "effective_on": null,
+  "review_on": null
+}

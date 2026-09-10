@@ -1,6 +1,6 @@
 # Kontrakt CLI v0.1
 
-Opisuje docelowy interfejs. **Działający podzbiór v0.1** i dokładną składnię opisuje [instrukcja demo](demo-guide.md). Dostępne są `capabilities`, `clients list`, `accounts list`, `sync`, `sync status`, `analyze`, `report campaigns`, `report show`, `audit`, `validate` i `schema export`. Bez `--demo` działa odczyt skonfigurowanych kont Meta (szczegóły w [instrukcji Meta](meta-setup.md)); `--demo` wybiera dane syntetyczne. Analiza `analyze` jest obecnie dostępna tylko w demo; `--output` i `--format` także występują przed nazwą polecenia. Pozostałe komendy poniżej są planowane.
+Opisuje docelowy interfejs. **Działający podzbiór v0.1** i dokładną składnię opisuje [instrukcja demo](demo-guide.md). Dostępne są `capabilities`, `clients list`, `accounts list`, `sync`, `sync status`, `analyze`, `report campaigns`, `report show`, `audit`, `validate` i `schema export`. Bez `--demo` działa odczyt skonfigurowanych kont Meta (szczegóły w [instrukcji Meta](meta-setup.md)); `--demo` wybiera dane syntetyczne. Od wersji 0.3 `analyze` działa także dla Meta po jawnym przypisaniu celu. Dostępne są również `goals` i `recommendations`; dokładną składnię i nowe kontrakty opisuje [proces celów i decyzji](goals-and-recommendations.md). `--output` i `--format` także występują przed nazwą polecenia. Pozostałe komendy poniżej są planowane.
 
 ## Konwencje
 

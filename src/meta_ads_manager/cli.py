@@ -14,6 +14,7 @@ from pydantic import ValidationError
 from meta_ads_manager import __version__
 from meta_ads_manager.account_policy import account_change_policy
 from meta_ads_manager.analytics import weekly_review
+from meta_ads_manager.decision_models import DECISION_CONTRACTS
 from meta_ads_manager.errors import AppError
 from meta_ads_manager.live_cli import dispatch_live
 from meta_ads_manager.meta_connection import (
@@ -30,7 +31,12 @@ from meta_ads_manager.provider import DemoProvider
 from meta_ads_manager.reporting import account_audit, account_report
 from meta_ads_manager.storage import Store
 
-SUPPORTED_CONTRACTS = {**CONTRACTS, "pdf_document": PdfDocument, "pdf_notes": PdfNotes}
+SUPPORTED_CONTRACTS = {
+    **CONTRACTS,
+    **DECISION_CONTRACTS,
+    "pdf_document": PdfDocument,
+    "pdf_notes": PdfNotes,
+}
 
 
 class Parser(argparse.ArgumentParser):
@@ -76,6 +82,9 @@ def parser() -> Parser:
         command.add_argument("--since", type=iso_date)
         command.add_argument("--until", type=iso_date)
 
+    from meta_ads_manager.decision_cli import add_commands
+
+    add_commands(commands, scoped, period)
     commands.add_parser("capabilities", help="Dostępne funkcje i źródła danych dla agenta.")
     auth = commands.add_parser("auth", help="Konfiguracja i test połączenia z prawdziwym kontem.")
     auth_commands = auth.add_subparsers(dest="action", required=True)
@@ -111,6 +120,7 @@ def parser() -> Parser:
     analyze.add_argument("--recipe", choices=("weekly-review",), default="weekly-review")
     analyze.add_argument("--goal", required=True)
     analyze.add_argument("--snapshot", help="Odtwórz analizę na wskazanej wersji danych.")
+    period(analyze)
 
     report = commands.add_parser("report", help="Odczytaj zapisany raport.")
     report_commands = report.add_subparsers(dest="action", required=True)
@@ -173,6 +183,10 @@ def no_duplicate_keys(pairs):
 
 
 def dispatch(args) -> tuple[dict, list[dict]]:
+    if args.command in ("goals", "recommendations"):
+        from meta_ads_manager.decision_cli import dispatch_decisions
+
+        return dispatch_decisions(args)
     if args.command == "creatives":
         from meta_ads_manager.creative_review import collect
 
@@ -227,8 +241,12 @@ def dispatch(args) -> tuple[dict, list[dict]]:
             "operator_workspaces": True,
             "client_context_registry": True,
             "meta_reporting": True,
-            "meta_goal_mapping": False,
-            "meta_weekly_review": False,
+            "meta_goal_mapping": True,
+            "meta_weekly_review": True,
+            "goal_mapping_mode": "explicit_versioned_campaign_assignments",
+            "recommendation_registry": True,
+            "recommendation_evaluation": "saved_snapshot_before_after",
+            "scheduled_reviews": False,
             "meta_account_discovery": "locally_configured",
             "audit_coverage": "partial",
             "creative_pilot": True,
@@ -237,6 +255,15 @@ def dispatch(args) -> tuple[dict, list[dict]]:
             "pdf_dependency_extra": "pdf",
             "pdf_visual_review_required": True,
             "commands": [
+                "goals set",
+                "goals assign",
+                "goals list",
+                "goals show",
+                "recommendations add",
+                "recommendations event",
+                "recommendations list",
+                "recommendations show",
+                "recommendations evaluate",
                 "clients list",
                 "accounts list",
                 "sync",
@@ -344,6 +371,8 @@ def dispatch(args) -> tuple[dict, list[dict]]:
     if not db_path.is_file():
         raise AppError("INSUFFICIENT_DATA", "Brak lokalnych danych; najpierw wykonaj sync.", 6)
     if args.command == "analyze":
+        if args.since is not None or args.until is not None or args.last_days is not None:
+            raise AppError("VALIDATION_ERROR", "Analiza demo ma stały okres; nie podawaj dat.", 2)
         goal = provider.goal(args.client, args.account, args.goal)
         with Store(db_path) as store:
             snapshot_id, snapshot = store.snapshot(args.client, args.account, args.snapshot)

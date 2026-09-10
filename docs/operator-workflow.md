@@ -84,3 +84,7 @@ Kopię katalogu klienta przechowuj w zatwierdzonym firmowym miejscu z dostępem 
 Nie udostępniaj jednocześnie aktywnej bazy SQLite przez dysk synchronizowany między operatorami. Wyznacz właściciela danej sesji pracy; przekazuj zamknięte kopie i zatwierdzone dokumenty. Rejestr kontekstu blokuje równoległy lokalny zapis, ale nie jest systemem współpracy wielu komputerów.
 
 Aktualizacja kodu jest oddzielnym działaniem. Przed nią zatrzymaj pracę i wykonaj kopię klienta. Obecny instalator odmawia nadpisania istniejącej przestrzeni. Nową wersję najpierw sprawdzamy na pustej instalacji, a migrację danych i konfiguracji wykonujemy jawnie, z weryfikacją klienta i konta. Nie używamy `git pull` w przestrzeni klienta ani `--resume` jako aktualizacji kodu.
+
+## Cele i historia decyzji od wersji 0.3
+
+[Proces celów i rekomendacji](goals-and-recommendations.md) opisuje trwałe definicje wyników, przypisania kampanii, terminy oraz ocenę testów. Przed kolejną analizą agent odczytuje te ustalenia przez skill meta-ads-decisions. Raporty Meta dołączają obliczenia i historię z chwili tworzenia; eksport PDF uwzględnia oba elementy. Rejestr pozostaje w przestrzeni klienta i wymaga kopii razem z danymi.

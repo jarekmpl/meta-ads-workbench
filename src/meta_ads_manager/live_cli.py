@@ -2,7 +2,10 @@
 
 from pathlib import Path
 
+from meta_ads_manager.decision_cli import registry_path, review_goal
+from meta_ads_manager.decision_store import Decisions
 from meta_ads_manager.errors import AppError
+from meta_ads_manager.goal_reporting import enrich_audit, enrich_report
 from meta_ads_manager.meta_connection import load_connection
 from meta_ads_manager.meta_provider import (
     MetaProvider,
@@ -46,13 +49,6 @@ def dispatch_live(args) -> tuple[dict, list[dict]]:
     if not args.client or not args.account:
         raise AppError("VALIDATION_ERROR", "Wymagane są --client i --account.", 2)
     validate_scope(root, args.client, args.account)
-    if args.command == "analyze":
-        raise AppError(
-            "GOAL_REQUIRED",
-            "Analiza celu Meta wymaga mapowania konwersji. "
-            "Dostępne są report campaigns i częściowy audit.",
-            2,
-        )
     db_path = args.data_dir / "meta.sqlite3"
     if args.command == "sync" and args.action != "status":
         provider = MetaProvider(root, args.client, args.account)
@@ -88,11 +84,18 @@ def dispatch_live(args) -> tuple[dict, list[dict]]:
                 "since": str(snapshot.since),
                 "until": str(snapshot.until),
             }, []
+        if args.command == "analyze":
+            with Decisions(registry_path(args), args.client, args.account) as registry:
+                result = review_goal(args, snapshot_id, snapshot, registry)
+            store.save_report(result)
+            return result, []
         since, until = report_period(args, snapshot.spec.timezone)
         result = account_report(
             snapshot_id, snapshot, profile_from_snapshot(snapshot), since, until
         )
+        with Decisions(registry_path(args), args.client, args.account) as registry:
+            result = enrich_report(result, snapshot, since, until, registry)
         if args.command == "audit":
-            result = account_audit(result)
+            result = enrich_audit(account_audit(result))
         store.save_report(result)
         return result, []

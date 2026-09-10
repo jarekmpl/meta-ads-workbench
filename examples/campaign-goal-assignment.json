@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "client_id": "client-a",
+  "account_id": "act_123",
+  "kind": "campaign_goal_assignment",
+  "campaign_id": "101",
+  "goal_id": "leads-form",
+  "goal_revision": 1,
+  "effective_from": "2026-08-26",
+  "expected_revision": 0,
+  "confirmed_by": "Operator",
+  "confirmation_ref": "Przykładowa decyzja"
+}

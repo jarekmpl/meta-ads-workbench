@@ -30,14 +30,16 @@ Zastąp `SYNC_ID` identyfikatorem z wyniku pierwszej komendy. Do eksportu umieś
 
 Definicje wskaźników i zasady porównywalności są w [kompendium: metryki i metody](../../knowledge/meta-ads/metrics-and-methods.md). Korzystaj z nich przy interpretacji raportu; opis planowanej metody nie oznacza gotowej funkcji silnika. Szersze diagnozy i rekomendacje prowadź przez skill audytu oraz właściwe karty kompendium.
 
-- Sumę wydatków bierz z `summary`. Wyniki biznesowe są pogrupowane w `goal_groups`; nie obliczaj jednego CPA dla leadów i zakupów.
-- `measurement_status: unmapped` oznacza brak przypisania celu. Kampania nadal pozostaje w raporcie; nie przypisuj jej arbitralnie do e-commerce lub leadów.
+- Sumę wydatków bierz z `summary`. Dla Meta wyniki biznesowe znajdują się w `goal_measurements`, a status przypisania w `business_goal_status`. Pole `goal_groups` i stary `measurement_status` opisują format demo. Nie obliczaj jednego CPA dla leadów i zakupów.
+- `business_goal_status: unmapped` dla Meta oznacza brak przypisania celu. Kampania nadal pozostaje w raporcie; nie przypisuj jej arbitralnie do e-commerce lub leadów.
 - `INSUFFICIENT_DATA`: jeśli źródło ma wymagany okres, pobierz go i ponów raport na nowym snapshotcie. Jeśli źródło go nie ma, wskaż dostępne daty; nie udawaj pełnego wyniku.
 - Przy pytaniu o kilka kont wykonaj odczyty osobno. Pokaż błędy kont, których nie udało się odczytać, i wyniki pozostałych. Nie sumuj różnych walut.
 - Status kampanii jest stanem przy pobraniu, a nie dowodem sposobu emisji w całym analizowanym okresie.
 - Ten skill przedstawia wyniki. Rekomendacje szerszych zmian wymagają procedury [audytu](../meta-ads-audit/SKILL.md).
 
 ## Dane Meta
+
+Przed raportem odczytaj cele i historię przez [meta-ads-decisions](../meta-ads-decisions/SKILL.md). Brakujące decyzje uzupełniaj według jego procedury. `report campaigns` dołącza cele i historię automatycznie. Do porównania realizacji jednego celu użyj `analyze --goal ID` z odpowiednio szerokim snapshotem.
 
 `sync` pobiera strony listy kampanii i dzienne Insights oraz uzgadnia sumy emisji z kontem. `RECONCILIATION_FAILED`, `INCOMPLETE_DATA`, `RATE_LIMITED` i błędy autoryzacji oznaczają brak nowego kompletnego snapshotu. Nie używaj wtedy starego raportu jako aktualnego. Przy błędzie porównania można raz ponowić odczyt; jeśli nie pomoże, przedstaw ograniczenie.
 

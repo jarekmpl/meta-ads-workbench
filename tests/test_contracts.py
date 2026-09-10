@@ -5,7 +5,8 @@ import jsonschema
 import pytest
 from pydantic import ValidationError
 
-from meta_ads_manager.models import CONTRACTS, ClientProfile, DemoDataset, Fact, Snapshot
+from meta_ads_manager.cli import SUPPORTED_CONTRACTS as CONTRACTS
+from meta_ads_manager.models import ClientProfile, DemoDataset, Fact, Snapshot
 from meta_ads_manager.provider import DemoProvider
 
 ROOT = Path(__file__).resolve().parents[1]
