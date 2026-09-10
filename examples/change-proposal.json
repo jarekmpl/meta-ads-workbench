@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "kind": "change_proposal",
+  "client_id": "demo",
+  "account_id": "act_DEMO",
+  "goal_id": "commerce-pl",
+  "operations": [
+    {
+      "operation_id": "op_demo_budget",
+      "type": "set_budget",
+      "object_type": "campaign",
+      "object_id": "DEMO_CAMPAIGN",
+      "expected": {
+        "budget_level": "campaign",
+        "budget_period": "daily",
+        "amount": "100.00",
+        "currency": "PLN"
+      },
+      "desired": {
+        "budget_level": "campaign",
+        "budget_period": "daily",
+        "amount": "110.00",
+        "currency": "PLN"
+      }
+    }
+  ],
+  "rationale": "Wyłącznie ilustracja kontraktu zmiany budżetu. Nie jest rekomendacją ani upoważnieniem do wykonania.",
+  "evidence_refs": [],
+  "missing_requirements": [
+    "Rzeczywisty obiekt i aktualny snapshot",
+    "Analiza uzasadniająca zmianę i profil celu z uzgodnionymi progami",
+    "Polityka dopuszczająca zapis; profil demonstracyjny jest tylko do odczytu",
+    "Walidacja i upoważnienie do wygenerowanego planu"
+  ]
+}

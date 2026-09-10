@@ -1,0 +1,329 @@
+{
+  "$defs": {
+    "Account": {
+      "additionalProperties": false,
+      "properties": {
+        "account_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+          "title": "Account Id",
+          "type": "string"
+        },
+        "credential_ref": {
+          "pattern": "^(env:[A-Z][A-Z0-9_]*|local:[a-z0-9-]+)$",
+          "title": "Credential Ref",
+          "type": "string"
+        },
+        "currency": {
+          "pattern": "^[A-Z]{3}$",
+          "title": "Currency",
+          "type": "string"
+        },
+        "timezone": {
+          "title": "Timezone",
+          "type": "string"
+        }
+      },
+      "required": [
+        "account_id",
+        "credential_ref",
+        "currency",
+        "timezone"
+      ],
+      "title": "Account",
+      "type": "object"
+    },
+    "CommerceGoal": {
+      "additionalProperties": false,
+      "properties": {
+        "goal_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+          "title": "Goal Id",
+          "type": "string"
+        },
+        "type": {
+          "const": "ecommerce",
+          "title": "Type",
+          "type": "string"
+        },
+        "primary_outcome": {
+          "const": "purchase",
+          "title": "Primary Outcome",
+          "type": "string"
+        },
+        "target_metrics": {
+          "$ref": "#/$defs/CommerceTargets"
+        },
+        "commerce_source_ref": {
+          "anyOf": [
+            {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Commerce Source Ref"
+        }
+      },
+      "required": [
+        "goal_id",
+        "type",
+        "primary_outcome",
+        "target_metrics"
+      ],
+      "title": "CommerceGoal",
+      "type": "object"
+    },
+    "CommerceTargets": {
+      "additionalProperties": false,
+      "properties": {
+        "cpa": {
+          "anyOf": [
+            {
+              "decimal_places": 6,
+              "ge": 0,
+              "gt": 0,
+              "max_digits": 20,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Cpa"
+        },
+        "roas": {
+          "anyOf": [
+            {
+              "decimal_places": 6,
+              "ge": 0,
+              "gt": 0,
+              "max_digits": 20,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Roas"
+        }
+      },
+      "title": "CommerceTargets",
+      "type": "object"
+    },
+    "LeadGoal": {
+      "additionalProperties": false,
+      "properties": {
+        "goal_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+          "title": "Goal Id",
+          "type": "string"
+        },
+        "type": {
+          "const": "lead_generation",
+          "title": "Type",
+          "type": "string"
+        },
+        "primary_outcome": {
+          "const": "lead",
+          "title": "Primary Outcome",
+          "type": "string"
+        },
+        "target_metrics": {
+          "$ref": "#/$defs/LeadTargets"
+        },
+        "crm_source_ref": {
+          "anyOf": [
+            {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Crm Source Ref"
+        }
+      },
+      "required": [
+        "goal_id",
+        "type",
+        "primary_outcome",
+        "target_metrics"
+      ],
+      "title": "LeadGoal",
+      "type": "object"
+    },
+    "LeadTargets": {
+      "additionalProperties": false,
+      "properties": {
+        "cpl": {
+          "anyOf": [
+            {
+              "decimal_places": 6,
+              "ge": 0,
+              "gt": 0,
+              "max_digits": 20,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Cpl"
+        }
+      },
+      "title": "LeadTargets",
+      "type": "object"
+    },
+    "Policy": {
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+          "title": "Version",
+          "type": "string"
+        },
+        "mode": {
+          "const": "analyst",
+          "title": "Mode",
+          "type": "string"
+        },
+        "allowed_write_operations": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 0,
+          "title": "Allowed Write Operations",
+          "type": "array"
+        },
+        "automation_enabled": {
+          "const": false,
+          "title": "Automation Enabled",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "version",
+        "mode",
+        "allowed_write_operations",
+        "automation_enabled"
+      ],
+      "title": "Policy",
+      "type": "object"
+    },
+    "Project": {
+      "additionalProperties": false,
+      "properties": {
+        "project_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+          "title": "Project Id",
+          "type": "string"
+        },
+        "account_ids": {
+          "items": {
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Account Ids",
+          "type": "array"
+        },
+        "market": {
+          "pattern": "^[A-Z]{2}$",
+          "title": "Market",
+          "type": "string"
+        },
+        "goal_profiles": {
+          "items": {
+            "discriminator": {
+              "mapping": {
+                "ecommerce": "#/$defs/CommerceGoal",
+                "lead_generation": "#/$defs/LeadGoal"
+              },
+              "propertyName": "type"
+            },
+            "oneOf": [
+              {
+                "$ref": "#/$defs/LeadGoal"
+              },
+              {
+                "$ref": "#/$defs/CommerceGoal"
+              }
+            ]
+          },
+          "minItems": 1,
+          "title": "Goal Profiles",
+          "type": "array"
+        }
+      },
+      "required": [
+        "project_id",
+        "account_ids",
+        "market",
+        "goal_profiles"
+      ],
+      "title": "Project",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "kind": {
+      "const": "client_profile",
+      "title": "Kind",
+      "type": "string"
+    },
+    "client_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+      "title": "Client Id",
+      "type": "string"
+    },
+    "name": {
+      "maxLength": 2000,
+      "minLength": 1,
+      "title": "Name",
+      "type": "string"
+    },
+    "accounts": {
+      "items": {
+        "$ref": "#/$defs/Account"
+      },
+      "minItems": 1,
+      "title": "Accounts",
+      "type": "array"
+    },
+    "projects": {
+      "items": {
+        "$ref": "#/$defs/Project"
+      },
+      "title": "Projects",
+      "type": "array"
+    },
+    "policy": {
+      "$ref": "#/$defs/Policy"
+    }
+  },
+  "required": [
+    "schema_version",
+    "kind",
+    "client_id",
+    "name",
+    "accounts",
+    "projects",
+    "policy"
+  ],
+  "title": "ClientProfile",
+  "type": "object"
+}

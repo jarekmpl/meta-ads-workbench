@@ -1,0 +1,2323 @@
+{
+  "schema_version": "1.0",
+  "kind": "demo_dataset",
+  "profiles": [
+    {
+      "schema_version": "1.0",
+      "kind": "client_profile",
+      "client_id": "demo-leads",
+      "name": "DEMO — usługi",
+      "accounts": [
+        {
+          "account_id": "act_DEMO_LEADS",
+          "credential_ref": "env:DEMO_UNUSED_TOKEN",
+          "currency": "PLN",
+          "timezone": "Europe/Warsaw"
+        }
+      ],
+      "projects": [
+        {
+          "project_id": "demo-leads-pl",
+          "account_ids": [
+            "act_DEMO_LEADS"
+          ],
+          "market": "PL",
+          "goal_profiles": [
+            {
+              "goal_id": "leads-pl",
+              "type": "lead_generation",
+              "primary_outcome": "lead",
+              "target_metrics": {
+                "cpl": "30.00"
+              },
+              "crm_source_ref": null
+            }
+          ]
+        }
+      ],
+      "policy": {
+        "version": "demo-1",
+        "mode": "analyst",
+        "allowed_write_operations": [],
+        "automation_enabled": false
+      }
+    },
+    {
+      "schema_version": "1.0",
+      "kind": "client_profile",
+      "client_id": "demo-shop",
+      "name": "DEMO — sklep",
+      "accounts": [
+        {
+          "account_id": "act_DEMO_SHOP",
+          "credential_ref": "env:DEMO_UNUSED_TOKEN",
+          "currency": "PLN",
+          "timezone": "Europe/Warsaw"
+        }
+      ],
+      "projects": [
+        {
+          "project_id": "demo-shop-pl",
+          "account_ids": [
+            "act_DEMO_SHOP"
+          ],
+          "market": "PL",
+          "goal_profiles": [
+            {
+              "goal_id": "commerce-pl",
+              "type": "ecommerce",
+              "primary_outcome": "purchase",
+              "target_metrics": {
+                "cpa": "50.00",
+                "roas": "3.00"
+              },
+              "commerce_source_ref": null
+            }
+          ]
+        }
+      ],
+      "policy": {
+        "version": "demo-1",
+        "mode": "analyst",
+        "allowed_write_operations": [],
+        "automation_enabled": false
+      }
+    }
+  ],
+  "snapshots": [
+    {
+      "schema_version": "1.0",
+      "kind": "snapshot",
+      "client_id": "demo-leads",
+      "account_id": "act_DEMO_LEADS",
+      "source": "demo",
+      "since": "2026-07-11",
+      "until": "2026-09-08",
+      "fetched_at": "2026-09-09T08:00:00Z",
+      "complete": true,
+      "spec": {
+        "level": "campaign",
+        "currency": "PLN",
+        "timezone": "Europe/Warsaw",
+        "click_type": "link_click",
+        "attribution": "demo_7d_click_1d_view",
+        "action_report_time": "impression",
+        "api_version": "demo-no-api",
+        "normalization_version": "1"
+      },
+      "campaigns": [
+        {
+          "campaign_id": "demo-leads-campaign-1",
+          "goal_id": "leads-pl",
+          "name": "DEMO — kampania 1",
+          "status": "PAUSED"
+        },
+        {
+          "campaign_id": "demo-leads-campaign-2",
+          "goal_id": "leads-pl",
+          "name": "DEMO — kampania 2",
+          "status": "PAUSED"
+        }
+      ],
+      "facts": [
+        {
+          "campaign_id": "demo-leads-campaign-1",
+          "day": "2026-07-11",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-2",
+          "day": "2026-07-11",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-1",
+          "day": "2026-07-12",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-2",
+          "day": "2026-07-12",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-1",
+          "day": "2026-07-13",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-2",
+          "day": "2026-07-13",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-1",
+          "day": "2026-07-14",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-2",
+          "day": "2026-07-14",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-1",
+          "day": "2026-07-15",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-2",
+          "day": "2026-07-15",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-1",
+          "day": "2026-07-16",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-2",
+          "day": "2026-07-16",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-1",
+          "day": "2026-07-17",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-2",
+          "day": "2026-07-17",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-1",
+          "day": "2026-07-18",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-2",
+          "day": "2026-07-18",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-1",
+          "day": "2026-07-19",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-2",
+          "day": "2026-07-19",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-1",
+          "day": "2026-07-20",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-2",
+          "day": "2026-07-20",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-1",
+          "day": "2026-07-21",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-2",
+          "day": "2026-07-21",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-1",
+          "day": "2026-07-22",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-2",
+          "day": "2026-07-22",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-1",
+          "day": "2026-07-23",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-2",
+          "day": "2026-07-23",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-1",
+          "day": "2026-07-24",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-2",
+          "day": "2026-07-24",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-1",
+          "day": "2026-07-25",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-2",
+          "day": "2026-07-25",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-1",
+          "day": "2026-07-26",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-2",
+          "day": "2026-07-26",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-1",
+          "day": "2026-07-27",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-2",
+          "day": "2026-07-27",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-1",
+          "day": "2026-07-28",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-2",
+          "day": "2026-07-28",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-1",
+          "day": "2026-07-29",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-2",
+          "day": "2026-07-29",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-1",
+          "day": "2026-07-30",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-2",
+          "day": "2026-07-30",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-1",
+          "day": "2026-07-31",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-2",
+          "day": "2026-07-31",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-1",
+          "day": "2026-08-01",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-2",
+          "day": "2026-08-01",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-1",
+          "day": "2026-08-02",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-2",
+          "day": "2026-08-02",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-1",
+          "day": "2026-08-03",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-2",
+          "day": "2026-08-03",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-1",
+          "day": "2026-08-04",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-2",
+          "day": "2026-08-04",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-1",
+          "day": "2026-08-05",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-2",
+          "day": "2026-08-05",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-1",
+          "day": "2026-08-06",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-2",
+          "day": "2026-08-06",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-1",
+          "day": "2026-08-07",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-2",
+          "day": "2026-08-07",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-1",
+          "day": "2026-08-08",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-2",
+          "day": "2026-08-08",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-1",
+          "day": "2026-08-09",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-2",
+          "day": "2026-08-09",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-1",
+          "day": "2026-08-10",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-2",
+          "day": "2026-08-10",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-1",
+          "day": "2026-08-11",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-2",
+          "day": "2026-08-11",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-1",
+          "day": "2026-08-12",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-2",
+          "day": "2026-08-12",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-1",
+          "day": "2026-08-13",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-2",
+          "day": "2026-08-13",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-1",
+          "day": "2026-08-14",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-2",
+          "day": "2026-08-14",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-1",
+          "day": "2026-08-15",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-2",
+          "day": "2026-08-15",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-1",
+          "day": "2026-08-16",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-2",
+          "day": "2026-08-16",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-1",
+          "day": "2026-08-17",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-2",
+          "day": "2026-08-17",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-1",
+          "day": "2026-08-18",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-2",
+          "day": "2026-08-18",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-1",
+          "day": "2026-08-19",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-2",
+          "day": "2026-08-19",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-1",
+          "day": "2026-08-20",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-2",
+          "day": "2026-08-20",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-1",
+          "day": "2026-08-21",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-2",
+          "day": "2026-08-21",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-1",
+          "day": "2026-08-22",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-2",
+          "day": "2026-08-22",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-1",
+          "day": "2026-08-23",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-2",
+          "day": "2026-08-23",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-1",
+          "day": "2026-08-24",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-2",
+          "day": "2026-08-24",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-1",
+          "day": "2026-08-25",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-2",
+          "day": "2026-08-25",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-1",
+          "day": "2026-08-26",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-2",
+          "day": "2026-08-26",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-1",
+          "day": "2026-08-27",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-2",
+          "day": "2026-08-27",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-1",
+          "day": "2026-08-28",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-2",
+          "day": "2026-08-28",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-1",
+          "day": "2026-08-29",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-2",
+          "day": "2026-08-29",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-1",
+          "day": "2026-08-30",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-2",
+          "day": "2026-08-30",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-1",
+          "day": "2026-08-31",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-2",
+          "day": "2026-08-31",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-1",
+          "day": "2026-09-01",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-2",
+          "day": "2026-09-01",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-1",
+          "day": "2026-09-02",
+          "spend": "120.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "5",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-2",
+          "day": "2026-09-02",
+          "spend": "80.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-1",
+          "day": "2026-09-03",
+          "spend": "120.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "5",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-2",
+          "day": "2026-09-03",
+          "spend": "80.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-1",
+          "day": "2026-09-04",
+          "spend": "120.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "5",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-2",
+          "day": "2026-09-04",
+          "spend": "80.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-1",
+          "day": "2026-09-05",
+          "spend": "120.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "5",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-2",
+          "day": "2026-09-05",
+          "spend": "80.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-1",
+          "day": "2026-09-06",
+          "spend": "120.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "5",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-2",
+          "day": "2026-09-06",
+          "spend": "80.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-1",
+          "day": "2026-09-07",
+          "spend": "120.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "5",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-2",
+          "day": "2026-09-07",
+          "spend": "80.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "4",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-1",
+          "day": "2026-09-08",
+          "spend": "120.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "5",
+          "conversion_value": null
+        },
+        {
+          "campaign_id": "demo-leads-campaign-2",
+          "day": "2026-09-08",
+          "spend": "80.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "4",
+          "conversion_value": null
+        }
+      ]
+    },
+    {
+      "schema_version": "1.0",
+      "kind": "snapshot",
+      "client_id": "demo-shop",
+      "account_id": "act_DEMO_SHOP",
+      "source": "demo",
+      "since": "2026-07-11",
+      "until": "2026-09-08",
+      "fetched_at": "2026-09-09T08:00:00Z",
+      "complete": true,
+      "spec": {
+        "level": "campaign",
+        "currency": "PLN",
+        "timezone": "Europe/Warsaw",
+        "click_type": "link_click",
+        "attribution": "demo_7d_click_1d_view",
+        "action_report_time": "impression",
+        "api_version": "demo-no-api",
+        "normalization_version": "1"
+      },
+      "campaigns": [
+        {
+          "campaign_id": "demo-shop-campaign-1",
+          "goal_id": "commerce-pl",
+          "name": "DEMO — kampania 1",
+          "status": "PAUSED"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-2",
+          "goal_id": "commerce-pl",
+          "name": "DEMO — kampania 2",
+          "status": "PAUSED"
+        }
+      ],
+      "facts": [
+        {
+          "campaign_id": "demo-shop-campaign-1",
+          "day": "2026-07-11",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-2",
+          "day": "2026-07-11",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-1",
+          "day": "2026-07-12",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-2",
+          "day": "2026-07-12",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-1",
+          "day": "2026-07-13",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-2",
+          "day": "2026-07-13",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-1",
+          "day": "2026-07-14",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-2",
+          "day": "2026-07-14",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-1",
+          "day": "2026-07-15",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-2",
+          "day": "2026-07-15",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-1",
+          "day": "2026-07-16",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-2",
+          "day": "2026-07-16",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-1",
+          "day": "2026-07-17",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-2",
+          "day": "2026-07-17",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-1",
+          "day": "2026-07-18",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-2",
+          "day": "2026-07-18",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-1",
+          "day": "2026-07-19",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-2",
+          "day": "2026-07-19",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-1",
+          "day": "2026-07-20",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-2",
+          "day": "2026-07-20",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-1",
+          "day": "2026-07-21",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-2",
+          "day": "2026-07-21",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-1",
+          "day": "2026-07-22",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-2",
+          "day": "2026-07-22",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-1",
+          "day": "2026-07-23",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-2",
+          "day": "2026-07-23",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-1",
+          "day": "2026-07-24",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-2",
+          "day": "2026-07-24",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-1",
+          "day": "2026-07-25",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-2",
+          "day": "2026-07-25",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-1",
+          "day": "2026-07-26",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-2",
+          "day": "2026-07-26",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-1",
+          "day": "2026-07-27",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-2",
+          "day": "2026-07-27",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-1",
+          "day": "2026-07-28",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-2",
+          "day": "2026-07-28",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-1",
+          "day": "2026-07-29",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-2",
+          "day": "2026-07-29",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-1",
+          "day": "2026-07-30",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-2",
+          "day": "2026-07-30",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-1",
+          "day": "2026-07-31",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-2",
+          "day": "2026-07-31",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-1",
+          "day": "2026-08-01",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-2",
+          "day": "2026-08-01",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-1",
+          "day": "2026-08-02",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-2",
+          "day": "2026-08-02",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-1",
+          "day": "2026-08-03",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-2",
+          "day": "2026-08-03",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-1",
+          "day": "2026-08-04",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-2",
+          "day": "2026-08-04",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-1",
+          "day": "2026-08-05",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-2",
+          "day": "2026-08-05",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-1",
+          "day": "2026-08-06",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-2",
+          "day": "2026-08-06",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-1",
+          "day": "2026-08-07",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-2",
+          "day": "2026-08-07",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-1",
+          "day": "2026-08-08",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-2",
+          "day": "2026-08-08",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-1",
+          "day": "2026-08-09",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-2",
+          "day": "2026-08-09",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-1",
+          "day": "2026-08-10",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-2",
+          "day": "2026-08-10",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-1",
+          "day": "2026-08-11",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-2",
+          "day": "2026-08-11",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-1",
+          "day": "2026-08-12",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-2",
+          "day": "2026-08-12",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-1",
+          "day": "2026-08-13",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-2",
+          "day": "2026-08-13",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-1",
+          "day": "2026-08-14",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-2",
+          "day": "2026-08-14",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-1",
+          "day": "2026-08-15",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-2",
+          "day": "2026-08-15",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-1",
+          "day": "2026-08-16",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-2",
+          "day": "2026-08-16",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-1",
+          "day": "2026-08-17",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-2",
+          "day": "2026-08-17",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-1",
+          "day": "2026-08-18",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-2",
+          "day": "2026-08-18",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-1",
+          "day": "2026-08-19",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-2",
+          "day": "2026-08-19",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-1",
+          "day": "2026-08-20",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-2",
+          "day": "2026-08-20",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-1",
+          "day": "2026-08-21",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-2",
+          "day": "2026-08-21",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-1",
+          "day": "2026-08-22",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-2",
+          "day": "2026-08-22",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-1",
+          "day": "2026-08-23",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-2",
+          "day": "2026-08-23",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-1",
+          "day": "2026-08-24",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-2",
+          "day": "2026-08-24",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-1",
+          "day": "2026-08-25",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-2",
+          "day": "2026-08-25",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-1",
+          "day": "2026-08-26",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-2",
+          "day": "2026-08-26",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-1",
+          "day": "2026-08-27",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-2",
+          "day": "2026-08-27",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-1",
+          "day": "2026-08-28",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-2",
+          "day": "2026-08-28",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-1",
+          "day": "2026-08-29",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-2",
+          "day": "2026-08-29",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-1",
+          "day": "2026-08-30",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-2",
+          "day": "2026-08-30",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-1",
+          "day": "2026-08-31",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-2",
+          "day": "2026-08-31",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-1",
+          "day": "2026-09-01",
+          "spend": "100.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-2",
+          "day": "2026-09-01",
+          "spend": "60.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-1",
+          "day": "2026-09-02",
+          "spend": "120.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "3",
+          "conversion_value": "540.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-2",
+          "day": "2026-09-02",
+          "spend": "80.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-1",
+          "day": "2026-09-03",
+          "spend": "120.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "3",
+          "conversion_value": "540.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-2",
+          "day": "2026-09-03",
+          "spend": "80.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-1",
+          "day": "2026-09-04",
+          "spend": "120.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "3",
+          "conversion_value": "540.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-2",
+          "day": "2026-09-04",
+          "spend": "80.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-1",
+          "day": "2026-09-05",
+          "spend": "120.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "3",
+          "conversion_value": "540.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-2",
+          "day": "2026-09-05",
+          "spend": "80.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-1",
+          "day": "2026-09-06",
+          "spend": "120.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "3",
+          "conversion_value": "540.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-2",
+          "day": "2026-09-06",
+          "spend": "80.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-1",
+          "day": "2026-09-07",
+          "spend": "120.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "3",
+          "conversion_value": "540.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-2",
+          "day": "2026-09-07",
+          "spend": "80.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-1",
+          "day": "2026-09-08",
+          "spend": "120.00",
+          "impressions": 10000,
+          "link_clicks": 120,
+          "conversions": "3",
+          "conversion_value": "540.00"
+        },
+        {
+          "campaign_id": "demo-shop-campaign-2",
+          "day": "2026-09-08",
+          "spend": "80.00",
+          "impressions": 4000,
+          "link_clicks": 70,
+          "conversions": "2",
+          "conversion_value": "360.00"
+        }
+      ]
+    }
+  ]
+}

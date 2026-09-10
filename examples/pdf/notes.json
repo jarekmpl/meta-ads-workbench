@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "kind": "pdf_notes",
+  "client_id": "example-client",
+  "account_id": "act_EXAMPLE",
+  "report_id": "report_EXAMPLE",
+  "snapshot_id": "sync_EXAMPLE",
+  "knowledge_version": "UZUPELNIJ",
+  "rule_ids": [],
+  "sections": [
+    {
+      "title": "Wnioski analityka",
+      "paragraphs": [
+        "Uzupełnij obserwację na podstawie powiązanego raportu. Oddziel hipotezę od potwierdzonego wyniku."
+      ]
+    }
+  ]
+}

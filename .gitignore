@@ -1,0 +1,44 @@
+# Sekrety i lokalne konfiguracje
+.env
+.env.*
+!.env.example
+secrets/
+config/local/
+workspace.json
+context/
+projects/
+clients/
+.bootstrap/
+.claude/
+.codex/
+.agents/
+.agent/
+docs/reviews/
+knowledge/meta-ads/reviews/
+**/language-review.json
+
+# Dane klientów i artefakty wykonania
+data/
+reports/
+artifacts/
+output/
+tmp/
+*.sqlite
+*.sqlite3
+*.sqlite-wal
+*.sqlite-shm
+*.sqlite3-wal
+*.sqlite3-shm
+
+# Python i narzędzia
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+dist/
+build/
+.DS_Store

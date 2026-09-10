@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "kind": "campaign_brief",
+  "client_id": "demo",
+  "account_id": "act_DEMO",
+  "project_id": "demo-pl",
+  "goal_id": "commerce-pl",
+  "name": "DEMO — sprzedaż w witrynie",
+  "conversion_location": "website",
+  "market": "PL",
+  "language": "pl",
+  "budget": {
+    "level": "campaign",
+    "period": "daily",
+    "amount": "150.00",
+    "currency": "PLN"
+  },
+  "initial_status": "PAUSED",
+  "offer": "Przykładowa oferta sklepu — brief demonstracyjny",
+  "asset_refs": {
+    "page_id": null,
+    "instagram_actor_id": null,
+    "event_source_id": null,
+    "optimization_event": "purchase",
+    "landing_page_url": null,
+    "creative_asset_ids": []
+  },
+  "special_ad_categories": null,
+  "missing_requirements": [
+    "Potwierdzenie zasobów strony i tożsamości reklamy",
+    "Źródło zdarzeń z uprawnieniami i mapowanie zdarzenia zakupu na API",
+    "Adres strony, materiały, treść reklamy i pełne parametry zestawu reklam",
+    "Ustalenie, czy obowiązuje szczególna kategoria reklam"
+  ]
+}

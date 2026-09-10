@@ -1,0 +1,307 @@
+{
+  "$defs": {
+    "PdfMetric": {
+      "additionalProperties": false,
+      "properties": {
+        "label": {
+          "maxLength": 300,
+          "minLength": 1,
+          "title": "Label",
+          "type": "string"
+        },
+        "value": {
+          "maxLength": 300,
+          "minLength": 1,
+          "title": "Value",
+          "type": "string"
+        },
+        "detail": {
+          "anyOf": [
+            {
+              "maxLength": 300,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Detail"
+        }
+      },
+      "required": [
+        "label",
+        "value"
+      ],
+      "title": "PdfMetric",
+      "type": "object"
+    },
+    "PdfSection": {
+      "additionalProperties": false,
+      "properties": {
+        "title": {
+          "maxLength": 300,
+          "minLength": 1,
+          "title": "Title",
+          "type": "string"
+        },
+        "paragraphs": {
+          "items": {
+            "maxLength": 20000,
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Paragraphs",
+          "type": "array"
+        },
+        "bullets": {
+          "items": {
+            "maxLength": 20000,
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Bullets",
+          "type": "array"
+        },
+        "table": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PdfTable"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "new_page": {
+          "default": false,
+          "title": "New Page",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "title"
+      ],
+      "title": "PdfSection",
+      "type": "object"
+    },
+    "PdfTable": {
+      "additionalProperties": false,
+      "properties": {
+        "columns": {
+          "items": {
+            "maxLength": 300,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 6,
+          "minItems": 1,
+          "title": "Columns",
+          "type": "array"
+        },
+        "rows": {
+          "items": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "maxItems": 10000,
+          "title": "Rows",
+          "type": "array"
+        },
+        "widths": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "number"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Widths"
+        },
+        "numeric_columns": {
+          "items": {
+            "type": "integer"
+          },
+          "title": "Numeric Columns",
+          "type": "array"
+        }
+      },
+      "required": [
+        "columns",
+        "rows"
+      ],
+      "title": "PdfTable",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "kind": {
+      "const": "pdf_document",
+      "default": "pdf_document",
+      "title": "Kind",
+      "type": "string"
+    },
+    "client_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+      "title": "Client Id",
+      "type": "string"
+    },
+    "account_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+      "title": "Account Id",
+      "type": "string"
+    },
+    "title": {
+      "maxLength": 300,
+      "minLength": 1,
+      "title": "Title",
+      "type": "string"
+    },
+    "subtitle": {
+      "anyOf": [
+        {
+          "maxLength": 300,
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Subtitle"
+    },
+    "source": {
+      "enum": [
+        "meta",
+        "demo",
+        "manual"
+      ],
+      "title": "Source",
+      "type": "string"
+    },
+    "report_date": {
+      "format": "date",
+      "title": "Report Date",
+      "type": "string"
+    },
+    "period_since": {
+      "format": "date",
+      "title": "Period Since",
+      "type": "string"
+    },
+    "period_until": {
+      "format": "date",
+      "title": "Period Until",
+      "type": "string"
+    },
+    "currency": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Currency"
+    },
+    "timezone": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Timezone"
+    },
+    "coverage": {
+      "enum": [
+        "partial",
+        "report",
+        "custom"
+      ],
+      "title": "Coverage",
+      "type": "string"
+    },
+    "summary": {
+      "items": {
+        "maxLength": 20000,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Summary",
+      "type": "array"
+    },
+    "metrics": {
+      "items": {
+        "$ref": "#/$defs/PdfMetric"
+      },
+      "maxItems": 12,
+      "title": "Metrics",
+      "type": "array"
+    },
+    "sections": {
+      "items": {
+        "$ref": "#/$defs/PdfSection"
+      },
+      "maxItems": 100,
+      "title": "Sections",
+      "type": "array"
+    },
+    "limitations": {
+      "items": {
+        "maxLength": 20000,
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Limitations",
+      "type": "array"
+    },
+    "evidence": {
+      "items": {
+        "maxLength": 20000,
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Evidence",
+      "type": "array"
+    }
+  },
+  "required": [
+    "client_id",
+    "account_id",
+    "title",
+    "source",
+    "report_date",
+    "period_since",
+    "period_until",
+    "coverage",
+    "limitations",
+    "evidence"
+  ],
+  "title": "PdfDocument",
+  "type": "object"
+}

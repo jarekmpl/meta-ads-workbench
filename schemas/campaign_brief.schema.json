@@ -1,0 +1,264 @@
+{
+  "$defs": {
+    "Assets": {
+      "additionalProperties": false,
+      "properties": {
+        "page_id": {
+          "anyOf": [
+            {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Page Id"
+        },
+        "instagram_actor_id": {
+          "anyOf": [
+            {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Instagram Actor Id"
+        },
+        "lead_form_id": {
+          "anyOf": [
+            {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Lead Form Id"
+        },
+        "event_source_id": {
+          "anyOf": [
+            {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Event Source Id"
+        },
+        "optimization_event": {
+          "anyOf": [
+            {
+              "enum": [
+                "purchase",
+                "lead"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Optimization Event"
+        },
+        "landing_page_url": {
+          "anyOf": [
+            {
+              "pattern": "^https://[^\\s]+$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Landing Page Url"
+        },
+        "creative_asset_ids": {
+          "items": {
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+            "type": "string"
+          },
+          "title": "Creative Asset Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "creative_asset_ids"
+      ],
+      "title": "Assets",
+      "type": "object"
+    },
+    "Budget": {
+      "additionalProperties": false,
+      "properties": {
+        "level": {
+          "enum": [
+            "campaign",
+            "adset"
+          ],
+          "title": "Level",
+          "type": "string"
+        },
+        "period": {
+          "enum": [
+            "daily",
+            "lifetime"
+          ],
+          "title": "Period",
+          "type": "string"
+        },
+        "amount": {
+          "decimal_places": 6,
+          "ge": 0,
+          "gt": 0,
+          "max_digits": 20,
+          "title": "Amount",
+          "type": "string"
+        },
+        "currency": {
+          "pattern": "^[A-Z]{3}$",
+          "title": "Currency",
+          "type": "string"
+        }
+      },
+      "required": [
+        "level",
+        "period",
+        "amount",
+        "currency"
+      ],
+      "title": "Budget",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "kind": {
+      "const": "campaign_brief",
+      "title": "Kind",
+      "type": "string"
+    },
+    "client_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+      "title": "Client Id",
+      "type": "string"
+    },
+    "account_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+      "title": "Account Id",
+      "type": "string"
+    },
+    "project_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+      "title": "Project Id",
+      "type": "string"
+    },
+    "goal_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+      "title": "Goal Id",
+      "type": "string"
+    },
+    "name": {
+      "maxLength": 2000,
+      "minLength": 1,
+      "title": "Name",
+      "type": "string"
+    },
+    "conversion_location": {
+      "enum": [
+        "meta_instant_form",
+        "website"
+      ],
+      "title": "Conversion Location",
+      "type": "string"
+    },
+    "market": {
+      "pattern": "^[A-Z]{2}$",
+      "title": "Market",
+      "type": "string"
+    },
+    "language": {
+      "pattern": "^[a-z]{2}$",
+      "title": "Language",
+      "type": "string"
+    },
+    "budget": {
+      "$ref": "#/$defs/Budget"
+    },
+    "initial_status": {
+      "const": "PAUSED",
+      "title": "Initial Status",
+      "type": "string"
+    },
+    "offer": {
+      "maxLength": 2000,
+      "minLength": 1,
+      "title": "Offer",
+      "type": "string"
+    },
+    "asset_refs": {
+      "$ref": "#/$defs/Assets"
+    },
+    "special_ad_categories": {
+      "anyOf": [
+        {
+          "items": {
+            "maxLength": 2000,
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Special Ad Categories"
+    },
+    "missing_requirements": {
+      "items": {
+        "maxLength": 2000,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Missing Requirements",
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema_version",
+    "kind",
+    "client_id",
+    "account_id",
+    "project_id",
+    "goal_id",
+    "name",
+    "conversion_location",
+    "market",
+    "language",
+    "budget",
+    "initial_status",
+    "offer",
+    "asset_refs",
+    "special_ad_categories",
+    "missing_requirements"
+  ],
+  "title": "CampaignBrief",
+  "type": "object"
+}

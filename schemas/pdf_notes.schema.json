@@ -1,0 +1,185 @@
+{
+  "$defs": {
+    "PdfSection": {
+      "additionalProperties": false,
+      "properties": {
+        "title": {
+          "maxLength": 300,
+          "minLength": 1,
+          "title": "Title",
+          "type": "string"
+        },
+        "paragraphs": {
+          "items": {
+            "maxLength": 20000,
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Paragraphs",
+          "type": "array"
+        },
+        "bullets": {
+          "items": {
+            "maxLength": 20000,
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Bullets",
+          "type": "array"
+        },
+        "table": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PdfTable"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "new_page": {
+          "default": false,
+          "title": "New Page",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "title"
+      ],
+      "title": "PdfSection",
+      "type": "object"
+    },
+    "PdfTable": {
+      "additionalProperties": false,
+      "properties": {
+        "columns": {
+          "items": {
+            "maxLength": 300,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 6,
+          "minItems": 1,
+          "title": "Columns",
+          "type": "array"
+        },
+        "rows": {
+          "items": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "maxItems": 10000,
+          "title": "Rows",
+          "type": "array"
+        },
+        "widths": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "number"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Widths"
+        },
+        "numeric_columns": {
+          "items": {
+            "type": "integer"
+          },
+          "title": "Numeric Columns",
+          "type": "array"
+        }
+      },
+      "required": [
+        "columns",
+        "rows"
+      ],
+      "title": "PdfTable",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "kind": {
+      "const": "pdf_notes",
+      "default": "pdf_notes",
+      "title": "Kind",
+      "type": "string"
+    },
+    "client_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+      "title": "Client Id",
+      "type": "string"
+    },
+    "account_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+      "title": "Account Id",
+      "type": "string"
+    },
+    "report_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+      "title": "Report Id",
+      "type": "string"
+    },
+    "snapshot_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+      "title": "Snapshot Id",
+      "type": "string"
+    },
+    "knowledge_version": {
+      "anyOf": [
+        {
+          "maxLength": 300,
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Knowledge Version"
+    },
+    "rule_ids": {
+      "items": {
+        "maxLength": 300,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Rule Ids",
+      "type": "array"
+    },
+    "sections": {
+      "items": {
+        "$ref": "#/$defs/PdfSection"
+      },
+      "maxItems": 30,
+      "minItems": 1,
+      "title": "Sections",
+      "type": "array"
+    }
+  },
+  "required": [
+    "client_id",
+    "account_id",
+    "report_id",
+    "snapshot_id",
+    "sections"
+  ],
+  "title": "PdfNotes",
+  "type": "object"
+}

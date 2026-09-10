@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0",
+  "kind": "pdf_document",
+  "client_id": "example-client",
+  "account_id": "act_EXAMPLE",
+  "title": "Analiza jakości leadów",
+  "subtitle": "Przykład układu dokumentu",
+  "source": "manual",
+  "report_date": "2026-09-09",
+  "period_since": "2026-08-01",
+  "period_until": "2026-08-31",
+  "currency": "PLN",
+  "timezone": "Europe/Warsaw",
+  "coverage": "custom",
+  "summary": [
+    "Przykład struktury dokumentu. Nie zawiera wyników rzeczywistego klienta."
+  ],
+  "metrics": [
+    {
+      "label": "Status danych",
+      "value": "Do uzupełnienia"
+    }
+  ],
+  "sections": [
+    {
+      "title": "Pytanie analityczne",
+      "paragraphs": [
+        "Czy koszt pozyskania leada odpowiada jego jakości i wartości biznesowej?"
+      ]
+    },
+    {
+      "title": "Dane potrzebne do analizy",
+      "table": {
+        "columns": [
+          "Źródło",
+          "Zakres",
+          "Status"
+        ],
+        "rows": [
+          [
+            "Meta Ads",
+            "Wydatki i przypisane zdarzenia",
+            "Do pozyskania"
+          ],
+          [
+            "CRM",
+            "Kwalifikacja i sprzedaż",
+            "Do pozyskania"
+          ]
+        ],
+        "widths": [
+          1,
+          2,
+          1
+        ]
+      }
+    },
+    {
+      "title": "Dalsze kroki",
+      "bullets": [
+        "Uzgodnić definicję leada kwalifikowanego.",
+        "Połączyć wyniki kampanii z danymi CRM i opisać zakres dopasowania."
+      ]
+    }
+  ],
+  "limitations": [
+    "To szablon treści; bez danych nie można ocenić kosztu ani jakości leadów."
+  ],
+  "evidence": [
+    "Przykład przygotowany wyłącznie do demonstracji formatu pdf_document."
+  ]
+}

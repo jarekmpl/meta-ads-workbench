@@ -1,0 +1,162 @@
+{
+  "$defs": {
+    "BudgetOperation": {
+      "additionalProperties": false,
+      "properties": {
+        "operation_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+          "title": "Operation Id",
+          "type": "string"
+        },
+        "type": {
+          "const": "set_budget",
+          "title": "Type",
+          "type": "string"
+        },
+        "object_type": {
+          "enum": [
+            "campaign",
+            "adset"
+          ],
+          "title": "Object Type",
+          "type": "string"
+        },
+        "object_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+          "title": "Object Id",
+          "type": "string"
+        },
+        "expected": {
+          "$ref": "#/$defs/BudgetState"
+        },
+        "desired": {
+          "$ref": "#/$defs/BudgetState"
+        }
+      },
+      "required": [
+        "operation_id",
+        "type",
+        "object_type",
+        "object_id",
+        "expected",
+        "desired"
+      ],
+      "title": "BudgetOperation",
+      "type": "object"
+    },
+    "BudgetState": {
+      "additionalProperties": false,
+      "properties": {
+        "budget_level": {
+          "enum": [
+            "campaign",
+            "adset"
+          ],
+          "title": "Budget Level",
+          "type": "string"
+        },
+        "budget_period": {
+          "enum": [
+            "daily",
+            "lifetime"
+          ],
+          "title": "Budget Period",
+          "type": "string"
+        },
+        "amount": {
+          "decimal_places": 6,
+          "ge": 0,
+          "gt": 0,
+          "max_digits": 20,
+          "title": "Amount",
+          "type": "string"
+        },
+        "currency": {
+          "pattern": "^[A-Z]{3}$",
+          "title": "Currency",
+          "type": "string"
+        }
+      },
+      "required": [
+        "budget_level",
+        "budget_period",
+        "amount",
+        "currency"
+      ],
+      "title": "BudgetState",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "kind": {
+      "const": "change_proposal",
+      "title": "Kind",
+      "type": "string"
+    },
+    "client_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+      "title": "Client Id",
+      "type": "string"
+    },
+    "account_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+      "title": "Account Id",
+      "type": "string"
+    },
+    "goal_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+      "title": "Goal Id",
+      "type": "string"
+    },
+    "operations": {
+      "items": {
+        "$ref": "#/$defs/BudgetOperation"
+      },
+      "minItems": 1,
+      "title": "Operations",
+      "type": "array"
+    },
+    "rationale": {
+      "maxLength": 2000,
+      "minLength": 1,
+      "title": "Rationale",
+      "type": "string"
+    },
+    "evidence_refs": {
+      "items": {
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+        "type": "string"
+      },
+      "title": "Evidence Refs",
+      "type": "array"
+    },
+    "missing_requirements": {
+      "items": {
+        "maxLength": 2000,
+        "minLength": 1,
+        "type": "string"
+      },
+      "title": "Missing Requirements",
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema_version",
+    "kind",
+    "client_id",
+    "account_id",
+    "goal_id",
+    "operations",
+    "rationale",
+    "evidence_refs",
+    "missing_requirements"
+  ],
+  "title": "ChangeProposal",
+  "type": "object"
+}

@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0",
+  "kind": "campaign_brief",
+  "client_id": "demo",
+  "account_id": "act_DEMO",
+  "project_id": "demo-pl",
+  "goal_id": "leads-pl",
+  "name": "DEMO — zapytania o konsultację",
+  "conversion_location": "meta_instant_form",
+  "market": "PL",
+  "language": "pl",
+  "budget": {
+    "level": "campaign",
+    "period": "daily",
+    "amount": "100.00",
+    "currency": "PLN"
+  },
+  "initial_status": "PAUSED",
+  "offer": "Przykładowa konsultacja — brief demonstracyjny",
+  "asset_refs": {
+    "page_id": null,
+    "instagram_actor_id": null,
+    "lead_form_id": null,
+    "creative_asset_ids": []
+  },
+  "special_ad_categories": null,
+  "missing_requirements": [
+    "Potwierdzenie zasobów strony i tożsamości reklamy",
+    "Istniejący formularz leadowy",
+    "Materiały, treść reklamy i pełne parametry zestawu reklam",
+    "Ustalenie, czy obowiązuje szczególna kategoria reklam"
+  ]
+}

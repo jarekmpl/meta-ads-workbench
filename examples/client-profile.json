@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0",
+  "kind": "client_profile",
+  "client_id": "demo",
+  "name": "Klient demonstracyjny — dane fikcyjne",
+  "accounts": [
+    {
+      "account_id": "act_DEMO",
+      "credential_ref": "env:META_DEMO_ACCESS_TOKEN",
+      "currency": "PLN",
+      "timezone": "Europe/Warsaw"
+    }
+  ],
+  "projects": [
+    {
+      "project_id": "demo-pl",
+      "account_ids": ["act_DEMO"],
+      "market": "PL",
+      "goal_profiles": [
+        {
+          "goal_id": "leads-pl",
+          "type": "lead_generation",
+          "primary_outcome": "lead",
+          "target_metrics": {"cpl": null},
+          "crm_source_ref": null
+        },
+        {
+          "goal_id": "commerce-pl",
+          "type": "ecommerce",
+          "primary_outcome": "purchase",
+          "target_metrics": {"cpa": null, "roas": null},
+          "commerce_source_ref": null
+        }
+      ]
+    }
+  ],
+  "policy": {
+    "version": "demo-1",
+    "mode": "analyst",
+    "allowed_write_operations": [],
+    "automation_enabled": false
+  }
+}

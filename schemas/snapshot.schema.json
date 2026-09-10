@@ -1,0 +1,364 @@
+{
+  "$defs": {
+    "Campaign": {
+      "additionalProperties": false,
+      "properties": {
+        "campaign_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+          "title": "Campaign Id",
+          "type": "string"
+        },
+        "goal_id": {
+          "anyOf": [
+            {
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Goal Id"
+        },
+        "name": {
+          "maxLength": 2000,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "status": {
+          "maxLength": 2000,
+          "minLength": 1,
+          "title": "Status",
+          "type": "string"
+        },
+        "objective": {
+          "anyOf": [
+            {
+              "maxLength": 2000,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Objective"
+        }
+      },
+      "required": [
+        "campaign_id",
+        "goal_id",
+        "name",
+        "status"
+      ],
+      "title": "Campaign",
+      "type": "object"
+    },
+    "Fact": {
+      "additionalProperties": false,
+      "properties": {
+        "campaign_id": {
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+          "title": "Campaign Id",
+          "type": "string"
+        },
+        "day": {
+          "format": "date",
+          "title": "Day",
+          "type": "string"
+        },
+        "spend": {
+          "decimal_places": 6,
+          "ge": 0,
+          "max_digits": 20,
+          "title": "Spend",
+          "type": "string"
+        },
+        "impressions": {
+          "minimum": 0,
+          "title": "Impressions",
+          "type": "integer"
+        },
+        "link_clicks": {
+          "minimum": 0,
+          "title": "Link Clicks",
+          "type": "integer"
+        },
+        "conversions": {
+          "anyOf": [
+            {
+              "decimal_places": 6,
+              "ge": 0,
+              "max_digits": 20,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Conversions"
+        },
+        "conversion_value": {
+          "anyOf": [
+            {
+              "decimal_places": 6,
+              "ge": 0,
+              "max_digits": 20,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Conversion Value"
+        },
+        "actions": {
+          "additionalProperties": {
+            "decimal_places": 6,
+            "ge": 0,
+            "max_digits": 20,
+            "type": "string"
+          },
+          "title": "Actions",
+          "type": "object"
+        },
+        "action_values": {
+          "additionalProperties": {
+            "decimal_places": 6,
+            "ge": 0,
+            "max_digits": 20,
+            "type": "string"
+          },
+          "title": "Action Values",
+          "type": "object"
+        },
+        "inferred_no_delivery": {
+          "default": false,
+          "title": "Inferred No Delivery",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "campaign_id",
+        "day",
+        "spend",
+        "impressions",
+        "link_clicks",
+        "conversions",
+        "conversion_value"
+      ],
+      "title": "Fact",
+      "type": "object"
+    },
+    "MetaEvidence": {
+      "additionalProperties": false,
+      "properties": {
+        "account_name": {
+          "maxLength": 2000,
+          "minLength": 1,
+          "title": "Account Name",
+          "type": "string"
+        },
+        "inventory_count": {
+          "minimum": 0,
+          "title": "Inventory Count",
+          "type": "integer"
+        },
+        "insight_row_count": {
+          "minimum": 0,
+          "title": "Insight Row Count",
+          "type": "integer"
+        },
+        "account_spend": {
+          "decimal_places": 6,
+          "ge": 0,
+          "max_digits": 20,
+          "title": "Account Spend",
+          "type": "string"
+        },
+        "account_impressions": {
+          "minimum": 0,
+          "title": "Account Impressions",
+          "type": "integer"
+        },
+        "account_link_clicks": {
+          "minimum": 0,
+          "title": "Account Link Clicks",
+          "type": "integer"
+        },
+        "reconciliation": {
+          "const": "matched",
+          "title": "Reconciliation",
+          "type": "string"
+        }
+      },
+      "required": [
+        "account_name",
+        "inventory_count",
+        "insight_row_count",
+        "account_spend",
+        "account_impressions",
+        "account_link_clicks",
+        "reconciliation"
+      ],
+      "title": "MetaEvidence",
+      "type": "object"
+    },
+    "ReportSpec": {
+      "additionalProperties": false,
+      "properties": {
+        "level": {
+          "const": "campaign",
+          "title": "Level",
+          "type": "string"
+        },
+        "currency": {
+          "pattern": "^[A-Z]{3}$",
+          "title": "Currency",
+          "type": "string"
+        },
+        "timezone": {
+          "title": "Timezone",
+          "type": "string"
+        },
+        "click_type": {
+          "const": "link_click",
+          "title": "Click Type",
+          "type": "string"
+        },
+        "attribution": {
+          "enum": [
+            "demo_7d_click_1d_view",
+            "7d_click_1d_view"
+          ],
+          "title": "Attribution",
+          "type": "string"
+        },
+        "action_report_time": {
+          "const": "impression",
+          "title": "Action Report Time",
+          "type": "string"
+        },
+        "api_version": {
+          "pattern": "^(demo-no-api|v[0-9]+\\.[0-9]+)$",
+          "title": "Api Version",
+          "type": "string"
+        },
+        "normalization_version": {
+          "const": "1",
+          "title": "Normalization Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "level",
+        "currency",
+        "timezone",
+        "click_type",
+        "attribution",
+        "action_report_time",
+        "api_version",
+        "normalization_version"
+      ],
+      "title": "ReportSpec",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "kind": {
+      "const": "snapshot",
+      "title": "Kind",
+      "type": "string"
+    },
+    "client_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+      "title": "Client Id",
+      "type": "string"
+    },
+    "account_id": {
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$",
+      "title": "Account Id",
+      "type": "string"
+    },
+    "source": {
+      "enum": [
+        "demo",
+        "meta"
+      ],
+      "title": "Source",
+      "type": "string"
+    },
+    "since": {
+      "format": "date",
+      "title": "Since",
+      "type": "string"
+    },
+    "until": {
+      "format": "date",
+      "title": "Until",
+      "type": "string"
+    },
+    "fetched_at": {
+      "format": "date-time",
+      "title": "Fetched At",
+      "type": "string"
+    },
+    "complete": {
+      "const": true,
+      "title": "Complete",
+      "type": "boolean"
+    },
+    "spec": {
+      "$ref": "#/$defs/ReportSpec"
+    },
+    "campaigns": {
+      "items": {
+        "$ref": "#/$defs/Campaign"
+      },
+      "title": "Campaigns",
+      "type": "array"
+    },
+    "facts": {
+      "items": {
+        "$ref": "#/$defs/Fact"
+      },
+      "title": "Facts",
+      "type": "array"
+    },
+    "meta": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/MetaEvidence"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    }
+  },
+  "required": [
+    "schema_version",
+    "kind",
+    "client_id",
+    "account_id",
+    "source",
+    "since",
+    "until",
+    "fetched_at",
+    "complete",
+    "spec",
+    "campaigns",
+    "facts"
+  ],
+  "title": "Snapshot",
+  "type": "object"
+}
